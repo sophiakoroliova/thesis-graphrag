@@ -1,0 +1,280 @@
+{
+  "nodes": 421,
+  "edges": 1054,
+  "entity_types": 4,
+  "types": {
+    "example": 205,
+    "concept": 154,
+    "theorem": 50,
+    "method": 12
+  },
+  "isolated": 15,
+  "isolated_share": 0.036,
+  "notation_entities": 0,
+  "notation_examples": [],
+  "structural_entities": 8,
+  "structural_examples": [
+    "Theorem 11",
+    "Theorem 12",
+    "Theorem 6",
+    "Theorem 8",
+    "Theorem 9",
+    "Theorem 2",
+    "Theorem 13",
+    "Theorem 1"
+  ],
+  "max_degree": 66,
+  "top_degree": [
+    [
+      "Matrix",
+      66,
+      "concept"
+    ],
+    [
+      "Linear Transformation",
+      54,
+      "concept"
+    ],
+    [
+      "Row Reduction Algorithm",
+      40,
+      "method"
+    ],
+    [
+      "Span",
+      36,
+      "concept"
+    ],
+    [
+      "Column Space",
+      36,
+      "concept"
+    ],
+    [
+      "Subspace",
+      36,
+      "concept"
+    ],
+    [
+      "Basis",
+      36,
+      "concept"
+    ],
+    [
+      "Null Space of a Matrix",
+      36,
+      "concept"
+    ],
+    [
+      "Determinant",
+      35,
+      "concept"
+    ],
+    [
+      "Invertible Matrix Theorem",
+      34,
+      "theorem"
+    ],
+    [
+      "Matrix Multiplication",
+      33,
+      "concept"
+    ],
+    [
+      "Matrix Equation",
+      32,
+      "concept"
+    ],
+    [
+      "Vector Space",
+      31,
+      "concept"
+    ],
+    [
+      "Invertible Matrix",
+      30,
+      "concept"
+    ],
+    [
+      "Linear Combination",
+      29,
+      "concept"
+    ],
+    [
+      "Linear Independence",
+      29,
+      "concept"
+    ],
+    [
+      "Eigenvalue",
+      28,
+      "concept"
+    ],
+    [
+      "Vector",
+      27,
+      "concept"
+    ],
+    [
+      "Augmented Matrix",
+      26,
+      "concept"
+    ],
+    [
+      "Homogeneous Linear System",
+      24,
+      "concept"
+    ],
+    [
+      "Echelon Form",
+      22,
+      "concept"
+    ],
+    [
+      "Square Matrix",
+      22,
+      "concept"
+    ],
+    [
+      "System of Linear Equations",
+      21,
+      "concept"
+    ],
+    [
+      "Coordinate Vector",
+      21,
+      "concept"
+    ],
+    [
+      "Identity Matrix",
+      20,
+      "concept"
+    ]
+  ],
+  "relations_typed": 1054,
+  "relations_typed_share": 1.0,
+  "relations_with_several_types": 134,
+  "relation_types": {
+    "uses": 406,
+    "requires": 262,
+    "example_of": 246,
+    "broader": 72,
+    "related_to": 68
+  },
+  "entities_matching_ontology": 118,
+  "entities_matching_ontology_share": 0.28,
+  "ontology_elements_covered": 111,
+  "ontology_elements_total": 111,
+  "ontology_coverage": 1.0,
+  "unmatched_entities": [
+    "Theorem 8",
+    "Theorem 11",
+    "Singular Value Decomposition",
+    "Geometric Linear Transformation",
+    "Theorem 12",
+    "Writing a Solution Set in Parametric Vector Form",
+    "Linear Independence of Matrix Columns",
+    "Upper Triangular Matrix",
+    "Null Space Subspace Theorem",
+    "Theorem 13",
+    "Complex Eigenvalues of Real Matrices",
+    "Equivalence of Matrix Equation, Vector Equation, and Linear System",
+    "Existence of Solutions for Matrix Equation",
+    "Theorem 9",
+    "Vector Addition",
+    "Schur Complement",
+    "Properties of Matrix Multiplication",
+    "Area of Parallelogram and Volume of Parallelepiped Theorem",
+    "Submatrix",
+    "Linear Transformation Determined by a Matrix",
+    "Symmetric Matrix",
+    "Finding a Basis for Col A Using Pivot Columns",
+    "Theorem 1",
+    "Pivot Columns as a Basis for Column Space",
+    "Eigenvectors Corresponding to Distinct Eigenvalues",
+    "QR Algorithm",
+    "Triangular Form",
+    "Standard Matrix Representation of a Linear Transformation",
+    "Theorem 6",
+    "Scalar Multiplication",
+    "Solution to Ax = b Using Matrix Inverse",
+    "Flexibility Matrix",
+    "Stiffness Matrix",
+    "Properties of Invertible Matrices",
+    "Transfer Function",
+    "Column Space of a Matrix",
+    "Matrix Addition and Scalar Multiplication Properties",
+    "Transfer Matrix",
+    "Block Diagonal Matrix",
+    "Block Diagonal Matrix Invertibility",
+    "Diagonal Expansion Method for 3x3 Determinants",
+    "Linearity Property of Determinant",
+    "Determinant of a Triangular Matrix",
+    "Polynomial",
+    "Polynomial Space",
+    "Null Space Theorem",
+    "Identity Transformation",
+    "Eigenvalues of a Triangular Matrix",
+    "Complex Vector",
+    "Rotation Matrix for a Complex Eigenvalue",
+    "Eigenvalue Matrix Factorization for Complex Eigenvalues",
+    "Codomain",
+    "Domain",
+    "Line",
+    "Plane",
+    "Line Segment",
+    "Affine Transformation",
+    "Center of Gravity",
+    "Inconsistent System",
+    "Dot Product",
+    "Properties of the Matrix-Vector Product Ax",
+    "Forward Phase",
+    "Unique Solution",
+    "Underdetermined System",
+    "Overdetermined System",
+    "General Solution",
+    "Interpolating Polynomial",
+    "Image",
+    "Parallelogram Rule for Addition",
+    "Projection Transformation",
+    "QR Factorization",
+    "Column Row Expansion of AB",
+    "Scalar",
+    "Computing Matrix Product by Definition",
+    "Matrix Addition",
+    "Coordinate System",
+    "Theorem 2",
+    "Vector Space of Functions",
+    "Row Operation",
+    "Zero Polynomial",
+    "Dimension Theorem",
+    "Real Eigenvalue",
+    "Similarity Transformation",
+    "Properties of Determinants",
+    "Difference Equation",
+    "Differential Equation",
+    "Trace",
+    "Real Matrix",
+    "Linear Programming",
+    "Rank Factorization",
+    "Tridiagonal Matrix",
+    "Matrix Equality",
+    "Pivot",
+    "Coordinate Plane",
+    "Jacobi's Method",
+    "Dynamical System",
+    "Stochastic Matrix",
+    "Probability Vector"
+  ],
+  "in_scope_elements": 111,
+  "in_scope_covered": 111,
+  "in_scope_coverage": 1.0,
+  "in_scope_missing": [],
+  "documents": {
+    "Lay_ch1": "processed",
+    "Lay_ch2": "processed",
+    "Lay_ch3": "processed",
+    "Lay_ch4": "processed",
+    "Lay_ch5": "processed"
+  }
+}

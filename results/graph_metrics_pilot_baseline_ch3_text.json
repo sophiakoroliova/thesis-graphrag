@@ -1,0 +1,321 @@
+{
+  "nodes": 138,
+  "edges": 146,
+  "entity_types": 6,
+  "types": {
+    "concept": 62,
+    "data": 27,
+    "content": 20,
+    "method": 18,
+    "artifact": 10,
+    "UNKNOWN": 1
+  },
+  "isolated": 18,
+  "isolated_share": 0.13,
+  "notation_entities": 27,
+  "notation_examples": [
+    "Matrix B",
+    "Vector B",
+    "Matrix U",
+    "Scalar K",
+    "Vector U",
+    "Vector V",
+    "Matrix A",
+    "Determinant A",
+    "A",
+    "Det A",
+    "Transformation T",
+    "T",
+    "Identity I",
+    "A1",
+    "A2"
+  ],
+  "structural_entities": 30,
+  "structural_examples": [
+    "Theorem 3",
+    "Example 1",
+    "Example 2",
+    "Section 3.2",
+    "Theorem 6",
+    "Theorem 7",
+    "Theorem 4",
+    "Figure 1",
+    "Theorem 8",
+    "Example 3",
+    "Theorem 1",
+    "Theorem 2",
+    "Theorem 5",
+    "Theorem 9",
+    "Section 2.2"
+  ],
+  "max_degree": 40,
+  "top_degree": [
+    [
+      "Matrix A",
+      40,
+      "data"
+    ],
+    [
+      "Determinant",
+      31,
+      "concept"
+    ],
+    [
+      "Theorem 3",
+      9,
+      "concept"
+    ],
+    [
+      "Theorem 6",
+      9,
+      "concept"
+    ],
+    [
+      "Cramer's Rule",
+      7,
+      "method"
+    ],
+    [
+      "Theorem 10",
+      7,
+      "concept"
+    ],
+    [
+      "Linear Transformation T",
+      7,
+      "concept"
+    ],
+    [
+      "Cofactor Expansion",
+      6,
+      "method"
+    ],
+    [
+      "A",
+      5,
+      "artifact"
+    ],
+    [
+      "Matrix B",
+      4,
+      "data"
+    ],
+    [
+      "Row Operations",
+      4,
+      "method"
+    ],
+    [
+      "Matrix U",
+      4,
+      "data"
+    ],
+    [
+      "Theorem 4",
+      4,
+      "concept"
+    ],
+    [
+      "Theorem 8",
+      4,
+      "concept"
+    ],
+    [
+      "Section 3.2",
+      3,
+      "content"
+    ],
+    [
+      "Matrix Inverse",
+      3,
+      "concept"
+    ],
+    [
+      "Cofactor",
+      3,
+      "concept"
+    ],
+    [
+      "Determinant A",
+      3,
+      "concept"
+    ],
+    [
+      "Theorem 5",
+      3,
+      "concept"
+    ],
+    [
+      "Elementary Matrix E",
+      3,
+      "artifact"
+    ],
+    [
+      "Row Reduction",
+      3,
+      "method"
+    ],
+    [
+      "Set S",
+      3,
+      "concept"
+    ],
+    [
+      "Elementary Row Operation",
+      3,
+      "method"
+    ],
+    [
+      "Echelon Form",
+      2,
+      "concept"
+    ],
+    [
+      "Example 1",
+      2,
+      "content"
+    ]
+  ],
+  "relations_typed": 0,
+  "relations_typed_share": 0.0,
+  "relations_with_several_types": 0,
+  "relation_types": {
+    "untyped": 146
+  },
+  "entities_matching_ontology": 20,
+  "entities_matching_ontology_share": 0.145,
+  "ontology_elements_covered": 17,
+  "ontology_elements_total": 111,
+  "ontology_coverage": 0.153,
+  "unmatched_entities": [
+    "Matrix A",
+    "Theorem 3",
+    "Theorem 6",
+    "Theorem 10",
+    "Linear Transformation T",
+    "A",
+    "Matrix B",
+    "Row Operations",
+    "Matrix U",
+    "Theorem 4",
+    "Theorem 8",
+    "Section 3.2",
+    "Determinant A",
+    "Theorem 5",
+    "Elementary Matrix E",
+    "Set S",
+    "Example 1",
+    "Vector B",
+    "Vector U",
+    "Vector V",
+    "Parallelogram",
+    "Column Operations",
+    "A^-1",
+    "Example 3",
+    "Matrix A Transpose",
+    "Theorem 9",
+    "Section 2.2",
+    "Parallelepiped",
+    "Parallelogram S",
+    "Planar Region R",
+    "Region S",
+    "Practice Problem",
+    "Vector P",
+    "Matrix C",
+    "Unit Ball",
+    "Tetrahedron S",
+    "Example 2",
+    "Theorem 7",
+    "Identity Matrix I",
+    "Figure 1",
+    "Scalar K",
+    "Laplace Transforms",
+    "Linear Differential Equations",
+    "Linear Algebraic Equations",
+    "Cofactor Expansions",
+    "Principle of Mathematical Induction",
+    "Transpose Matrix A",
+    "Det A",
+    "Theorem 1",
+    "Theorem 2",
+    "Determinant Function",
+    "Matrix AB",
+    "Transformation T",
+    "T",
+    "Theorem 3(c)",
+    "Identity I",
+    "A1",
+    "A2",
+    "Line L",
+    "Figure 2",
+    "Example 4",
+    "Figure 5",
+    "Figure 3",
+    "Elementary Matrices",
+    "Exercise 27",
+    "Section 2.3",
+    "Product Theorem For Determinants",
+    "Section 3.1",
+    "Section 3.3",
+    "Chapter 5",
+    "Jacobian",
+    "Delta",
+    "Calculus",
+    "Figure 6",
+    "Figure 7",
+    "Unit Disk D",
+    "Example 5",
+    "Exercises 33\u201336",
+    "Exercises 1\u20138",
+    "Exercises 9\u201314",
+    "Submatrix A 3 2",
+    "Recursive Definition of a Determinant",
+    "Submatrix A 1 1",
+    "Submatrix A 1 2",
+    "Submatrix A 1 3",
+    "Linearly Independent Vectors",
+    "Row Replacement Operation",
+    "Echelon Form U",
+    "Triangle Area",
+    "Exercises 15\u201318",
+    "Exercises 19\u201324",
+    "Matrix P",
+    "Ellipsoid",
+    "Tetrahedron S Prime",
+    "MATLAB",
+    "Elementary Row Replacement Matrix",
+    "Elementary Scaling Matrix",
+    "Exercises 11-16",
+    "Checkerboard Pattern Of Signs",
+    "Concept",
+    "Volume",
+    "Formula 1",
+    "Numerical Note",
+    "Chapter 6",
+    "R^2 and R^3",
+    "Induction",
+    "C A1",
+    "R2",
+    "R3",
+    "Figure 4",
+    "Theorem 26",
+    "Region E",
+    "Parallelogram Area",
+    "Parallelepiped Volume",
+    "Unit Ball S",
+    "Matrix Program",
+    "Exercises 7-10",
+    "Exercises 19-22"
+  ],
+  "in_scope_elements": 8,
+  "in_scope_covered": 5,
+  "in_scope_coverage": 0.625,
+  "in_scope_missing": [
+    "inverse formula",
+    "multiplicative property of determinants",
+    "row operations theorem for determinants"
+  ],
+  "documents": {
+    "Lay_ch3": "processed"
+  }
+}

@@ -1,0 +1,180 @@
+{
+  "nodes": 63,
+  "edges": 93,
+  "entity_types": 4,
+  "types": {
+    "concept": 39,
+    "example": 14,
+    "theorem": 7,
+    "method": 3
+  },
+  "isolated": 5,
+  "isolated_share": 0.079,
+  "notation_entities": 0,
+  "notation_examples": [],
+  "structural_entities": 0,
+  "structural_examples": [],
+  "max_degree": 30,
+  "top_degree": [
+    [
+      "Determinant",
+      30,
+      "concept"
+    ],
+    [
+      "Inverse Formula",
+      8,
+      "theorem"
+    ],
+    [
+      "Elementary Matrix",
+      7,
+      "concept"
+    ],
+    [
+      "Matrix",
+      7,
+      "concept"
+    ],
+    [
+      "Cofactor Expansion",
+      7,
+      "method"
+    ],
+    [
+      "Cramer's Rule",
+      6,
+      "theorem"
+    ],
+    [
+      "Invertible Matrix",
+      6,
+      "concept"
+    ],
+    [
+      "Inverse of a Matrix",
+      6,
+      "concept"
+    ],
+    [
+      "Row Operations Theorem for Determinants",
+      5,
+      "theorem"
+    ],
+    [
+      "Adjugate",
+      5,
+      "concept"
+    ],
+    [
+      "Linear Transformation",
+      5,
+      "concept"
+    ],
+    [
+      "Invertible Matrix Theorem",
+      5,
+      "theorem"
+    ],
+    [
+      "Row Reduction Algorithm",
+      5,
+      "method"
+    ],
+    [
+      "Transpose of a Matrix",
+      4,
+      "concept"
+    ],
+    [
+      "Multiplicative Property of Determinants",
+      4,
+      "theorem"
+    ],
+    [
+      "Square Matrix",
+      4,
+      "concept"
+    ],
+    [
+      "Cofactor",
+      4,
+      "concept"
+    ],
+    [
+      "Linear Transformation Determined by a Matrix and Effect on Area and Volume",
+      4,
+      "theorem"
+    ],
+    [
+      "Elementary Row Operation",
+      3,
+      "concept"
+    ],
+    [
+      "Echelon Form",
+      3,
+      "concept"
+    ],
+    [
+      "Vector",
+      3,
+      "concept"
+    ],
+    [
+      "Computing Determinant Using Row Operations",
+      3,
+      "example"
+    ],
+    [
+      "Identity Matrix",
+      2,
+      "concept"
+    ],
+    [
+      "Matrix Equation",
+      2,
+      "concept"
+    ],
+    [
+      "System of Linear Equations",
+      2,
+      "concept"
+    ]
+  ],
+  "relations_typed": 93,
+  "relations_typed_share": 1.0,
+  "relations_with_several_types": 7,
+  "relation_types": {
+    "uses": 41,
+    "requires": 23,
+    "example_of": 18,
+    "related_to": 7,
+    "broader": 4
+  },
+  "entities_matching_ontology": 38,
+  "entities_matching_ontology_share": 0.603,
+  "ontology_elements_covered": 38,
+  "ontology_elements_total": 111,
+  "ontology_coverage": 0.342,
+  "unmatched_entities": [
+    "Linear Transformation Determined by a Matrix and Effect on Area and Volume",
+    "Parallelogram",
+    "Determinant of Transpose Matrix",
+    "Parameter",
+    "Area",
+    "Vertex",
+    "Area of a Parallelogram",
+    "Volume of a Parallelepiped",
+    "Unique Solution",
+    "Integer",
+    "Scalar"
+  ],
+  "in_scope_elements": 8,
+  "in_scope_covered": 8,
+  "in_scope_coverage": 1.0,
+  "in_scope_missing": [],
+  "documents": {
+    "Lay_ch3": "processed"
+  }
+}
