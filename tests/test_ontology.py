@@ -56,3 +56,24 @@ def test_ontology_alignment_metric():
     m = ontology_alignment(G, load_ontology().label_index())
     assert m["entities_matching_ontology"] == 3        # Basis, Bases (synonym), Kernel (synonym)
     assert m["ontology_elements_covered"] == 2         # basis, kernel of a linear transformation
+
+
+def test_elements_know_their_chapter():
+    chapters = {e.pref_label: e.chapter for e in load_ontology().elements}
+    assert chapters["determinant"] == 3
+    assert chapters["basis"] in (2, 4)
+    ch3 = [e for e in load_ontology().elements if e.chapter == 3]
+    assert len(ch3) == 8
+
+
+def test_relation_typing_metric():
+    import networkx as nx
+    from inspect_kb import relation_typing
+    G = nx.Graph()
+    G.add_edge("Basis", "Span", keywords="definition,requires")      # LightRAG stores keywords sorted
+    G.add_edge("Cramer's Rule", "Determinant", keywords="uses")
+    G.add_edge("Example", "Determinant", keywords="computation,example of")
+    G.add_edge("Matrix A", "Vector", keywords="vector properties")
+    m = relation_typing(G)
+    assert m["relations_typed"] == 3 and m["relation_types"]["untyped"] == 1
+    assert m["relation_types"]["example_of"] == 1

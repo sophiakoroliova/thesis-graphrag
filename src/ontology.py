@@ -67,6 +67,7 @@ class Element:
     hidden_labels: list = field(default_factory=list)
     definition: str = ""
     notation: str = ""
+    chapter: int = 0              # order of the module (chapter) its topic belongs to
 
     @property
     def all_labels(self):
@@ -109,7 +110,11 @@ def load_ontology(files: tuple = tuple(str(f) for f in ONTOLOGY_FILES)) -> Ontol
             pref = _literal(g, s, SKOS.prefLabel)
             if not pref:
                 continue
+            topic = g.value(s, EDU.belongsToTopic)
+            module = g.value(topic, EDU.partOf) if topic is not None else None
+            order = g.value(module, EDU.order) if module is not None else None
             elements.append(Element(
+                chapter=int(order) if order is not None else 0,
                 iri=str(s),
                 cls=cls,
                 pref_label=pref,

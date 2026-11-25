@@ -17,7 +17,9 @@ ROWS = [
     ("Book-structure references (Theorem 8...)", "structural_entities", "{}"),
     ("Max degree (hub size)", "max_degree", "{}"),
     ("Entities matching the ontology", "entities_matching_ontology_share", "{:.1%}"),
-    ("Ontology elements covered", "ontology_coverage", "{:.1%}"),
+    ("Ontology elements covered (all 111)", "ontology_coverage", "{:.1%}"),
+    ("Ontology elements of included chapters covered", "in_scope_coverage", "{:.1%}"),
+    ("Relations typed (requires/uses/broader/...)", "relations_typed_share", "{:.1%}"),
 ]
 
 
