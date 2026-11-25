@@ -1,0 +1,27 @@
+# Secrets
+.env
+
+# Python environment
+venv/
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Data: the textbook is copyrighted and is not committed
+data/raw/
+data/pdf/
+data/parsed/
+*.pdf
+
+# LightRAG knowledge bases (large; rebuilt by the scripts)
+rag_storage/
+
+# Old experimental scripts (kept locally only)
+scratch/
+
+# Editor / OS files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

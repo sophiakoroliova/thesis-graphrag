@@ -1,0 +1,193 @@
+{
+  "nodes": 1142,
+  "edges": 1635,
+  "entity_types": 13,
+  "types": {
+    "concept": 476,
+    "data": 336,
+    "method": 114,
+    "content": 100,
+    "artifact": 64,
+    "location": 13,
+    "naturalobject": 9,
+    "UNKNOWN": 9,
+    "organization": 7,
+    "event": 6,
+    "person": 5,
+    "creature": 2,
+    "geometricobject": 1
+  },
+  "isolated": 154,
+  "isolated_share": 0.135,
+  "notation_entities": 163,
+  "notation_examples": [
+    "R3",
+    "Matrix B",
+    "Vector V2",
+    "Vector V3",
+    "R4",
+    "Vector B",
+    "Matrix A",
+    "Vector V1",
+    "Vector U",
+    "Vector C",
+    "Vector X",
+    "Vector V",
+    "Vector P",
+    "Line L",
+    "Vector Q"
+  ],
+  "structural_entities": 131,
+  "structural_examples": [
+    "Theorem 10",
+    "Figure 5",
+    "Section 1.7",
+    "Exercise 37",
+    "Exercise 38",
+    "Exercise 39",
+    "Exercise 40",
+    "Example 1",
+    "Example 2",
+    "Figure 1",
+    "Figure 2",
+    "Figure 11",
+    "Figure 3",
+    "Figure 4",
+    "Theorem 6"
+  ],
+  "max_degree": 229,
+  "top_degree": [
+    [
+      "Matrix A",
+      229,
+      "data"
+    ],
+    [
+      "Vector Space V",
+      37,
+      "concept"
+    ],
+    [
+      "Linear Transformation",
+      35,
+      "concept"
+    ],
+    [
+      "Matrix B",
+      35,
+      "data"
+    ],
+    [
+      "Augmented Matrix",
+      32,
+      "data"
+    ],
+    [
+      "T",
+      32,
+      "concept"
+    ],
+    [
+      "H",
+      29,
+      "concept"
+    ],
+    [
+      "Linear Transformation T",
+      28,
+      "concept"
+    ],
+    [
+      "Vector U",
+      27,
+      "data"
+    ],
+    [
+      "Span",
+      26,
+      "method"
+    ],
+    [
+      "Basis B",
+      25,
+      "data"
+    ],
+    [
+      "Linear System",
+      24,
+      "concept"
+    ],
+    [
+      "Vector V",
+      23,
+      "data"
+    ],
+    [
+      "Determinant",
+      23,
+      "concept"
+    ],
+    [
+      "V",
+      21,
+      "concept"
+    ],
+    [
+      "Col A",
+      21,
+      "concept"
+    ],
+    [
+      "R^n",
+      20,
+      "concept"
+    ],
+    [
+      "Vector X",
+      19,
+      "data"
+    ],
+    [
+      "Example 3",
+      19,
+      "content"
+    ],
+    [
+      "Transformation T",
+      19,
+      "method"
+    ],
+    [
+      "Theorem 8",
+      18,
+      "concept"
+    ],
+    [
+      "Matrix P",
+      18,
+      "data"
+    ],
+    [
+      "Invertible Matrix Theorem",
+      18,
+      "concept"
+    ],
+    [
+      "Vector V1",
+      17,
+      "data"
+    ],
+    [
+      "Theorem 6",
+      17,
+      "method"
+    ]
+  ],
+  "documents": {
+    "Lay_ch1": "processed",
+    "Lay_ch2": "processed",
+    "Lay_ch3": "processed",
+    "Lay_ch4": "processed",
+    "Lay_ch5": "processed"
+  }
+}
