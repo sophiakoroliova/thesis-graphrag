@@ -23,6 +23,22 @@ NOTATION_RE = re.compile(r"^(?:[A-Za-z]+ )?[A-Z]\d*$")
 STRUCTURAL_RE = re.compile(r"^(?:Theorem|Example|Exercise|Figure|Section|Table)\s+\d+", re.I)
 
 
+def ontology_alignment(G: nx.Graph, label_index: dict) -> dict:
+    """How many graph entities match an ontology element (by pref/alt/hidden label, case-insensitive),
+    and how many of the ontology's elements appear in the graph at all."""
+    matched = {v: label_index[v.strip().lower()] for v in G.nodes if v.strip().lower() in label_index}
+    covered = {el.iri for el in matched.values()}
+    total = len({el.iri for el in label_index.values()})
+    n = G.number_of_nodes()
+    return {
+        "entities_matching_ontology": len(matched),
+        "entities_matching_ontology_share": round(len(matched) / n, 3) if n else 0,
+        "ontology_elements_covered": len(covered),
+        "ontology_elements_total": total,
+        "ontology_coverage": round(len(covered) / total, 3) if total else 0,
+    }
+
+
 def compute_metrics(G: nx.Graph) -> dict:
     n = G.number_of_nodes()
     nodes = list(G.nodes)
@@ -60,6 +76,11 @@ def main(argv=None):
 
     G = nx.read_graphml(args.kb / "graph_chunk_entity_relation.graphml")
     m = compute_metrics(G)
+    try:
+        from ontology import load_ontology
+        m.update(ontology_alignment(G, load_ontology().label_index()))
+    except Exception as e:  # rdflib missing or ontology files absent
+        print(f"(ontology alignment skipped: {e})")
     status = doc_status(args.kb)
     m["documents"] = {d.get("file_path", k): d.get("status") for k, d in status.items()}
 
@@ -76,6 +97,11 @@ def main(argv=None):
         print(f"Isolated nodes: {m['isolated']} ({m['isolated_share']:.0%})")
         print(f"Notation entities (Matrix A, T, V...): {m['notation_entities']}")
         print(f"Book-structure references (Theorem 8, Example 3...): {m['structural_entities']}")
+        if "ontology_coverage" in m:
+            print(f"Entities matching an ontology element: {m['entities_matching_ontology']} "
+                  f"({m['entities_matching_ontology_share']:.0%})")
+            print(f"Ontology elements found in the graph: {m['ontology_elements_covered']} / "
+                  f"{m['ontology_elements_total']} ({m['ontology_coverage']:.0%})")
         print(f"\nEntity types ({m['entity_types']}):")
         for t, c in list(m["types"].items())[:15]:
             print(f"  {t:25} {c}")

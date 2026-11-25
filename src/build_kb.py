@@ -4,6 +4,7 @@
 #   python src/build_kb.py --text-only --run              build from all chapters
 #   python src/build_kb.py --text-only --run --chapters ch3
 #   python src/build_kb.py --run                          full multimodal RAG-Anything mode
+#   python src/build_kb.py --text-only --run --ontology   proposed method (ontology-guided extraction)
 #
 # The mode must be the SAME for the baseline and the ontology-guided method.
 # If a build is interrupted, re-running continues from the first unfinished chapter
@@ -25,11 +26,15 @@ def parse_args(argv=None):
     p.add_argument("--text-only", action="store_true",
                    help="cost-saving mode: equations as LaTeX in the text, figures as captions")
     p.add_argument("--chapters", nargs="+", choices=CHAPTERS, default=CHAPTERS, help="chapters to include")
-    p.add_argument("--name", default="baseline", help="configuration name (baseline, ontology, ...)")
+    p.add_argument("--ontology", action="store_true",
+                   help="proposed method: ontology-guided extraction (see src/ontology_prompt.py)")
+    p.add_argument("--name", default=None, help="configuration name (default: baseline or ontology)")
     p.add_argument("--working-dir", type=Path, default=None,
                    help="knowledge base folder (default: rag_storage/<name>[_text])")
     p.add_argument("--parsed-dir", type=Path, default=PARSED_DIR, help="MinerU output folder")
     args = p.parse_args(argv)
+    if args.name is None:
+        args.name = "ontology" if args.ontology else "baseline"
     if args.working_dir is None:
         args.working_dir = STORAGE_DIR / (f"{args.name}_text" if args.text_only else args.name)
     return args
@@ -51,7 +56,9 @@ async def build(args):
         mark = "  ✅ already built" if ch in done else ""
         print(f"{ch}: {len(items)} blocks, ~{chars // 4} tokens  {dict(counts)}{mark}")
     mode = "text-only" if args.text_only else "full multimodal"
-    print(f"\nMode: {mode}; knowledge base: {args.working_dir}; total ~{total_chars // 4} text tokens")
+    method = "ontology-guided" if args.ontology else "baseline"
+    print(f"\nMethod: {method}; mode: {mode}; knowledge base: {args.working_dir}; "
+          f"total ~{total_chars // 4} text tokens")
 
     if not args.run:
         print("\nDry run, no API calls made. Add --run to build.")
@@ -62,6 +69,17 @@ async def build(args):
     from gemini_funcs import llm_func, vision_func, embedding_func, stats, cost_usd
 
     args.working_dir.mkdir(parents=True, exist_ok=True)
+    lightrag_kwargs = dict(LIGHTRAG_KWARGS)
+    if args.ontology:
+        from lightrag.prompt import PROMPTS
+        from ontology_prompt import apply_ontology_guidance, render_system_prompt
+        addon = apply_ontology_guidance(PROMPTS)
+        lightrag_kwargs["addon_params"] = addon
+        # keep the exact extraction prompt next to the knowledge base (for the thesis appendix)
+        (args.working_dir / "extraction_system_prompt.txt").write_text(
+            render_system_prompt(PROMPTS, addon["entity_types"]), encoding="utf-8")
+        print(f"Ontology guidance applied: entity types {addon['entity_types']}")
+
     rag = RAGAnything(
         config=RAGAnythingConfig(
             working_dir=str(args.working_dir),
@@ -72,10 +90,10 @@ async def build(args):
         llm_model_func=llm_func,
         vision_model_func=vision_func,
         embedding_func=embedding_func,
-        lightrag_kwargs=LIGHTRAG_KWARGS,
+        lightrag_kwargs=lightrag_kwargs,
     )
 
-    report = {"name": args.name, "text_only": args.text_only, "chapters": {}}
+    report = {"name": args.name, "ontology": args.ontology, "text_only": args.text_only, "chapters": {}}
     t_all = time.time()
     for ch in args.chapters:
         if ch in done:

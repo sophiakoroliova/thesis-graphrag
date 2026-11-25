@@ -16,7 +16,7 @@ flowchart LR
     E --> F[("rag_storage/&lt;name&gt;<br/>graph + vectors")]
     F -->|"src/inspect_kb.py"| G["results/graph_metrics_*.json"]
     F -->|"src/ask_kb.py"| H["RAG answers"]
-    O["la_ontology"] -.->|"proposed method (in progress)"| E
+    O["ontology/<br/>la_ontology"] -.->|"--ontology:<br/>classes, relation types,<br/>naming vocabulary"| E
 ```
 
 Parsing is the only step that runs in Colab (it needs a GPU); everything else runs locally. The parsed corpus is produced once and reused by both configurations (baseline and ontology-guided).
@@ -32,11 +32,16 @@ src/
   build_kb.py       builds a knowledge base
   inspect_kb.py     structural graph metrics -> results/
   ask_kb.py         queries a knowledge base
+  compare_kb.py     side-by-side table of graph metrics
+  ontology.py       reads the domain ontology (classes, relation types, vocabulary)
+  ontology_prompt.py  ontology-guided extraction: prompt section, entity types, domain example
   check_setup.py    checks the API key, models and data
+ontology/           domain ontology files (from la_ontology), see ontology/README.md
 colab/
   parse_mineru.ipynb  PDF parsing in Colab
 tests/
   test_preprocess.py  offline tests (no API calls)
+  test_ontology.py    offline tests of the ontology-guided method, incl. a gold-leakage check
   test_smoke.py       end-to-end run on chapter 3 (pytest --smoke, about $0.15)
 run_all.py          the whole local pipeline in one command
 data/               input data (not committed, see data/README.md)
@@ -72,11 +77,30 @@ python run_all.py --text-only --ask        # + sample questions
 pytest --smoke                             # end-to-end pipeline check
 ```
 
+## Baseline vs. proposed method
+
+Both configurations share the same parsed corpus, chunking, models, LightRAG version (1.4.16) and retrieval settings. Only the extraction step differs:
+
+| | Baseline | Ontology-guided (`--ontology`) |
+|---|---|---|
+| Entity types | LightRAG defaults (Person, Location, Event, Concept, Data, ...) | ontology classes: Concept, Theorem, Method, Example |
+| Relation types | free-text keywords | first keyword is one of `requires`, `uses`, `broader`, `example_of`, `related_to` |
+| Naming | free | canonical names from the ontology (with synonyms); no variable symbols or "Theorem 8"-style references |
+| Prompt examples | LightRAG defaults (fiction, stock market) | one linear algebra example from outside the corpus (orthogonality, ch. 6) |
+
+The ontology's own relations between elements are **not** given to the extractor: they serve as the gold standard for evaluating extracted prerequisites (`tests/test_ontology.py` checks that none of them leak into the prompt). The exact extraction prompt is saved next to each ontology-guided knowledge base (`extraction_system_prompt.txt`).
+
+```powershell
+python run_all.py --text-only --ontology       # proposed method, all chapters
+python src/compare_kb.py baseline_text ontology_text
+```
+
 ## Pinned settings
 
 | Component | Value |
 |---|---|
 | Parsing | MinerU 3.4.5, backend `hybrid-auto-engine`, language `en` |
+| Knowledge graph | RAG-Anything + LightRAG 1.4.16 |
 | LLM | `gemini-3.5-flash-lite`, temperature 0, default thinking (0 tokens) |
 | Embeddings | `gemini-embedding-001`, dimension 768 |
 | Insertion mode | `--text-only`: equations as LaTeX in the text, figures as captions, tables as text |

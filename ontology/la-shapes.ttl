@@ -1,0 +1,68 @@
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix edu: <http://example.org/edu#> .
+@prefix eds: <http://example.org/edu-shapes#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# S1 - exactly one English prefLabel and exactly one topic for every knowledge element
+eds:KnowledgeElementShape a sh:NodeShape ;
+    sh:targetClass edu:KnowledgeElement ;
+    sh:property [ sh:path skos:prefLabel ; sh:minCount 1 ; sh:uniqueLang true ; sh:languageIn ( "en" ) ;
+                  sh:message "S1: exactly one prefLabel@en is required" ] ;
+    sh:property [ sh:path edu:belongsToTopic ; sh:minCount 1 ; sh:maxCount 1 ; sh:class edu:Topic ;
+                  sh:message "S1: exactly one topic is required" ] ;
+# S3 - domain/range of requires
+    sh:property [ sh:path edu:requires ; sh:class edu:KnowledgeElement ;
+                  sh:message "S3: requires must point to a knowledge element" ] .
+
+# S1 (structure) - every topic is part of exactly one module, every module of exactly one course
+eds:TopicShape a sh:NodeShape ;
+    sh:targetClass edu:Topic ;
+    sh:property [ sh:path edu:partOf ; sh:minCount 1 ; sh:maxCount 1 ; sh:class edu:Module ] ;
+    sh:property [ sh:path edu:order ; sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:integer ] .
+eds:ModuleShape a sh:NodeShape ;
+    sh:targetClass edu:Module ;
+    sh:property [ sh:path edu:partOf ; sh:minCount 1 ; sh:maxCount 1 ; sh:class edu:Course ] .
+
+# S2 - every concept has a definition (warning)
+eds:ConceptDefinitionShape a sh:NodeShape ;
+    sh:targetClass edu:Concept ;
+    sh:property [ sh:path skos:definition ; sh:minCount 1 ; sh:severity sh:Warning ;
+                  sh:message "S2: a concept should have skos:definition" ] .
+
+# S3 - uses: subject is a theorem or a method, object is a concept
+eds:UsesShape a sh:NodeShape ;
+    sh:targetSubjectsOf edu:uses ;
+    sh:or ( [ sh:class edu:Theorem ] [ sh:class edu:Method ] ) ;
+    sh:property [ sh:path edu:uses ; sh:class edu:Concept ; sh:message "S3: uses must point to a concept" ] .
+
+# S4 - prefLabel and altLabel are unique across knowledge elements (case-insensitive);
+#      topic titles may coincide with concept names ("Rank" topic vs "rank" concept)
+eds:UniqueLabelShape a sh:NodeShape ;
+    sh:targetClass edu:KnowledgeElement ;
+    sh:sparql [ a sh:SPARQLConstraint ;
+        sh:message "S4: label {?value} is also used by {?other}" ;
+        sh:select """
+          SELECT $this ?value ?other WHERE {
+            $this  <http://www.w3.org/2004/02/skos/core#prefLabel>|<http://www.w3.org/2004/02/skos/core#altLabel> ?value .
+            ?other a <http://example.org/edu#KnowledgeElement> ;
+                   <http://www.w3.org/2004/02/skos/core#prefLabel>|<http://www.w3.org/2004/02/skos/core#altLabel> ?l2 .
+            FILTER ($this != ?other && LCASE(STR(?value)) = LCASE(STR(?l2)))
+          }""" ] .
+
+# S5 - the prerequisite graph has no cycles
+eds:AcyclicPrerequisitesShape a sh:NodeShape ;
+    sh:targetSubjectsOf edu:requires ;
+    sh:sparql [ a sh:SPARQLConstraint ;
+        sh:message "S5: cycle in the prerequisite graph" ;
+        sh:select """SELECT $this WHERE { $this <http://example.org/edu#requires>+ $this . }""" ] .
+
+# S6 - a prerequisite must not duplicate skos:broader (warning)
+eds:PrerequisiteNotBroaderShape a sh:NodeShape ;
+    sh:targetSubjectsOf edu:requires ;
+    sh:severity sh:Warning ;
+    sh:sparql [ a sh:SPARQLConstraint ;
+        sh:message "S6: requires duplicates skos:broader for {?value}" ;
+        sh:select """SELECT $this ?value WHERE {
+            $this <http://example.org/edu#requires> ?value .
+            $this <http://www.w3.org/2004/02/skos/core#broader> ?value . }""" ] .

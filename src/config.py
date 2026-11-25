@@ -11,6 +11,11 @@ PARSED_DIR = ROOT / "data" / "parsed" / "hybrid_full"       # MinerU output from
 STORAGE_DIR = ROOT / "rag_storage"                          # LightRAG knowledge bases
 RESULTS_DIR = ROOT / "results"                              # metrics and reports
 
+# ---------- Domain ontology (copied from github.com/sophiakoroliova/la_ontology) ----------
+ONTOLOGY_DIR = ROOT / "ontology"
+ONTOLOGY_FILES = [ONTOLOGY_DIR / "edu-core.ttl", ONTOLOGY_DIR / "la-concepts.ttl"]
+ONTOLOGY_SHAPES = ONTOLOGY_DIR / "la-shapes.ttl"
+
 # ---------- Corpus: PDF pages (1-based as shown in a PDF viewer, inclusive) ----------
 # Chapters 1–5 without applied sections 1.6, 1.10, 2.6, 2.7, 4.8, 4.9, 5.6–5.8,
 # introductory examples and Supplementary Exercises. Offset from book page numbers: +17.

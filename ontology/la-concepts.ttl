@@ -1,0 +1,1441 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix edu: <http://example.org/edu#> .
+@prefix la: <http://example.org/la#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://example.org/la> a owl:Ontology ;
+    rdfs:label "Linear Algebra course ontology"@en ;
+    dcterms:source "Lay D. C., Lay S. R., McDonald J. J. Linear Algebra and Its Applications. 5th ed. 2016" ;
+    owl:imports <http://example.org/edu> ;
+    owl:versionInfo "1.0" .
+
+la:AlgebraicMultiplicity a edu:Concept,
+        owl:NamedIndividual ;
+    edu:belongsToTopic la:TheCharacteristicEquationTopic ;
+    edu:requires la:CharacteristicPolynomial ;
+    dcterms:source "Lay D. C., Lay S. R., McDonald J. J. Linear Algebra and Its Applications. 5th ed. 2016, section 5.2, p. 278" ;
+    skos:altLabel "multiplicity of an eigenvalue"@en ;
+    skos:definition "The multiplicity of an eigenvalue as a root of the characteristic equation."@en ;
+    skos:prefLabel "algebraic multiplicity"@en .
+
+la:BasisTheorem a edu:Theorem,
+        owl:NamedIndividual ;
+    edu:belongsToTopic la:DimensionAndRankTopic ;
+    edu:requires la:Dimension ;
+    edu:uses la:Basis,
+        la:Dimension,
+        la:LinearIndependence,
+        la:Span ;
+    dcterms:source "Lay D. C., Lay S. R., McDonald J. J. Linear Algebra and Its Applications. 5th ed. 2016, section 2.9, p. 158" ;
+    skos:definition "In a p-dimensional space, any linearly independent set of exactly p elements and any spanning set of exactly p elements is a basis."@en ;
+    skos:editorialNote "Stated for subspaces of Rn in 2.9 and for vector spaces in 4.5."@en ;
+    skos:prefLabel "Basis Theorem"@en .
+
+la:ChangeOfCoordinatesMatrixBtoC a edu:Concept,
+        owl:NamedIndividual ;
+    edu:belongsToTopic la:ChangeOfBasisTopic ;
+    edu:notation "P_{C←B}" ;
+    edu:requires la:CoordinateVector ;
+    dcterms:source "Lay D. C., Lay S. R., McDonald J. J. Linear Algebra and Its Applications. 5th ed. 2016, section 4.7, p. 242" ;
+    skos:broader la:ChangeOfCoordinatesMatrix ;
+    skos:definition "The matrix whose columns are the C-coordinate vectors of the vectors of basis B; it satisfies [x]C = P[x]B."@en ;
+    skos:prefLabel "change-of-coordinates matrix from B to C"@en .
+
+la:CharacterizationOfLinearlyDependentSets a edu:Theorem,
+        owl:NamedIndividual ;
+    edu:belongsToTopic la:LinearIndependenceTopic ;
+    edu:requires la:LinearDependence ;
+    edu:uses la:LinearCombination,
+        la:LinearDependence ;
+    dcterms:source "Lay D. C., Lay S. R., McDonald J. J. Linear Algebra and Its Applications. 5th ed. 2016, section 1.7, p. 59" ;
+    skos:definition "A set of two or more vectors is linearly dependent iff at least one of the vectors is a linear combination of the others."@en ;
+    skos:prefLabel "characterization of linearly dependent sets"@en .
+
+la:CofactorExpansion a edu:Method,
+        owl:NamedIndividual ;
+    edu:belongsToTopic la:IntroductionToDeterminantsTopic ;
+    edu:requires la:Cofactor ;
+    edu:uses la:Cofactor,
+        la:Determinant ;
+    dcterms:source "Lay D. C., Lay S. R., McDonald J. J. Linear Algebra and Its Applications. 5th ed. 2016, section 3.1, p. 168" ;
+    skos:altLabel "expansion by cofactors"@en ;
+    skos:definition "Computing det A as the sum of the entries of a row (or column) multiplied by their cofactors."@en ;
+    skos:editorialNote "Stated in [Lay 2016] as Theorem 1 in 3.1; classified as a method because it is used as a computing procedure."@en ;
+    skos:prefLabel "cofactor expansion"@en .
+
+la:ColumnRowExpansion a edu:Theorem,
+        owl:NamedIndividual ;
+    edu:belongsToTopic la:PartitionedMatricesTopic ;
+    edu:requires la:MatrixMultiplication,
+        la:PartitionedMatrix ;
+    edu:uses la:MatrixMultiplication,
+        la:PartitionedMatrix ;
+    dcterms:source "Lay D. C., Lay S. R., McDonald J. J. Linear Algebra and Its Applications. 5th ed. 2016, section 2.4, p. 121" ;
+    skos:definition "AB equals the sum of the products of the columns of A and the corresponding rows of B."@en ;
+    skos:prefLabel "column-row expansion of AB"@en .
+
+la:ComplexEigenvector a edu:Concept,
+        owl:NamedIndividual ;
+    edu:belongsToTopic la:ComplexEigenvaluesTopic ;
+    edu:requires la:ComplexEigenvalue ;
+    dcterms:source "Lay D. C., Lay S. R., McDonald J. J. Linear Algebra and Its Applications. 5th ed. 2016, section 5.5, p. 298" ;
+    skos:broader la:Eigenvector ;
+    skos:definition "A nonzero vector x in Cn with Ax = λx for a complex eigenvalue λ."@en ;
+    skos:prefLabel "complex eigenvector"@en .
+
+la:CoordinateMapping a edu:Concept,
+        owl:NamedIndividual ;
+    edu:belongsToTopic la:CoordinateSystemsTopic ;
+    edu:notation "x ↦ [x]_B" ;
+    edu:requires la:CoordinateVector,
+        la:Transformation ;
+    dcterms:source "Lay D. C., Lay S. R., McDonald J. J. Linear Algebra and Its Applications. 5th ed. 2016, section 4.4, p. 218" ;
+    skos:definition "The mapping x -> [x]B from V to Rn determined by a basis B."@en ;
+    skos:prefLabel "coordinate mapping"@en .
+
+la:CramersRule a edu:Theorem,
+        owl:NamedIndividual ;
+    edu:belongsToTopic la:CramersRuleVolumeAndLinearTransformationsTopic ;
+    edu:requires la:Determinant,
+        la:InvertibleMatrix,
+        la:MatrixEquation ;
+    edu:uses la:Determinant,
+        la:InvertibleMatrix,
+        la:MatrixEquation ;
+    dcterms:source "Lay D. C., Lay S. R., McDonald J. J. Linear Algebra and Its Applications. 5th ed. 2016, section 3.3, p. 179" ;
+    skos:definition "For invertible A, the unique solution of Ax = b has entries xi = det Ai(b) / det A."@en ;
+    skos:editorialNote "Formulated as a theorem (Theorem 7) in [Lay 2016], so classified as edu:Theorem."@en ;
+    skos:prefLabel "Cramer's Rule"@en .
+
+la:DiagonalMatrixRepresentation a edu:Theorem,
+        owl:NamedIndividual ;
+    edu:belongsToTopic la:EigenvectorsAndLinearTransformationsTopic ;
+    edu:requires la:DiagonalizableMatrix,
+        la:MatrixOfTransformationRelativeToBases ;
+    edu:uses la:DiagonalMatrix,
+        la:DiagonalizableMatrix,
+        la:MatrixOfTransformationRelativeToBases ;
+    dcterms:source "Lay D. C., Lay S. R., McDonald J. J. Linear Algebra and Its Applications. 5th ed. 2016, section 5.4, p. 293" ;
+    skos:definition "If A = PDP⁻¹ with D diagonal and B is the basis of columns of P, then D is the B-matrix of x -> Ax."@en ;
+    skos:prefLabel "Diagonal Matrix Representation"@en .
+
+la:Diagonalization a edu:Method,
+        owl:NamedIndividual ;
+    edu:belongsToTopic la:DiagonalizationTopic ;
+    edu:requires la:CharacteristicEquation,
+        la:DiagonalizationTheorem,
+        la:Eigenspace ;
+    edu:uses la:CharacteristicEquation,
+        la:DiagonalizableMatrix,
+        la:Eigenspace ;
+    dcterms:source "Lay D. C., Lay S. R., McDonald J. J. Linear Algebra and Its Applications. 5th ed. 2016, section 5.3, p. 285" ;
+    skos:definition "Find the eigenvalues, a basis of each eigenspace, construct P from the eigenvectors and D from the eigenvalues, and check A = PDP⁻¹."@en ;
+    skos:hiddenLabel "diagonalizing matrices"@en ;
+    skos:prefLabel "diagonalization of a matrix"@en .
+
+la:ElementaryMatrix a edu:Concept,
+        owl:NamedIndividual ;
+    edu:belongsToTopic la:TheInverseOfAMatrixTopic ;
+    edu:requires la:ElementaryRowOperation,
+        la:IdentityMatrix ;
+    dcterms:source "Lay D. C., Lay S. R., McDonald J. J. Linear Algebra and Its Applications. 5th ed. 2016, section 2.2, p. 108" ;
+    skos:broader la:SquareMatrix ;
+    skos:definition "A matrix obtained by performing a single elementary row operation on an identity matrix."@en ;
+    skos:prefLabel "elementary matrix"@en .
+
+la:ExistenceAndUniquenessTheorem a edu:Theorem,
+        owl:NamedIndividual ;
+    edu:belongsToTopic la:RowReductionAndEchelonFormsTopic ;
+    edu:requires la:ConsistentSystem,
+        la:FreeVariable ;
+    edu:uses la:AugmentedMatrix,
+        la:ConsistentSystem,
+        la:FreeVariable,
+        la:PivotColumn ;
+    dcterms:source "Lay D. C., Lay S. R., McDonald J. J. Linear Algebra and Its Applications. 5th ed. 2016, section 1.2, p. 21" ;
+    skos:definition "A linear system is consistent iff the last column of its augmented matrix is not a pivot column; a consistent system has a unique solution iff it has no free variables."@en ;
+    skos:prefLabel "Existence and Uniqueness Theorem"@en .
+
+la:FiniteDimensionalSpace a edu:Concept,
+        owl:NamedIndividual ;
+    edu:belongsToTopic la:TheDimensionOfAVectorSpaceTopic ;
+    edu:requires la:SpanningSet ;
+    dcterms:source "Lay D. C., Lay S. R., McDonald J. J. Linear Algebra and Its Applications. 5th ed. 2016, section 4.5, p. 228" ;
+    skos:altLabel "finite-dimensional space"@en ;
+    skos:broader la:VectorSpace ;
+    skos:definition "A vector space spanned by a finite set; otherwise the space is infinite-dimensional."@en ;
+    skos:hiddenLabel "finite-dimensional"@en ;
+    skos:prefLabel "finite-dimensional vector space"@en .
+
+la:InverseAlgorithm a edu:Method,
+        owl:NamedIndividual ;
+    edu:belongsToTopic la:TheInverseOfAMatrixTopic ;
+    edu:requires la:InverseOfMatrix,
+        la:RowReductionAlgorithm ;
+    edu:uses la:AugmentedMatrix,
+        la:IdentityMatrix,
+        la:InverseOfMatrix,
+        la:RowEquivalence ;
+    dcterms:source "Lay D. C., Lay S. R., McDonald J. J. Linear Algebra and Its Applications. 5th ed. 2016, section 2.2, p. 110" ;
+    skos:definition "Row reduce the augmented matrix [A I]; if A is row equivalent to I, then [A I] becomes [I A⁻¹]."@en ;
+    skos:hiddenLabel "algorithm for finding A-1"@en,
+        "algorithm for finding A⁻¹"@en ;
+    skos:prefLabel "algorithm for finding the inverse of a matrix"@en .
+
+la:InverseFormula a edu:Theorem,
+        owl:NamedIndividual ;
+    edu:belongsToTopic la:CramersRuleVolumeAndLinearTransformationsTopic ;
+    edu:requires la:Adjugate,
+        la:InverseOfMatrix ;
+    edu:uses la:Adjugate,
+        la:Determinant,
+        la:InverseOfMatrix ;
+    dcterms:source "Lay D. C., Lay S. R., McDonald J. J. Linear Algebra and Its Applications. 5th ed. 2016, section 3.3, p. 181" ;
+    skos:definition "For an invertible matrix A, A⁻¹ = (1 / det A) adj A."@en ;
+    skos:editorialNote "Named 'An Inverse Formula' (Theorem 8) in [Lay 2016]."@en ;
+    skos:prefLabel "inverse formula"@en .
+
+la:InvertibleMatrixTheorem a edu:Theorem,
+        owl:NamedIndividual ;
+    edu:belongsToTopic la:CharacterizationsOfInvertibleMatricesTopic ;
+    edu:requires la:InvertibleMatrix,
+        la:LinearIndependence,
+        la:OneToOneMapping,
+        la:OntoMapping,
+        la:PivotPosition,
+        la:Span,
+        la:Transpose ;
+    edu:uses la:InvertibleMatrix,
+        la:LinearIndependence,
+        la:OneToOneMapping,
+        la:OntoMapping,
+        la:PivotPosition,
+        la:Span,
+        la:Transpose,
+        la:TrivialSolution ;
+    dcterms:source "Lay D. C., Lay S. R., McDonald J. J. Linear Algebra and Its Applications. 5th ed. 2016, section 2.3, p. 114" ;
+    skos:definition "For a square matrix A the statements 'A is invertible', 'A has n pivot positions', 'Ax = 0 has only the trivial solution', 'the columns of A are linearly independent and span Rn', 'x -> Ax is one-to-one and onto' and others are equivalent."@en ;
+    skos:editorialNote "Extended in sections 2.9, 3.2 and 5.2; one element with several mentionedIn links."@en ;
+    skos:prefLabel "Invertible Matrix Theorem"@en .
+
+la:Isomorphism a edu:Concept,
+        owl:NamedIndividual ;
+    edu:belongsToTopic la:CoordinateSystemsTopic ;
+    edu:requires la:OneToOneMapping,
+        la:OntoMapping,
+        la:VectorSpace ;
+    dcterms:source "Lay D. C., Lay S. R., McDonald J. J. Linear Algebra and Its Applications. 5th ed. 2016, section 4.4, p. 222" ;
+    skos:broader la:LinearTransformation ;
+    skos:definition "A one-to-one linear transformation from a vector space onto another vector space."@en ;
+    skos:prefLabel "isomorphism"@en .
+
+la:Kernel a edu:Concept,
+        owl:NamedIndividual ;
+    edu:belongsToTopic la:NullSpacesColumnSpacesAndLinearTransformationsTopic ;
+    edu:notation "ker T" ;
+    edu:requires la:LinearTransformation,
+        la:VectorSpace ;
+    dcterms:source "Lay D. C., Lay S. R., McDonald J. J. Linear Algebra and Its Applications. 5th ed. 2016, section 4.2, p. 206" ;
+    skos:altLabel "kernel"@en,
+        "null space of a linear transformation"@en ;
+    skos:broader la:Subspace ;
+    skos:definition "The set of all u in V with T(u) = 0 for a linear transformation T: V -> W."@en ;
+    skos:editorialNote "[Lay 2016] says 'the kernel (or null space) of T'; for matrices only 'null space' is used."@en ;
+    skos:prefLabel "kernel of a linear transformation"@en .
+
+la:LUFactorizationAlgorithm a edu:Method,
+        owl:NamedIndividual ;
+    edu:belongsToTopic la:MatrixFactorizationsTopic ;
+    edu:requires la:LUFactorization,
+        la:RowReductionAlgorithm ;
+    edu:uses la:EchelonForm,
+        la:LUFactorization,
+        la:MatrixEquation ;
+    dcterms:source "Lay D. C., Lay S. R., McDonald J. J. Linear Algebra and Its Applications. 5th ed. 2016, section 2.5, p. 127" ;
+    skos:definition "Reduce A to an echelon form U by row replacements and place the entries of L so that the same operations reduce L to I."@en ;
+    skos:prefLabel "LU factorization algorithm"@en .
+
+la:LinearDependenceRelation a edu:Concept,
+        owl:NamedIndividual ;
+    edu:belongsToTopic la:LinearIndependenceTopic ;
+    edu:requires la:LinearDependence ;
+    dcterms:source "Lay D. C., Lay S. R., McDonald J. J. Linear Algebra and Its Applications. 5th ed. 2016, section 1.7, p. 57" ;
+    skos:definition "An equation c1v1 + ... + cpvp = 0 with weights not all zero."@en ;
+    skos:prefLabel "linear dependence relation"@en .
+
+la:MatrixSum a edu:Concept,
+        owl:NamedIndividual ;
+    edu:belongsToTopic la:MatrixOperationsTopic ;
+    edu:notation "A + B" ;
+    edu:requires la:Matrix ;
+    dcterms:source "Lay D. C., Lay S. R., McDonald J. J. Linear Algebra and Its Applications. 5th ed. 2016, section 2.1, p. 95" ;
+    skos:definition "The matrix obtained by adding corresponding entries of two matrices of the same size."@en ;
+    skos:hiddenLabel "matrix sum"@en ;
+    skos:prefLabel "sum of matrices"@en .
+
+la:MultiplicativeProperty a edu:Theorem,
+        owl:NamedIndividual ;
+    edu:belongsToTopic la:PropertiesOfDeterminantsTopic ;
+    edu:requires la:Determinant,
+        la:MatrixMultiplication ;
+    edu:uses la:Determinant,
+        la:MatrixMultiplication ;
+    dcterms:source "Lay D. C., Lay S. R., McDonald J. J. Linear Algebra and Its Applications. 5th ed. 2016, section 3.2, p. 175" ;
+    skos:altLabel "multiplicative property"@en ;
+    skos:definition "For n x n matrices A and B, det AB = (det A)(det B)."@en ;
+    skos:prefLabel "multiplicative property of determinants"@en .
+
+la:Nullity a edu:Concept,
+        owl:NamedIndividual ;
+    edu:belongsToTopic la:RankTopic ;
+    edu:notation "dim Nul A" ;
+    edu:requires la:Dimension,
+        la:NullSpace ;
+    dcterms:source "Lay D. C., Lay S. R., McDonald J. J. Linear Algebra and Its Applications. 5th ed. 2016, section 4.6, p. 235" ;
+    skos:definition "The dimension of the null space of a matrix."@en ;
+    skos:prefLabel "nullity"@en .
+
+la:ParametricVectorForm a edu:Concept,
+        owl:NamedIndividual ;
+    edu:belongsToTopic la:SolutionSetsOfLinearSystemsTopic ;
+    edu:requires la:FreeVariable,
+        la:LinearCombination ;
+    dcterms:source "Lay D. C., Lay S. R., McDonald J. J. Linear Algebra and Its Applications. 5th ed. 2016, section 1.5, p. 45" ;
+    skos:altLabel "parametric vector equation"@en ;
+    skos:definition "A description of a solution set as a linear combination of vectors with free variables as parameters."@en ;
+    skos:prefLabel "parametric vector form"@en .
+
+la:RankTheorem a edu:Theorem,
+        owl:NamedIndividual ;
+    edu:belongsToTopic la:DimensionAndRankTopic ;
+    edu:requires la:NullSpace,
+        la:Rank ;
+    edu:uses la:Dimension,
+        la:NullSpace,
+        la:Rank ;
+    dcterms:source "Lay D. C., Lay S. R., McDonald J. J. Linear Algebra and Its Applications. 5th ed. 2016, section 2.9, p. 158" ;
+    skos:definition "If a matrix A has n columns, then rank A + dim Nul A = n."@en ;
+    skos:editorialNote "Restated for row spaces in 4.6."@en ;
+    skos:prefLabel "Rank Theorem"@en .
+
+la:RowColumnRule a edu:Method,
+        owl:NamedIndividual ;
+    edu:belongsToTopic la:MatrixOperationsTopic ;
+    edu:requires la:MatrixMultiplication ;
+    edu:uses la:MatrixMultiplication ;
+    dcterms:source "Lay D. C., Lay S. R., McDonald J. J. Linear Algebra and Its Applications. 5th ed. 2016, section 2.1, p. 98" ;
+    skos:definition "The (i, j)-entry of AB is the sum of products of corresponding entries of row i of A and column j of B."@en ;
+    skos:prefLabel "row-column rule for computing AB"@en .
+
+la:RowOperationsTheorem a edu:Theorem,
+        owl:NamedIndividual ;
+    edu:belongsToTopic la:PropertiesOfDeterminantsTopic ;
+    edu:requires la:Determinant,
+        la:ElementaryRowOperation ;
+    edu:uses la:Determinant,
+        la:ElementaryRowOperation ;
+    dcterms:source "Lay D. C., Lay S. R., McDonald J. J. Linear Algebra and Its Applications. 5th ed. 2016, section 3.2, p. 171" ;
+    skos:altLabel "row operations theorem"@en ;
+    skos:definition "Row replacement does not change det A, a row interchange changes its sign, and scaling a row by k multiplies it by k."@en ;
+    skos:editorialNote "Named 'Row Operations' (Theorem 3) in [Lay 2016]."@en ;
+    skos:prefLabel "row operations theorem for determinants"@en .
+
+la:RowSpace a edu:Concept,
+        owl:NamedIndividual ;
+    edu:belongsToTopic la:RankTopic ;
+    edu:notation "Row A" ;
+    edu:requires la:Span ;
+    dcterms:source "Lay D. C., Lay S. R., McDonald J. J. Linear Algebra and Its Applications. 5th ed. 2016, section 4.6, p. 233" ;
+    skos:broader la:Subspace ;
+    skos:definition "The set of all linear combinations of the rows of a matrix."@en ;
+    skos:prefLabel "row space"@en .
+
+la:RowVectorRule a edu:Method,
+        owl:NamedIndividual ;
+    edu:belongsToTopic la:TheMatrixEquationAxBTopic ;
+    edu:requires la:MatrixVectorProduct ;
+    edu:uses la:Matrix,
+        la:MatrixVectorProduct,
+        la:Vector ;
+    dcterms:source "Lay D. C., Lay S. R., McDonald J. J. Linear Algebra and Its Applications. 5th ed. 2016, section 1.4, p. 38" ;
+    skos:definition "The i-th entry of Ax is the sum of products of corresponding entries of row i of A and of x."@en ;
+    skos:prefLabel "row-vector rule for computing Ax"@en .
+
+la:SingularMatrix a edu:Concept,
+        owl:NamedIndividual ;
+    edu:belongsToTopic la:TheInverseOfAMatrixTopic ;
+    edu:requires la:InvertibleMatrix ;
+    dcterms:source "Lay D. C., Lay S. R., McDonald J. J. Linear Algebra and Its Applications. 5th ed. 2016, section 2.2, p. 105" ;
+    skos:broader la:SquareMatrix ;
+    skos:definition "A square matrix that is not invertible."@en ;
+    skos:prefLabel "singular matrix"@en .
+
+la:SpanningSetTheorem a edu:Theorem,
+        owl:NamedIndividual ;
+    edu:belongsToTopic la:LinearlyIndependentSetsBasesTopic ;
+    edu:requires la:Basis,
+        la:SpanningSet ;
+    edu:uses la:Basis,
+        la:LinearCombination,
+        la:SpanningSet ;
+    dcterms:source "Lay D. C., Lay S. R., McDonald J. J. Linear Algebra and Its Applications. 5th ed. 2016, section 4.3, p. 212" ;
+    skos:definition "Removing from a spanning set a vector that is a linear combination of the others leaves a spanning set; some subset of a spanning set is a basis."@en ;
+    skos:prefLabel "Spanning Set Theorem"@en .
+
+la:StandardBasis a edu:Concept,
+        owl:NamedIndividual ;
+    edu:belongsToTopic la:SubspacesOfRnTopic ;
+    edu:requires la:IdentityMatrix ;
+    dcterms:source "Lay D. C., Lay S. R., McDonald J. J. Linear Algebra and Its Applications. 5th ed. 2016, section 2.8, p. 150" ;
+    skos:broader la:Basis ;
+    skos:definition "The set of columns e1, ..., en of the n x n identity matrix, a basis of Rn."@en ;
+    skos:prefLabel "standard basis"@en .
+
+la:StandardMatrix a edu:Concept,
+        owl:NamedIndividual ;
+    edu:belongsToTopic la:TheMatrixOfALinearTransformationTopic ;
+    edu:requires la:IdentityMatrix,
+        la:LinearTransformation,
+        la:MatrixTransformation ;
+    dcterms:source "Lay D. C., Lay S. R., McDonald J. J. Linear Algebra and Its Applications. 5th ed. 2016, section 1.9, p. 72" ;
+    skos:altLabel "standard matrix"@en ;
+    skos:broader la:Matrix ;
+    skos:definition "The unique matrix A with T(x) = Ax; its columns are the images of the columns of the identity matrix."@en ;
+    skos:prefLabel "standard matrix of a linear transformation"@en .
+
+la:UniqueRepresentationTheorem a edu:Theorem,
+        owl:NamedIndividual ;
+    edu:belongsToTopic la:CoordinateSystemsTopic ;
+    edu:requires la:Basis,
+        la:VectorSpace ;
+    edu:uses la:Basis,
+        la:LinearCombination ;
+    dcterms:source "Lay D. C., Lay S. R., McDonald J. J. Linear Algebra and Its Applications. 5th ed. 2016, section 4.4, p. 218" ;
+    skos:definition "For a basis B of V, each x in V can be written in exactly one way as a linear combination of the basis vectors."@en ;
+    skos:prefLabel "Unique Representation Theorem"@en .
+
+la:ZeroMatrix a edu:Concept,
+        owl:NamedIndividual ;
+    edu:belongsToTopic la:MatrixOperationsTopic ;
+    edu:notation "0" ;
+    edu:requires la:Matrix ;
+    dcterms:source "Lay D. C., Lay S. R., McDonald J. J. Linear Algebra and Its Applications. 5th ed. 2016, section 2.1, p. 94" ;
+    skos:definition "A matrix whose entries are all zero."@en ;
+    skos:prefLabel "zero matrix"@en .
+
+la:BasicVariable a edu:Concept,
+        owl:NamedIndividual ;
+    edu:belongsToTopic la:RowReductionAndEchelonFormsTopic ;
+    edu:requires la:AugmentedMatrix,
+        la:PivotColumn ;
+    dcterms:source "Lay D. C., Lay S. R., McDonald J. J. Linear Algebra and Its Applications. 5th ed. 2016, section 1.2, p. 18" ;
+    skos:definition "A variable of a linear system that corresponds to a pivot column of its augmented matrix."@en ;
+    skos:hiddenLabel "basic variables"@en ;
+    skos:prefLabel "basic variable"@en .
+
+la:ChangeOfBasisTopic a edu:Topic,
+        owl:NamedIndividual ;
+    edu:order 25 ;
+    edu:partOf la:VectorSpacesModule ;
+    dcterms:source "Lay D. C., Lay S. R., McDonald J. J. Linear Algebra and Its Applications. 5th ed. 2016, section 4.7" ;
+    skos:prefLabel "Change of Basis"@en .
+
+la:ChangeOfCoordinatesMatrix a edu:Concept,
+        owl:NamedIndividual ;
+    edu:belongsToTopic la:CoordinateSystemsTopic ;
+    edu:notation "P_B" ;
+    edu:requires la:CoordinateVector ;
+    dcterms:source "Lay D. C., Lay S. R., McDonald J. J. Linear Algebra and Its Applications. 5th ed. 2016, section 4.4, p. 221" ;
+    skos:altLabel "change of basis"@en ;
+    skos:broader la:Matrix ;
+    skos:definition "A matrix that transforms coordinate vectors relative to one basis into coordinate vectors relative to another basis."@en ;
+    skos:editorialNote "The glossary of [Lay 2016] gives 'change of basis: See change-of-coordinates matrix'."@en ;
+    skos:prefLabel "change-of-coordinates matrix"@en .
+
+la:CharacteristicPolynomial a edu:Concept,
+        owl:NamedIndividual ;
+    edu:belongsToTopic la:TheCharacteristicEquationTopic ;
+    edu:requires la:CharacteristicEquation ;
+    dcterms:source "Lay D. C., Lay S. R., McDonald J. J. Linear Algebra and Its Applications. 5th ed. 2016, section 5.2, p. 278" ;
+    skos:definition "The polynomial det(A − λI) of degree n."@en ;
+    skos:prefLabel "characteristic polynomial"@en .
+
+la:CoefficientMatrix a edu:Concept,
+        owl:NamedIndividual ;
+    edu:belongsToTopic la:SystemsOfLinearEquationsTopic ;
+    edu:requires la:SystemOfLinearEquations ;
+    dcterms:source "Lay D. C., Lay S. R., McDonald J. J. Linear Algebra and Its Applications. 5th ed. 2016, section 1.1, p. 4" ;
+    skos:altLabel "matrix of coefficients"@en ;
+    skos:broader la:Matrix ;
+    skos:definition "The matrix formed by the coefficients of the variables of a linear system."@en ;
+    skos:prefLabel "coefficient matrix"@en .
+
+la:ColumnSpace a edu:Concept,
+        owl:NamedIndividual ;
+    edu:belongsToTopic la:SubspacesOfRnTopic ;
+    edu:notation "Col A" ;
+    edu:requires la:Span ;
+    dcterms:source "Lay D. C., Lay S. R., McDonald J. J. Linear Algebra and Its Applications. 5th ed. 2016, section 2.8, p. 149" ;
+    skos:broader la:Subspace ;
+    skos:definition "The set of all linear combinations of the columns of a matrix A."@en ;
+    skos:prefLabel "column space"@en .
+
+la:ComplexEigenvalue a edu:Concept,
+        owl:NamedIndividual ;
+    edu:belongsToTopic la:ComplexEigenvaluesTopic ;
+    edu:requires la:CharacteristicEquation ;
+    dcterms:source "Lay D. C., Lay S. R., McDonald J. J. Linear Algebra and Its Applications. 5th ed. 2016, section 5.5, p. 297" ;
+    skos:broader la:Eigenvalue ;
+    skos:definition "A nonreal root of the characteristic equation of a real matrix."@en ;
+    skos:prefLabel "complex eigenvalue"@en .
+
+la:DiagonalizationTheorem a edu:Theorem,
+        owl:NamedIndividual ;
+    edu:belongsToTopic la:DiagonalizationTopic ;
+    edu:requires la:DiagonalizableMatrix,
+        la:EigenvectorBasis ;
+    edu:uses la:DiagonalizableMatrix,
+        la:Eigenvector,
+        la:EigenvectorBasis,
+        la:LinearIndependence ;
+    dcterms:source "Lay D. C., Lay S. R., McDonald J. J. Linear Algebra and Its Applications. 5th ed. 2016, section 5.3, p. 284" ;
+    skos:definition "An n x n matrix is diagonalizable iff it has n linearly independent eigenvectors, i.e. iff its eigenvectors form a basis of Rn."@en ;
+    skos:prefLabel "Diagonalization Theorem"@en .
+
+la:LeadingEntry a edu:Concept,
+        owl:NamedIndividual ;
+    edu:belongsToTopic la:RowReductionAndEchelonFormsTopic ;
+    edu:requires la:Matrix ;
+    dcterms:source "Lay D. C., Lay S. R., McDonald J. J. Linear Algebra and Its Applications. 5th ed. 2016, section 1.2, p. 12" ;
+    skos:definition "The leftmost nonzero entry in a nonzero row of a matrix."@en ;
+    skos:prefLabel "leading entry"@en .
+
+la:LinearEquation a edu:Concept,
+        owl:NamedIndividual ;
+    edu:belongsToTopic la:SystemsOfLinearEquationsTopic ;
+    dcterms:source "Lay D. C., Lay S. R., McDonald J. J. Linear Algebra and Its Applications. 5th ed. 2016, section 1.1, p. 2" ;
+    skos:definition "An equation a1x1 + ... + anxn = b whose coefficients and right-hand side are real or complex numbers."@en ;
+    skos:hiddenLabel "linear equations"@en ;
+    skos:prefLabel "linear equation"@en .
+
+la:LinearlyIndependentSetsBasesTopic a edu:Topic,
+        owl:NamedIndividual ;
+    edu:order 21 ;
+    edu:partOf la:VectorSpacesModule ;
+    dcterms:source "Lay D. C., Lay S. R., McDonald J. J. Linear Algebra and Its Applications. 5th ed. 2016, section 4.3" ;
+    skos:prefLabel "Linearly Independent Sets; Bases"@en .
+
+la:LowerTriangularMatrix a edu:Concept,
+        owl:NamedIndividual ;
+    edu:belongsToTopic la:CharacterizationsOfInvertibleMatricesTopic ;
+    dcterms:source "Lay D. C., Lay S. R., McDonald J. J. Linear Algebra and Its Applications. 5th ed. 2016, section 2.3, p. 117" ;
+    skos:broader la:TriangularMatrix ;
+    skos:definition "A square matrix whose entries above the main diagonal are zero."@en ;
+    skos:prefLabel "lower triangular matrix"@en .
+
+la:MatrixFactorization a edu:Concept,
+        owl:NamedIndividual ;
+    edu:belongsToTopic la:MatrixFactorizationsTopic ;
+    edu:requires la:MatrixMultiplication ;
+    dcterms:source "Lay D. C., Lay S. R., McDonald J. J. Linear Algebra and Its Applications. 5th ed. 2016, section 2.5, p. 125" ;
+    skos:definition "An expression of a matrix as a product of two or more matrices."@en ;
+    skos:hiddenLabel "matrix factorizations"@en ;
+    skos:prefLabel "matrix factorization"@en .
+
+la:MatrixTransformation a edu:Concept,
+        owl:NamedIndividual ;
+    edu:belongsToTopic la:IntroductionToLinearTransformationsTopic ;
+    edu:notation "x ↦ Ax" ;
+    edu:requires la:MatrixVectorProduct,
+        la:Transformation ;
+    dcterms:source "Lay D. C., Lay S. R., McDonald J. J. Linear Algebra and Its Applications. 5th ed. 2016, section 1.8, p. 64" ;
+    skos:broader la:LinearTransformation ;
+    skos:definition "A transformation x -> Ax defined by a matrix A."@en ;
+    skos:prefLabel "matrix transformation"@en .
+
+la:NontrivialSolution a edu:Concept,
+        owl:NamedIndividual ;
+    edu:belongsToTopic la:SolutionSetsOfLinearSystemsTopic ;
+    edu:requires la:TrivialSolution ;
+    dcterms:source "Lay D. C., Lay S. R., McDonald J. J. Linear Algebra and Its Applications. 5th ed. 2016, section 1.5, p. 44" ;
+    skos:definition "A nonzero solution of a homogeneous system."@en ;
+    skos:hiddenLabel "nontrivial solutions"@en ;
+    skos:prefLabel "nontrivial solution"@en .
+
+la:NullSpacesColumnSpacesAndLinearTransformationsTopic a edu:Topic,
+        owl:NamedIndividual ;
+    edu:order 20 ;
+    edu:partOf la:VectorSpacesModule ;
+    dcterms:source "Lay D. C., Lay S. R., McDonald J. J. Linear Algebra and Its Applications. 5th ed. 2016, section 4.2" ;
+    skos:prefLabel "Null Spaces, Column Spaces, and Linear Transformations"@en .
+
+la:RangeOfTransformation a edu:Concept,
+        owl:NamedIndividual ;
+    edu:belongsToTopic la:IntroductionToLinearTransformationsTopic ;
+    edu:requires la:Transformation ;
+    dcterms:source "Lay D. C., Lay S. R., McDonald J. J. Linear Algebra and Its Applications. 5th ed. 2016, section 1.8, p. 64" ;
+    skos:altLabel "range"@en ;
+    skos:definition "The set of all images T(x) of a transformation T."@en ;
+    skos:prefLabel "range of a transformation"@en .
+
+la:SimilarMatrices a edu:Concept,
+        owl:NamedIndividual ;
+    edu:belongsToTopic la:TheCharacteristicEquationTopic ;
+    edu:notation "B = P⁻¹AP" ;
+    edu:requires la:InverseOfMatrix ;
+    dcterms:source "Lay D. C., Lay S. R., McDonald J. J. Linear Algebra and Its Applications. 5th ed. 2016, section 5.2, p. 279" ;
+    skos:altLabel "similarity"@en ;
+    skos:definition "Matrices A and B are similar if B = P⁻¹AP for some invertible matrix P."@en ;
+    skos:prefLabel "similar matrices"@en .
+
+la:SolutionSet a edu:Concept,
+        owl:NamedIndividual ;
+    edu:belongsToTopic la:SystemsOfLinearEquationsTopic ;
+    edu:requires la:SystemOfLinearEquations ;
+    dcterms:source "Lay D. C., Lay S. R., McDonald J. J. Linear Algebra and Its Applications. 5th ed. 2016, section 1.1, p. 3" ;
+    skos:definition "The set of all lists of numbers that satisfy every equation of a linear system."@en ;
+    skos:prefLabel "solution set"@en .
+
+la:TheDimensionOfAVectorSpaceTopic a edu:Topic,
+        owl:NamedIndividual ;
+    edu:order 23 ;
+    edu:partOf la:VectorSpacesModule ;
+    dcterms:source "Lay D. C., Lay S. R., McDonald J. J. Linear Algebra and Its Applications. 5th ed. 2016, section 4.5" ;
+    skos:prefLabel "The Dimension of a Vector Space"@en .
+
+la:TriangularMatrix a edu:Concept,
+        owl:NamedIndividual ;
+    edu:belongsToTopic la:CharacterizationsOfInvertibleMatricesTopic ;
+    edu:requires la:MainDiagonal ;
+    dcterms:source "Lay D. C., Lay S. R., McDonald J. J. Linear Algebra and Its Applications. 5th ed. 2016, section 2.3, p. 117" ;
+    skos:broader la:SquareMatrix ;
+    skos:definition "A square matrix whose entries above or below the main diagonal are all zero."@en ;
+    skos:prefLabel "triangular matrix"@en .
+
+la:UniquenessOfReducedEchelonForm a edu:Theorem,
+        owl:NamedIndividual ;
+    edu:belongsToTopic la:RowReductionAndEchelonFormsTopic ;
+    edu:requires la:ReducedEchelonForm,
+        la:RowEquivalence ;
+    edu:uses la:ReducedEchelonForm,
+        la:RowEquivalence ;
+    dcterms:source "Lay D. C., Lay S. R., McDonald J. J. Linear Algebra and Its Applications. 5th ed. 2016, section 1.2, p. 13" ;
+    skos:definition "Each matrix is row equivalent to one and only one reduced echelon matrix."@en ;
+    skos:prefLabel "uniqueness of the reduced echelon form"@en .
+
+la:VectorEquation a edu:Concept,
+        owl:NamedIndividual ;
+    edu:belongsToTopic la:VectorEquationsTopic ;
+    edu:requires la:LinearCombination,
+        la:SystemOfLinearEquations ;
+    dcterms:source "Lay D. C., Lay S. R., McDonald J. J. Linear Algebra and Its Applications. 5th ed. 2016, section 1.3, p. 29" ;
+    skos:definition "An equation x1a1 + ... + xnan = b; it has the same solution set as the linear system with augmented matrix [a1 ... an b]."@en ;
+    skos:hiddenLabel "vector equations"@en ;
+    skos:prefLabel "vector equation"@en .
+
+la:Adjugate a edu:Concept,
+        owl:NamedIndividual ;
+    edu:belongsToTopic la:CramersRuleVolumeAndLinearTransformationsTopic ;
+    edu:notation "adj A" ;
+    edu:requires la:Cofactor,
+        la:Transpose ;
+    dcterms:source "Lay D. C., Lay S. R., McDonald J. J. Linear Algebra and Its Applications. 5th ed. 2016, section 3.3, p. 181" ;
+    skos:altLabel "classical adjoint"@en ;
+    skos:definition "The transpose of the matrix of cofactors of A."@en ;
+    skos:prefLabel "adjugate"@en .
+
+la:ComplexEigenvaluesTopic a edu:Topic,
+        owl:NamedIndividual ;
+    edu:order 30 ;
+    edu:partOf la:EigenvaluesModule ;
+    dcterms:source "Lay D. C., Lay S. R., McDonald J. J. Linear Algebra and Its Applications. 5th ed. 2016, section 5.5" ;
+    skos:prefLabel "Complex Eigenvalues"@en .
+
+la:ConsistentSystem a edu:Concept,
+        owl:NamedIndividual ;
+    edu:belongsToTopic la:SystemsOfLinearEquationsTopic ;
+    edu:requires la:SolutionSet ;
+    dcterms:source "Lay D. C., Lay S. R., McDonald J. J. Linear Algebra and Its Applications. 5th ed. 2016, section 1.1, p. 4" ;
+    skos:definition "A linear system that has at least one solution; a system with no solution is inconsistent."@en ;
+    skos:hiddenLabel "consistent linear system"@en ;
+    skos:prefLabel "consistent system"@en .
+
+la:Eigenspace a edu:Concept,
+        owl:NamedIndividual ;
+    edu:belongsToTopic la:EigenvectorsAndEigenvaluesTopic ;
+    edu:requires la:Eigenvalue,
+        la:NullSpace ;
+    dcterms:source "Lay D. C., Lay S. R., McDonald J. J. Linear Algebra and Its Applications. 5th ed. 2016, section 5.1, p. 270" ;
+    skos:broader la:Subspace ;
+    skos:definition "The null space of A − λI: the zero vector together with all eigenvectors corresponding to λ."@en ;
+    skos:prefLabel "eigenspace"@en .
+
+la:EigenvectorBasis a edu:Concept,
+        owl:NamedIndividual ;
+    edu:belongsToTopic la:DiagonalizationTopic ;
+    edu:requires la:Eigenvector ;
+    dcterms:source "Lay D. C., Lay S. R., McDonald J. J. Linear Algebra and Its Applications. 5th ed. 2016, section 5.3, p. 284" ;
+    skos:broader la:Basis ;
+    skos:definition "A basis of Rn consisting of eigenvectors of a matrix."@en ;
+    skos:prefLabel "eigenvector basis"@en .
+
+la:EigenvectorsAndLinearTransformationsTopic a edu:Topic,
+        owl:NamedIndividual ;
+    edu:order 29 ;
+    edu:partOf la:EigenvaluesModule ;
+    dcterms:source "Lay D. C., Lay S. R., McDonald J. J. Linear Algebra and Its Applications. 5th ed. 2016, section 5.4" ;
+    skos:prefLabel "Eigenvectors and Linear Transformations"@en .
+
+la:HomogeneousSystem a edu:Concept,
+        owl:NamedIndividual ;
+    edu:belongsToTopic la:SolutionSetsOfLinearSystemsTopic ;
+    edu:notation "Ax = 0" ;
+    edu:requires la:MatrixEquation,
+        la:ZeroVector ;
+    dcterms:source "Lay D. C., Lay S. R., McDonald J. J. Linear Algebra and Its Applications. 5th ed. 2016, section 1.5, p. 43" ;
+    skos:altLabel "homogeneous system"@en ;
+    skos:broader la:SystemOfLinearEquations ;
+    skos:definition "A linear system that can be written in the form Ax = 0."@en ;
+    skos:prefLabel "homogeneous linear system"@en .
+
+la:LUFactorization a edu:Concept,
+        owl:NamedIndividual ;
+    edu:belongsToTopic la:MatrixFactorizationsTopic ;
+    edu:notation "A = LU" ;
+    edu:requires la:EchelonForm,
+        la:LowerTriangularMatrix ;
+    dcterms:source "Lay D. C., Lay S. R., McDonald J. J. Linear Algebra and Its Applications. 5th ed. 2016, section 2.5, p. 126" ;
+    skos:broader la:MatrixFactorization ;
+    skos:definition "A factorization A = LU with L a unit lower triangular matrix and U an echelon form of A."@en ;
+    skos:prefLabel "LU factorization"@en .
+
+la:MainDiagonal a edu:Concept,
+        owl:NamedIndividual ;
+    edu:belongsToTopic la:MatrixOperationsTopic ;
+    edu:requires la:Matrix ;
+    dcterms:source "Lay D. C., Lay S. R., McDonald J. J. Linear Algebra and Its Applications. 5th ed. 2016, section 2.1, p. 94" ;
+    skos:altLabel "diagonal entries"@en ;
+    skos:definition "The diagonal entries a11, a22, a33, ... of a matrix."@en ;
+    skos:prefLabel "main diagonal"@en .
+
+la:MatrixOfTransformationRelativeToBases a edu:Concept,
+        owl:NamedIndividual ;
+    edu:belongsToTopic la:EigenvectorsAndLinearTransformationsTopic ;
+    edu:notation "[T]_B" ;
+    edu:requires la:CoordinateVector,
+        la:LinearTransformation ;
+    dcterms:source "Lay D. C., Lay S. R., McDonald J. J. Linear Algebra and Its Applications. 5th ed. 2016, section 5.4, p. 291" ;
+    skos:altLabel "B-matrix"@en ;
+    skos:broader la:Matrix ;
+    skos:definition "The matrix M with [T(x)]C = M[x]B for a linear transformation T and bases B and C; for B = C it is the B-matrix of T."@en ;
+    skos:prefLabel "matrix of a linear transformation relative to bases"@en .
+
+la:PartitionedMatricesTopic a edu:Topic,
+        owl:NamedIndividual ;
+    edu:order 12 ;
+    edu:partOf la:MatrixAlgebraModule ;
+    dcterms:source "Lay D. C., Lay S. R., McDonald J. J. Linear Algebra and Its Applications. 5th ed. 2016, section 2.4" ;
+    skos:prefLabel "Partitioned Matrices"@en .
+
+la:PartitionedMatrix a edu:Concept,
+        owl:NamedIndividual ;
+    edu:belongsToTopic la:PartitionedMatricesTopic ;
+    edu:requires la:Matrix ;
+    dcterms:source "Lay D. C., Lay S. R., McDonald J. J. Linear Algebra and Its Applications. 5th ed. 2016, section 2.4, p. 119" ;
+    skos:altLabel "block matrix"@en ;
+    skos:definition "A matrix whose entries are viewed as submatrices (blocks) obtained by partitioning its rows and columns."@en ;
+    skos:editorialNote "The glossary of [Lay 2016] gives 'block matrix: See partitioned matrix'."@en ;
+    skos:prefLabel "partitioned matrix"@en .
+
+la:PropertiesOfDeterminantsTopic a edu:Topic,
+        owl:NamedIndividual ;
+    edu:order 17 ;
+    edu:partOf la:DeterminantsModule ;
+    dcterms:source "Lay D. C., Lay S. R., McDonald J. J. Linear Algebra and Its Applications. 5th ed. 2016, section 3.2" ;
+    skos:prefLabel "Properties of Determinants"@en .
+
+la:Rank a edu:Concept,
+        owl:NamedIndividual ;
+    edu:belongsToTopic la:DimensionAndRankTopic ;
+    edu:notation "rank A" ;
+    edu:requires la:ColumnSpace,
+        la:Dimension ;
+    dcterms:source "Lay D. C., Lay S. R., McDonald J. J. Linear Algebra and Its Applications. 5th ed. 2016, section 2.9, p. 157" ;
+    skos:altLabel "rank of a matrix"@en ;
+    skos:definition "The dimension of the column space of a matrix."@en ;
+    skos:prefLabel "rank"@en .
+
+la:RankTopic a edu:Topic,
+        owl:NamedIndividual ;
+    edu:order 24 ;
+    edu:partOf la:VectorSpacesModule ;
+    dcterms:source "Lay D. C., Lay S. R., McDonald J. J. Linear Algebra and Its Applications. 5th ed. 2016, section 4.6" ;
+    skos:prefLabel "Rank"@en .
+
+la:RowReductionAlgorithm a edu:Method,
+        owl:NamedIndividual ;
+    edu:belongsToTopic la:RowReductionAndEchelonFormsTopic ;
+    edu:requires la:PivotColumn ;
+    edu:uses la:EchelonForm,
+        la:ElementaryRowOperation,
+        la:PivotColumn,
+        la:ReducedEchelonForm,
+        la:SystemOfLinearEquations ;
+    dcterms:source "Lay D. C., Lay S. R., McDonald J. J. Linear Algebra and Its Applications. 5th ed. 2016, section 1.2, p. 17" ;
+    skos:altLabel "Gaussian elimination"@en,
+        "row reduction"@en ;
+    skos:definition "A procedure that applies elementary row operations to bring a matrix to echelon form (forward phase) and then to reduced echelon form (backward phase)."@en ;
+    skos:editorialNote "The glossary of [Lay 2016] gives 'Gaussian elimination: See row reduction algorithm'."@en ;
+    skos:prefLabel "row reduction algorithm"@en .
+
+la:VectorSpacesAndSubspacesTopic a edu:Topic,
+        owl:NamedIndividual ;
+    edu:order 19 ;
+    edu:partOf la:VectorSpacesModule ;
+    dcterms:source "Lay D. C., Lay S. R., McDonald J. J. Linear Algebra and Its Applications. 5th ed. 2016, section 4.1" ;
+    skos:prefLabel "Vector Spaces and Subspaces"@en .
+
+la:AugmentedMatrix a edu:Concept,
+        owl:NamedIndividual ;
+    edu:belongsToTopic la:SystemsOfLinearEquationsTopic ;
+    edu:requires la:CoefficientMatrix ;
+    dcterms:source "Lay D. C., Lay S. R., McDonald J. J. Linear Algebra and Its Applications. 5th ed. 2016, section 1.1, p. 4" ;
+    skos:broader la:Matrix ;
+    skos:definition "The coefficient matrix of a linear system with the column of right-hand sides added."@en ;
+    skos:prefLabel "augmented matrix"@en .
+
+la:CharacterizationsOfInvertibleMatricesTopic a edu:Topic,
+        owl:NamedIndividual ;
+    edu:order 11 ;
+    edu:partOf la:MatrixAlgebraModule ;
+    dcterms:source "Lay D. C., Lay S. R., McDonald J. J. Linear Algebra and Its Applications. 5th ed. 2016, section 2.3" ;
+    skos:prefLabel "Characterizations of Invertible Matrices"@en .
+
+la:Cofactor a edu:Concept,
+        owl:NamedIndividual ;
+    edu:belongsToTopic la:IntroductionToDeterminantsTopic ;
+    edu:notation "Cij" ;
+    edu:requires la:Determinant ;
+    dcterms:source "Lay D. C., Lay S. R., McDonald J. J. Linear Algebra and Its Applications. 5th ed. 2016, section 3.1, p. 167" ;
+    skos:altLabel "(i, j)-cofactor"@en ;
+    skos:definition "The number Cij = (-1)^(i+j) det Aij, where Aij is A with row i and column j deleted."@en ;
+    skos:prefLabel "cofactor"@en .
+
+la:CramersRuleVolumeAndLinearTransformationsTopic a edu:Topic,
+        owl:NamedIndividual ;
+    edu:order 18 ;
+    edu:partOf la:DeterminantsModule ;
+    dcterms:source "Lay D. C., Lay S. R., McDonald J. J. Linear Algebra and Its Applications. 5th ed. 2016, section 3.3" ;
+    skos:prefLabel "Cramer's Rule, Volume, and Linear Transformations"@en .
+
+la:DeterminantsModule a edu:Module,
+        owl:NamedIndividual ;
+    edu:order 3 ;
+    edu:partOf la:LinearAlgebraCourse ;
+    dcterms:source "Lay D. C., Lay S. R., McDonald J. J. Linear Algebra and Its Applications. 5th ed. 2016, chapter 3" ;
+    skos:prefLabel "Determinants"@en .
+
+la:DiagonalMatrix a edu:Concept,
+        owl:NamedIndividual ;
+    edu:belongsToTopic la:MatrixOperationsTopic ;
+    edu:requires la:MainDiagonal ;
+    dcterms:source "Lay D. C., Lay S. R., McDonald J. J. Linear Algebra and Its Applications. 5th ed. 2016, section 2.1, p. 94" ;
+    skos:broader la:SquareMatrix ;
+    skos:definition "A square matrix whose entries off the main diagonal are zero."@en ;
+    skos:prefLabel "diagonal matrix"@en .
+
+la:Eigenvalue a edu:Concept,
+        owl:NamedIndividual ;
+    edu:belongsToTopic la:EigenvectorsAndEigenvaluesTopic ;
+    edu:notation "λ" ;
+    edu:requires la:Eigenvector ;
+    dcterms:source "Lay D. C., Lay S. R., McDonald J. J. Linear Algebra and Its Applications. 5th ed. 2016, section 5.1, p. 269" ;
+    skos:definition "A scalar λ such that Ax = λx has a nontrivial solution x."@en ;
+    skos:hiddenLabel "eigenvalues"@en ;
+    skos:prefLabel "eigenvalue"@en .
+
+la:EigenvectorsAndEigenvaluesTopic a edu:Topic,
+        owl:NamedIndividual ;
+    edu:order 26 ;
+    edu:partOf la:EigenvaluesModule ;
+    dcterms:source "Lay D. C., Lay S. R., McDonald J. J. Linear Algebra and Its Applications. 5th ed. 2016, section 5.1" ;
+    skos:prefLabel "Eigenvectors and Eigenvalues"@en .
+
+la:FreeVariable a edu:Concept,
+        owl:NamedIndividual ;
+    edu:belongsToTopic la:RowReductionAndEchelonFormsTopic ;
+    edu:requires la:BasicVariable ;
+    dcterms:source "Lay D. C., Lay S. R., McDonald J. J. Linear Algebra and Its Applications. 5th ed. 2016, section 1.2, p. 18" ;
+    skos:definition "A variable of a linear system that is not a basic variable."@en ;
+    skos:hiddenLabel "free variables"@en ;
+    skos:prefLabel "free variable"@en .
+
+la:IntroductionToDeterminantsTopic a edu:Topic,
+        owl:NamedIndividual ;
+    edu:order 16 ;
+    edu:partOf la:DeterminantsModule ;
+    dcterms:source "Lay D. C., Lay S. R., McDonald J. J. Linear Algebra and Its Applications. 5th ed. 2016, section 3.1" ;
+    skos:prefLabel "Introduction to Determinants"@en .
+
+la:LinearDependence a edu:Concept,
+        owl:NamedIndividual ;
+    edu:belongsToTopic la:LinearIndependenceTopic ;
+    edu:requires la:LinearIndependence,
+        la:NontrivialSolution ;
+    dcterms:source "Lay D. C., Lay S. R., McDonald J. J. Linear Algebra and Its Applications. 5th ed. 2016, section 1.7, p. 57" ;
+    skos:altLabel "linearly dependent set"@en ;
+    skos:definition "A set of vectors is linearly dependent if the equation x1v1 + ... + xpvp = 0 has a nontrivial solution."@en ;
+    skos:hiddenLabel "linearly dependent"@en ;
+    skos:prefLabel "linear dependence"@en .
+
+la:MatrixFactorizationsTopic a edu:Topic,
+        owl:NamedIndividual ;
+    edu:order 13 ;
+    edu:partOf la:MatrixAlgebraModule ;
+    dcterms:source "Lay D. C., Lay S. R., McDonald J. J. Linear Algebra and Its Applications. 5th ed. 2016, section 2.5" ;
+    skos:prefLabel "Matrix Factorizations"@en .
+
+la:OneToOneMapping a edu:Concept,
+        owl:NamedIndividual ;
+    edu:belongsToTopic la:TheMatrixOfALinearTransformationTopic ;
+    edu:requires la:Transformation ;
+    dcterms:source "Lay D. C., Lay S. R., McDonald J. J. Linear Algebra and Its Applications. 5th ed. 2016, section 1.9, p. 76" ;
+    skos:definition "A mapping T is one-to-one if every b in the codomain is the image of at most one x."@en ;
+    skos:hiddenLabel "one-to-one"@en ;
+    skos:prefLabel "one-to-one mapping"@en .
+
+la:OntoMapping a edu:Concept,
+        owl:NamedIndividual ;
+    edu:belongsToTopic la:TheMatrixOfALinearTransformationTopic ;
+    edu:requires la:RangeOfTransformation ;
+    dcterms:source "Lay D. C., Lay S. R., McDonald J. J. Linear Algebra and Its Applications. 5th ed. 2016, section 1.9, p. 76" ;
+    skos:definition "A mapping T: Rn -> Rm is onto Rm if every b in Rm is the image of at least one x."@en ;
+    skos:hiddenLabel "onto"@en ;
+    skos:prefLabel "onto mapping"@en .
+
+la:PivotPosition a edu:Concept,
+        owl:NamedIndividual ;
+    edu:belongsToTopic la:RowReductionAndEchelonFormsTopic ;
+    edu:requires la:UniquenessOfReducedEchelonForm ;
+    dcterms:source "Lay D. C., Lay S. R., McDonald J. J. Linear Algebra and Its Applications. 5th ed. 2016, section 1.2, p. 14" ;
+    skos:definition "A location in a matrix that corresponds to a leading 1 in its reduced echelon form."@en ;
+    skos:hiddenLabel "pivot positions"@en ;
+    skos:prefLabel "pivot position"@en .
+
+la:ReducedEchelonForm a edu:Concept,
+        owl:NamedIndividual ;
+    edu:belongsToTopic la:RowReductionAndEchelonFormsTopic ;
+    dcterms:source "Lay D. C., Lay S. R., McDonald J. J. Linear Algebra and Its Applications. 5th ed. 2016, section 1.2, p. 13" ;
+    skos:altLabel "reduced echelon matrix"@en,
+        "reduced row echelon form"@en ;
+    skos:broader la:EchelonForm ;
+    skos:definition "An echelon form in which every leading entry is 1 and is the only nonzero entry in its column."@en ;
+    skos:prefLabel "reduced echelon form"@en .
+
+la:RowEquivalence a edu:Concept,
+        owl:NamedIndividual ;
+    edu:belongsToTopic la:SystemsOfLinearEquationsTopic ;
+    edu:requires la:ElementaryRowOperation ;
+    dcterms:source "Lay D. C., Lay S. R., McDonald J. J. Linear Algebra and Its Applications. 5th ed. 2016, section 1.1, p. 6" ;
+    skos:altLabel "row equivalent matrices"@en ;
+    skos:definition "Two matrices are row equivalent if one is transformed into the other by a sequence of elementary row operations."@en ;
+    skos:prefLabel "row equivalence"@en .
+
+la:SpanningSet a edu:Concept,
+        owl:NamedIndividual ;
+    edu:belongsToTopic la:VectorSpacesAndSubspacesTopic ;
+    edu:requires la:Span ;
+    dcterms:source "Lay D. C., Lay S. R., McDonald J. J. Linear Algebra and Its Applications. 5th ed. 2016, section 4.1, p. 196" ;
+    skos:altLabel "generating set"@en ;
+    skos:definition "A set {v1, ..., vp} such that H = Span{v1, ..., vp}."@en ;
+    skos:prefLabel "spanning set"@en .
+
+la:TheMatrixOfALinearTransformationTopic a edu:Topic,
+        owl:NamedIndividual ;
+    edu:order 8 ;
+    edu:partOf la:LinearEquationsModule ;
+    dcterms:source "Lay D. C., Lay S. R., McDonald J. J. Linear Algebra and Its Applications. 5th ed. 2016, section 1.9" ;
+    skos:prefLabel "The Matrix of a Linear Transformation"@en .
+
+la:Transpose a edu:Concept,
+        owl:NamedIndividual ;
+    edu:belongsToTopic la:MatrixOperationsTopic ;
+    edu:notation "A^T",
+        "Aᵀ" ;
+    edu:requires la:Matrix ;
+    dcterms:source "Lay D. C., Lay S. R., McDonald J. J. Linear Algebra and Its Applications. 5th ed. 2016, section 2.1, p. 101" ;
+    skos:altLabel "transpose"@en ;
+    skos:definition "The matrix whose columns are the corresponding rows of A."@en ;
+    skos:prefLabel "transpose of a matrix"@en .
+
+la:TrivialSolution a edu:Concept,
+        owl:NamedIndividual ;
+    edu:belongsToTopic la:SolutionSetsOfLinearSystemsTopic ;
+    edu:requires la:HomogeneousSystem ;
+    dcterms:source "Lay D. C., Lay S. R., McDonald J. J. Linear Algebra and Its Applications. 5th ed. 2016, section 1.5, p. 44" ;
+    skos:definition "The zero solution x = 0 of a homogeneous system."@en ;
+    skos:prefLabel "trivial solution"@en .
+
+la:ZeroVector a edu:Concept,
+        owl:NamedIndividual ;
+    edu:belongsToTopic la:VectorEquationsTopic ;
+    edu:notation "0" ;
+    dcterms:source "Lay D. C., Lay S. R., McDonald J. J. Linear Algebra and Its Applications. 5th ed. 2016, section 1.3, p. 27" ;
+    skos:broader la:Vector ;
+    skos:definition "The vector whose entries are all zero."@en ;
+    skos:prefLabel "zero vector"@en .
+
+la:CharacteristicEquation a edu:Concept,
+        owl:NamedIndividual ;
+    edu:belongsToTopic la:TheCharacteristicEquationTopic ;
+    edu:notation "det(A − λI) = 0" ;
+    edu:requires la:Determinant,
+        la:Eigenvalue ;
+    dcterms:source "Lay D. C., Lay S. R., McDonald J. J. Linear Algebra and Its Applications. 5th ed. 2016, section 5.2, p. 278" ;
+    skos:definition "The equation det(A − λI) = 0, whose roots are the eigenvalues of A."@en ;
+    skos:prefLabel "characteristic equation"@en .
+
+la:CoordinateSystemsTopic a edu:Topic,
+        owl:NamedIndividual ;
+    edu:order 22 ;
+    edu:partOf la:VectorSpacesModule ;
+    dcterms:source "Lay D. C., Lay S. R., McDonald J. J. Linear Algebra and Its Applications. 5th ed. 2016, section 4.4" ;
+    skos:prefLabel "Coordinate Systems"@en .
+
+la:CoordinateVector a edu:Concept,
+        owl:NamedIndividual ;
+    edu:belongsToTopic la:DimensionAndRankTopic ;
+    edu:notation "[x]_B" ;
+    edu:requires la:Basis ;
+    dcterms:source "Lay D. C., Lay S. R., McDonald J. J. Linear Algebra and Its Applications. 5th ed. 2016, section 2.9, p. 156" ;
+    skos:altLabel "B-coordinate vector"@en ;
+    skos:definition "The vector of weights [x]B = (c1, ..., cp) such that x = c1b1 + ... + cpbp for a basis B."@en ;
+    skos:hiddenLabel "coordinates relative to a basis"@en ;
+    skos:prefLabel "coordinate vector"@en .
+
+la:DiagonalizationTopic a edu:Topic,
+        owl:NamedIndividual ;
+    edu:order 28 ;
+    edu:partOf la:EigenvaluesModule ;
+    dcterms:source "Lay D. C., Lay S. R., McDonald J. J. Linear Algebra and Its Applications. 5th ed. 2016, section 5.3" ;
+    skos:prefLabel "Diagonalization"@en .
+
+la:EchelonForm a edu:Concept,
+        owl:NamedIndividual ;
+    edu:belongsToTopic la:RowReductionAndEchelonFormsTopic ;
+    edu:requires la:LeadingEntry ;
+    dcterms:source "Lay D. C., Lay S. R., McDonald J. J. Linear Algebra and Its Applications. 5th ed. 2016, section 1.2, p. 13" ;
+    skos:altLabel "echelon matrix"@en,
+        "row echelon form"@en ;
+    skos:broader la:Matrix ;
+    skos:definition "A matrix form in which nonzero rows are above zero rows and each leading entry lies to the right of the leading entry above it."@en ;
+    skos:prefLabel "echelon form"@en .
+
+la:Eigenvector a edu:Concept,
+        owl:NamedIndividual ;
+    edu:belongsToTopic la:EigenvectorsAndEigenvaluesTopic ;
+    edu:requires la:MatrixVectorProduct,
+        la:SquareMatrix ;
+    dcterms:source "Lay D. C., Lay S. R., McDonald J. J. Linear Algebra and Its Applications. 5th ed. 2016, section 5.1, p. 269" ;
+    skos:definition "A nonzero vector x such that Ax = λx for some scalar λ, where A is a square matrix."@en ;
+    skos:hiddenLabel "eigenvectors"@en ;
+    skos:prefLabel "eigenvector"@en .
+
+la:IntroductionToLinearTransformationsTopic a edu:Topic,
+        owl:NamedIndividual ;
+    edu:order 7 ;
+    edu:partOf la:LinearEquationsModule ;
+    dcterms:source "Lay D. C., Lay S. R., McDonald J. J. Linear Algebra and Its Applications. 5th ed. 2016, section 1.8" ;
+    skos:prefLabel "Introduction to Linear Transformations"@en .
+
+la:LinearIndependenceTopic a edu:Topic,
+        owl:NamedIndividual ;
+    edu:order 6 ;
+    edu:partOf la:LinearEquationsModule ;
+    dcterms:source "Lay D. C., Lay S. R., McDonald J. J. Linear Algebra and Its Applications. 5th ed. 2016, section 1.7" ;
+    skos:prefLabel "Linear Independence"@en .
+
+la:MatrixEquation a edu:Concept,
+        owl:NamedIndividual ;
+    edu:belongsToTopic la:TheMatrixEquationAxBTopic ;
+    edu:notation "Ax = b" ;
+    edu:requires la:MatrixVectorProduct,
+        la:VectorEquation ;
+    dcterms:source "Lay D. C., Lay S. R., McDonald J. J. Linear Algebra and Its Applications. 5th ed. 2016, section 1.4, p. 36" ;
+    skos:definition "An equation of the form Ax = b; it is equivalent to the corresponding vector equation and linear system."@en ;
+    skos:prefLabel "matrix equation"@en .
+
+la:NullSpace a edu:Concept,
+        owl:NamedIndividual ;
+    edu:belongsToTopic la:SubspacesOfRnTopic ;
+    edu:notation "Nul A" ;
+    edu:requires la:HomogeneousSystem ;
+    dcterms:source "Lay D. C., Lay S. R., McDonald J. J. Linear Algebra and Its Applications. 5th ed. 2016, section 2.8, p. 150" ;
+    skos:altLabel "null space"@en ;
+    skos:broader la:Subspace ;
+    skos:definition "The set of all solutions of the homogeneous equation Ax = 0."@en ;
+    skos:hiddenLabel "null-space"@en ;
+    skos:prefLabel "null space of a matrix"@en .
+
+la:PivotColumn a edu:Concept,
+        owl:NamedIndividual ;
+    edu:belongsToTopic la:RowReductionAndEchelonFormsTopic ;
+    edu:requires la:PivotPosition ;
+    dcterms:source "Lay D. C., Lay S. R., McDonald J. J. Linear Algebra and Its Applications. 5th ed. 2016, section 1.2, p. 14" ;
+    skos:definition "A column of a matrix that contains a pivot position."@en ;
+    skos:hiddenLabel "pivot columns"@en ;
+    skos:prefLabel "pivot column"@en .
+
+la:ScalarMultiple a edu:Concept,
+        owl:NamedIndividual ;
+    edu:belongsToTopic la:VectorEquationsTopic ;
+    edu:notation "cu" ;
+    edu:requires la:Vector ;
+    dcterms:source "Lay D. C., Lay S. R., McDonald J. J. Linear Algebra and Its Applications. 5th ed. 2016, section 1.3, p. 25" ;
+    skos:definition "The vector (or matrix) obtained by multiplying every entry by a scalar."@en ;
+    skos:hiddenLabel "scalar multiples"@en ;
+    skos:prefLabel "scalar multiple"@en .
+
+la:SolutionSetsOfLinearSystemsTopic a edu:Topic,
+        owl:NamedIndividual ;
+    edu:order 5 ;
+    edu:partOf la:LinearEquationsModule ;
+    dcterms:source "Lay D. C., Lay S. R., McDonald J. J. Linear Algebra and Its Applications. 5th ed. 2016, section 1.5" ;
+    skos:prefLabel "Solution Sets of Linear Systems"@en .
+
+la:TheCharacteristicEquationTopic a edu:Topic,
+        owl:NamedIndividual ;
+    edu:order 27 ;
+    edu:partOf la:EigenvaluesModule ;
+    dcterms:source "Lay D. C., Lay S. R., McDonald J. J. Linear Algebra and Its Applications. 5th ed. 2016, section 5.2" ;
+    skos:prefLabel "The Characteristic Equation"@en .
+
+la:TheMatrixEquationAxBTopic a edu:Topic,
+        owl:NamedIndividual ;
+    edu:order 4 ;
+    edu:partOf la:LinearEquationsModule ;
+    dcterms:source "Lay D. C., Lay S. R., McDonald J. J. Linear Algebra and Its Applications. 5th ed. 2016, section 1.4" ;
+    skos:prefLabel "The Matrix Equation Ax = b"@en .
+
+la:VectorSum a edu:Concept,
+        owl:NamedIndividual ;
+    edu:belongsToTopic la:VectorEquationsTopic ;
+    edu:notation "u + v" ;
+    edu:requires la:Vector ;
+    dcterms:source "Lay D. C., Lay S. R., McDonald J. J. Linear Algebra and Its Applications. 5th ed. 2016, section 1.3, p. 25" ;
+    skos:definition "The vector obtained by adding corresponding entries of two vectors of the same size."@en ;
+    skos:hiddenLabel "vector sum"@en ;
+    skos:prefLabel "sum of vectors"@en .
+
+la:DiagonalizableMatrix a edu:Concept,
+        owl:NamedIndividual ;
+    edu:belongsToTopic la:DiagonalizationTopic ;
+    edu:notation "A = PDP⁻¹" ;
+    edu:requires la:DiagonalMatrix,
+        la:SimilarMatrices ;
+    dcterms:source "Lay D. C., Lay S. R., McDonald J. J. Linear Algebra and Its Applications. 5th ed. 2016, section 5.3, p. 284" ;
+    skos:broader la:SquareMatrix ;
+    skos:definition "A square matrix similar to a diagonal matrix: A = PDP⁻¹ with D diagonal."@en ;
+    skos:hiddenLabel "diagonalizable"@en ;
+    skos:prefLabel "diagonalizable matrix"@en .
+
+la:Dimension a edu:Concept,
+        owl:NamedIndividual ;
+    edu:belongsToTopic la:DimensionAndRankTopic ;
+    edu:notation "dim H" ;
+    edu:requires la:Basis ;
+    dcterms:source "Lay D. C., Lay S. R., McDonald J. J. Linear Algebra and Its Applications. 5th ed. 2016, section 2.9, p. 157" ;
+    skos:definition "The number of vectors in any basis of a nonzero subspace; the zero subspace has dimension zero."@en ;
+    skos:prefLabel "dimension"@en .
+
+la:DimensionAndRankTopic a edu:Topic,
+        owl:NamedIndividual ;
+    edu:order 15 ;
+    edu:partOf la:MatrixAlgebraModule ;
+    dcterms:source "Lay D. C., Lay S. R., McDonald J. J. Linear Algebra and Its Applications. 5th ed. 2016, section 2.9" ;
+    skos:prefLabel "Dimension and Rank"@en .
+
+la:EigenvaluesModule a edu:Module,
+        owl:NamedIndividual ;
+    edu:order 5 ;
+    edu:partOf la:LinearAlgebraCourse ;
+    dcterms:source "Lay D. C., Lay S. R., McDonald J. J. Linear Algebra and Its Applications. 5th ed. 2016, chapter 5" ;
+    skos:prefLabel "Eigenvalues and Eigenvectors"@en .
+
+la:ElementaryRowOperation a edu:Concept,
+        owl:NamedIndividual ;
+    edu:belongsToTopic la:SystemsOfLinearEquationsTopic ;
+    edu:requires la:Matrix ;
+    dcterms:source "Lay D. C., Lay S. R., McDonald J. J. Linear Algebra and Its Applications. 5th ed. 2016, section 1.1, p. 6" ;
+    skos:definition "Replacement, interchange or scaling of rows of a matrix."@en ;
+    skos:hiddenLabel "elementary row operations"@en ;
+    skos:prefLabel "elementary row operation"@en .
+
+la:IdentityMatrix a edu:Concept,
+        owl:NamedIndividual ;
+    edu:belongsToTopic la:TheMatrixEquationAxBTopic ;
+    edu:notation "I",
+        "Iₙ" ;
+    edu:requires la:Matrix ;
+    dcterms:source "Lay D. C., Lay S. R., McDonald J. J. Linear Algebra and Its Applications. 5th ed. 2016, section 1.4, p. 39" ;
+    skos:broader la:DiagonalMatrix ;
+    skos:definition "The square matrix with ones on the main diagonal and zeros elsewhere; Ix = x for every x."@en ;
+    skos:prefLabel "identity matrix"@en .
+
+la:InverseOfMatrix a edu:Concept,
+        owl:NamedIndividual ;
+    edu:belongsToTopic la:TheInverseOfAMatrixTopic ;
+    edu:notation "A^{-1}",
+        "A⁻¹" ;
+    edu:requires la:InvertibleMatrix ;
+    dcterms:source "Lay D. C., Lay S. R., McDonald J. J. Linear Algebra and Its Applications. 5th ed. 2016, section 2.2, p. 105" ;
+    skos:altLabel "matrix inverse"@en ;
+    skos:definition "The unique matrix A⁻¹ with A⁻¹A = I and AA⁻¹ = I for an invertible matrix A."@en ;
+    skos:prefLabel "inverse of a matrix"@en .
+
+la:LinearAlgebraCourse a edu:Course,
+        owl:NamedIndividual ;
+    skos:prefLabel "Linear Algebra"@en .
+
+la:LinearTransformation a edu:Concept,
+        owl:NamedIndividual ;
+    edu:belongsToTopic la:IntroductionToLinearTransformationsTopic ;
+    edu:requires la:ScalarMultiple,
+        la:VectorSum ;
+    dcterms:source "Lay D. C., Lay S. R., McDonald J. J. Linear Algebra and Its Applications. 5th ed. 2016, section 1.8, p. 66" ;
+    skos:broader la:Transformation ;
+    skos:definition "A transformation T with T(u + v) = T(u) + T(v) and T(cu) = cT(u) for all vectors u, v and scalars c."@en ;
+    skos:hiddenLabel "linear transformations"@en ;
+    skos:prefLabel "linear transformation"@en .
+
+la:SubspacesOfRnTopic a edu:Topic,
+        owl:NamedIndividual ;
+    edu:order 14 ;
+    edu:partOf la:MatrixAlgebraModule ;
+    dcterms:source "Lay D. C., Lay S. R., McDonald J. J. Linear Algebra and Its Applications. 5th ed. 2016, section 2.8" ;
+    skos:prefLabel "Subspaces of Rn"@en .
+
+la:SystemOfLinearEquations a edu:Concept,
+        owl:NamedIndividual ;
+    edu:belongsToTopic la:SystemsOfLinearEquationsTopic ;
+    edu:requires la:LinearEquation ;
+    dcterms:source "Lay D. C., Lay S. R., McDonald J. J. Linear Algebra and Its Applications. 5th ed. 2016, section 1.1, p. 2" ;
+    skos:altLabel "linear system"@en ;
+    skos:definition "A collection of one or more linear equations in the same variables."@en ;
+    skos:hiddenLabel "systems of linear equations"@en ;
+    skos:prefLabel "system of linear equations"@en .
+
+la:TheInverseOfAMatrixTopic a edu:Topic,
+        owl:NamedIndividual ;
+    edu:order 10 ;
+    edu:partOf la:MatrixAlgebraModule ;
+    dcterms:source "Lay D. C., Lay S. R., McDonald J. J. Linear Algebra and Its Applications. 5th ed. 2016, section 2.2" ;
+    skos:prefLabel "The Inverse of a Matrix"@en .
+
+la:Transformation a edu:Concept,
+        owl:NamedIndividual ;
+    edu:belongsToTopic la:IntroductionToLinearTransformationsTopic ;
+    edu:notation "T: Rⁿ → Rᵐ" ;
+    edu:requires la:Vector ;
+    dcterms:source "Lay D. C., Lay S. R., McDonald J. J. Linear Algebra and Its Applications. 5th ed. 2016, section 1.8, p. 64" ;
+    skos:altLabel "mapping"@en ;
+    skos:definition "A rule T: Rn -> Rm that assigns to each vector x of the domain a vector T(x), its image, in the codomain."@en ;
+    skos:editorialNote "The glossary of [Lay 2016] gives 'mapping: See transformation'."@en ;
+    skos:hiddenLabel "transformations"@en ;
+    skos:prefLabel "transformation"@en .
+
+la:Vector a edu:Concept,
+        owl:NamedIndividual ;
+    edu:belongsToTopic la:VectorEquationsTopic ;
+    edu:notation "Rⁿ" ;
+    edu:requires la:Matrix ;
+    dcterms:source "Lay D. C., Lay S. R., McDonald J. J. Linear Algebra and Its Applications. 5th ed. 2016, section 1.3, p. 24" ;
+    skos:altLabel "column vector"@en ;
+    skos:definition "A matrix with only one column, i.e. an ordered list of n numbers, an element of Rn."@en ;
+    skos:hiddenLabel "vectors"@en ;
+    skos:prefLabel "vector"@en .
+
+la:VectorSpace a edu:Concept,
+        owl:NamedIndividual ;
+    edu:belongsToTopic la:VectorSpacesAndSubspacesTopic ;
+    edu:notation "V" ;
+    edu:requires la:ScalarMultiple,
+        la:VectorSum,
+        la:ZeroVector ;
+    dcterms:source "Lay D. C., Lay S. R., McDonald J. J. Linear Algebra and Its Applications. 5th ed. 2016, section 4.1, p. 192" ;
+    skos:definition "A nonempty set of objects with addition and scalar multiplication that satisfy the ten vector space axioms."@en ;
+    skos:hiddenLabel "vector spaces"@en ;
+    skos:prefLabel "vector space"@en .
+
+la:InvertibleMatrix a edu:Concept,
+        owl:NamedIndividual ;
+    edu:belongsToTopic la:TheInverseOfAMatrixTopic ;
+    edu:requires la:IdentityMatrix,
+        la:MatrixMultiplication ;
+    dcterms:source "Lay D. C., Lay S. R., McDonald J. J. Linear Algebra and Its Applications. 5th ed. 2016, section 2.2, p. 105" ;
+    skos:altLabel "nonsingular matrix"@en ;
+    skos:broader la:SquareMatrix ;
+    skos:definition "An n x n matrix A for which there is an n x n matrix C with CA = I and AC = I."@en ;
+    skos:prefLabel "invertible matrix"@en .
+
+la:LinearIndependence a edu:Concept,
+        owl:NamedIndividual ;
+    edu:belongsToTopic la:LinearIndependenceTopic ;
+    edu:requires la:TrivialSolution ;
+    dcterms:source "Lay D. C., Lay S. R., McDonald J. J. Linear Algebra and Its Applications. 5th ed. 2016, section 1.7, p. 57" ;
+    skos:altLabel "linearly independent set"@en ;
+    skos:definition "A set {v1, ..., vp} is linearly independent if the equation x1v1 + ... + xpvp = 0 has only the trivial solution."@en ;
+    skos:hiddenLabel "linearly independent"@en ;
+    skos:prefLabel "linear independence"@en .
+
+la:MatrixVectorProduct a edu:Concept,
+        owl:NamedIndividual ;
+    edu:belongsToTopic la:TheMatrixEquationAxBTopic ;
+    edu:notation "Ax" ;
+    edu:requires la:LinearCombination ;
+    dcterms:source "Lay D. C., Lay S. R., McDonald J. J. Linear Algebra and Its Applications. 5th ed. 2016, section 1.4, p. 35" ;
+    skos:altLabel "product of a matrix and a vector"@en ;
+    skos:definition "The product Ax of an m x n matrix A and a vector x in Rn: the linear combination of the columns of A with the entries of x as weights."@en ;
+    skos:prefLabel "matrix-vector product"@en .
+
+la:Subspace a edu:Concept,
+        owl:NamedIndividual ;
+    edu:belongsToTopic la:SubspacesOfRnTopic ;
+    edu:requires la:ScalarMultiple,
+        la:VectorSum,
+        la:ZeroVector ;
+    dcterms:source "Lay D. C., Lay S. R., McDonald J. J. Linear Algebra and Its Applications. 5th ed. 2016, section 2.8, p. 148" ;
+    skos:broader la:VectorSpace ;
+    skos:definition "A set H that contains the zero vector and is closed under vector addition and scalar multiplication."@en ;
+    skos:editorialNote "Introduced for Rn in 2.8 and for general vector spaces in 4.1."@en ;
+    skos:hiddenLabel "subspaces"@en ;
+    skos:prefLabel "subspace"@en .
+
+la:LinearCombination a edu:Concept,
+        owl:NamedIndividual ;
+    edu:belongsToTopic la:VectorEquationsTopic ;
+    edu:requires la:ScalarMultiple,
+        la:VectorSum ;
+    dcterms:source "Lay D. C., Lay S. R., McDonald J. J. Linear Algebra and Its Applications. 5th ed. 2016, section 1.3, p. 28" ;
+    skos:definition "A vector c1v1 + ... + cpvp formed from vectors v1, ..., vp with scalar weights c1, ..., cp."@en ;
+    skos:hiddenLabel "linear combinations"@en ;
+    skos:prefLabel "linear combination"@en .
+
+la:MatrixAlgebraModule a edu:Module,
+        owl:NamedIndividual ;
+    edu:order 2 ;
+    edu:partOf la:LinearAlgebraCourse ;
+    dcterms:source "Lay D. C., Lay S. R., McDonald J. J. Linear Algebra and Its Applications. 5th ed. 2016, chapter 2" ;
+    skos:prefLabel "Matrix Algebra"@en .
+
+la:Span a edu:Concept,
+        owl:NamedIndividual ;
+    edu:belongsToTopic la:VectorEquationsTopic ;
+    edu:notation "Span{v1, ..., vp}" ;
+    edu:requires la:LinearCombination ;
+    dcterms:source "Lay D. C., Lay S. R., McDonald J. J. Linear Algebra and Its Applications. 5th ed. 2016, section 1.3, p. 30" ;
+    skos:altLabel "linear span"@en ;
+    skos:definition "The set of all linear combinations of given vectors v1, ..., vp; the subset spanned (generated) by them."@en ;
+    skos:prefLabel "span"@en .
+
+la:VectorEquationsTopic a edu:Topic,
+        owl:NamedIndividual ;
+    edu:order 3 ;
+    edu:partOf la:LinearEquationsModule ;
+    dcterms:source "Lay D. C., Lay S. R., McDonald J. J. Linear Algebra and Its Applications. 5th ed. 2016, section 1.3" ;
+    skos:prefLabel "Vector Equations"@en .
+
+la:VectorSpacesModule a edu:Module,
+        owl:NamedIndividual ;
+    edu:order 4 ;
+    edu:partOf la:LinearAlgebraCourse ;
+    dcterms:source "Lay D. C., Lay S. R., McDonald J. J. Linear Algebra and Its Applications. 5th ed. 2016, chapter 4" ;
+    skos:prefLabel "Vector Spaces"@en .
+
+la:LinearEquationsModule a edu:Module,
+        owl:NamedIndividual ;
+    edu:order 1 ;
+    edu:partOf la:LinearAlgebraCourse ;
+    dcterms:source "Lay D. C., Lay S. R., McDonald J. J. Linear Algebra and Its Applications. 5th ed. 2016, chapter 1" ;
+    skos:prefLabel "Linear Equations in Linear Algebra"@en .
+
+la:MatrixMultiplication a edu:Concept,
+        owl:NamedIndividual ;
+    edu:belongsToTopic la:MatrixOperationsTopic ;
+    edu:notation "AB" ;
+    edu:requires la:MatrixVectorProduct ;
+    dcterms:source "Lay D. C., Lay S. R., McDonald J. J. Linear Algebra and Its Applications. 5th ed. 2016, section 2.1, p. 96" ;
+    skos:altLabel "matrix product"@en ;
+    skos:definition "The product AB whose columns are Ab1, ..., Abp; it corresponds to composition of linear transformations."@en ;
+    skos:prefLabel "matrix multiplication"@en .
+
+la:MatrixOperationsTopic a edu:Topic,
+        owl:NamedIndividual ;
+    edu:order 9 ;
+    edu:partOf la:MatrixAlgebraModule ;
+    dcterms:source "Lay D. C., Lay S. R., McDonald J. J. Linear Algebra and Its Applications. 5th ed. 2016, section 2.1" ;
+    skos:prefLabel "Matrix Operations"@en .
+
+la:SquareMatrix a edu:Concept,
+        owl:NamedIndividual ;
+    edu:belongsToTopic la:MatrixOperationsTopic ;
+    edu:notation "n × n" ;
+    dcterms:source "Lay D. C., Lay S. R., McDonald J. J. Linear Algebra and Its Applications. 5th ed. 2016, section 2.1, p. 94" ;
+    skos:broader la:Matrix ;
+    skos:definition "A matrix with the same number of rows and columns (an n x n matrix)."@en ;
+    skos:hiddenLabel "square matrices"@en ;
+    skos:prefLabel "square matrix"@en .
+
+la:Basis a edu:Concept,
+        owl:NamedIndividual ;
+    edu:belongsToTopic la:SubspacesOfRnTopic ;
+    edu:requires la:LinearIndependence,
+        la:Span,
+        la:Subspace ;
+    dcterms:source "Lay D. C., Lay S. R., McDonald J. J. Linear Algebra and Its Applications. 5th ed. 2016, section 2.8, p. 150" ;
+    skos:definition "A linearly independent set in a subspace H that spans H."@en ;
+    skos:hiddenLabel "bases"@en ;
+    skos:prefLabel "basis"@en .
+
+la:SystemsOfLinearEquationsTopic a edu:Topic,
+        owl:NamedIndividual ;
+    edu:order 1 ;
+    edu:partOf la:LinearEquationsModule ;
+    dcterms:source "Lay D. C., Lay S. R., McDonald J. J. Linear Algebra and Its Applications. 5th ed. 2016, section 1.1" ;
+    skos:prefLabel "Systems of Linear Equations"@en .
+
+la:Determinant a edu:Concept,
+        owl:NamedIndividual ;
+    edu:belongsToTopic la:IntroductionToDeterminantsTopic ;
+    edu:notation "\\det A",
+        "det A" ;
+    edu:requires la:SquareMatrix ;
+    dcterms:source "Lay D. C., Lay S. R., McDonald J. J. Linear Algebra and Its Applications. 5th ed. 2016, section 3.1, p. 167" ;
+    skos:definition "A number assigned to a square matrix, defined recursively by expansion along the first row; nonzero exactly for invertible matrices."@en ;
+    skos:editorialNote "The 2 x 2 case appears in 2.2 (p. 105); the general definition is given in 3.1."@en ;
+    skos:hiddenLabel "determinants"@en ;
+    skos:prefLabel "determinant"@en .
+
+la:RowReductionAndEchelonFormsTopic a edu:Topic,
+        owl:NamedIndividual ;
+    edu:order 2 ;
+    edu:partOf la:LinearEquationsModule ;
+    dcterms:source "Lay D. C., Lay S. R., McDonald J. J. Linear Algebra and Its Applications. 5th ed. 2016, section 1.2" ;
+    skos:prefLabel "Row Reduction and Echelon Forms"@en .
+
+la:Matrix a edu:Concept,
+        owl:NamedIndividual ;
+    edu:belongsToTopic la:SystemsOfLinearEquationsTopic ;
+    edu:notation "m × n" ;
+    dcterms:source "Lay D. C., Lay S. R., McDonald J. J. Linear Algebra and Its Applications. 5th ed. 2016, section 1.1, p. 4" ;
+    skos:definition "A rectangular array of numbers; an m x n matrix has m rows and n columns."@en ;
+    skos:hiddenLabel "matrices"@en ;
+    skos:prefLabel "matrix"@en .
+
+[] a owl:AllDifferent ;
+    owl:distinctMembers ( la:LinearAlgebraCourse la:LinearEquationsModule la:MatrixAlgebraModule la:DeterminantsModule la:VectorSpacesModule la:EigenvaluesModule la:SystemsOfLinearEquationsTopic la:RowReductionAndEchelonFormsTopic la:VectorEquationsTopic la:TheMatrixEquationAxBTopic la:SolutionSetsOfLinearSystemsTopic la:LinearIndependenceTopic la:IntroductionToLinearTransformationsTopic la:TheMatrixOfALinearTransformationTopic la:MatrixOperationsTopic la:TheInverseOfAMatrixTopic la:CharacterizationsOfInvertibleMatricesTopic la:PartitionedMatricesTopic la:MatrixFactorizationsTopic la:SubspacesOfRnTopic la:DimensionAndRankTopic la:IntroductionToDeterminantsTopic la:PropertiesOfDeterminantsTopic la:CramersRuleVolumeAndLinearTransformationsTopic la:VectorSpacesAndSubspacesTopic la:NullSpacesColumnSpacesAndLinearTransformationsTopic la:LinearlyIndependentSetsBasesTopic la:CoordinateSystemsTopic la:TheDimensionOfAVectorSpaceTopic la:RankTopic la:ChangeOfBasisTopic la:EigenvectorsAndEigenvaluesTopic la:TheCharacteristicEquationTopic la:DiagonalizationTopic la:EigenvectorsAndLinearTransformationsTopic la:ComplexEigenvaluesTopic la:LinearEquation la:SystemOfLinearEquations la:SolutionSet la:ConsistentSystem la:Matrix la:CoefficientMatrix la:AugmentedMatrix la:ElementaryRowOperation la:RowEquivalence la:LeadingEntry la:EchelonForm la:ReducedEchelonForm la:UniquenessOfReducedEchelonForm la:PivotPosition la:PivotColumn la:RowReductionAlgorithm la:BasicVariable la:FreeVariable la:ExistenceAndUniquenessTheorem la:Vector la:VectorSum la:ScalarMultiple la:ZeroVector la:LinearCombination la:Span la:VectorEquation la:MatrixVectorProduct la:MatrixEquation la:RowVectorRule la:IdentityMatrix la:HomogeneousSystem la:TrivialSolution la:NontrivialSolution la:ParametricVectorForm la:LinearIndependence la:LinearDependence la:LinearDependenceRelation la:CharacterizationOfLinearlyDependentSets la:Transformation la:RangeOfTransformation la:MatrixTransformation la:LinearTransformation la:StandardMatrix la:OntoMapping la:OneToOneMapping la:MainDiagonal la:SquareMatrix la:DiagonalMatrix la:ZeroMatrix la:MatrixSum la:MatrixMultiplication la:RowColumnRule la:Transpose la:InvertibleMatrix la:InverseOfMatrix la:SingularMatrix la:ElementaryMatrix la:InverseAlgorithm la:InvertibleMatrixTheorem la:TriangularMatrix la:LowerTriangularMatrix la:PartitionedMatrix la:ColumnRowExpansion la:MatrixFactorization la:LUFactorization la:LUFactorizationAlgorithm la:Subspace la:ColumnSpace la:NullSpace la:Basis la:StandardBasis la:CoordinateVector la:Dimension la:Rank la:RankTheorem la:BasisTheorem la:Determinant la:Cofactor la:CofactorExpansion la:RowOperationsTheorem la:MultiplicativeProperty la:CramersRule la:Adjugate la:InverseFormula la:VectorSpace la:SpanningSet la:Kernel la:SpanningSetTheorem la:UniqueRepresentationTheorem la:CoordinateMapping la:ChangeOfCoordinatesMatrix la:Isomorphism la:FiniteDimensionalSpace la:RowSpace la:Nullity la:ChangeOfCoordinatesMatrixBtoC la:Eigenvector la:Eigenvalue la:Eigenspace la:CharacteristicEquation la:CharacteristicPolynomial la:AlgebraicMultiplicity la:SimilarMatrices la:DiagonalizableMatrix la:EigenvectorBasis la:DiagonalizationTheorem la:Diagonalization la:MatrixOfTransformationRelativeToBases la:DiagonalMatrixRepresentation la:ComplexEigenvalue la:ComplexEigenvector ) .
+

@@ -3,6 +3,7 @@
 #   python run_all.py --text-only                 baseline in text-only mode (as in the experiment)
 #   python run_all.py --text-only --chapters ch3  quick run on a single chapter
 #   python run_all.py --text-only --ask           + sample questions at the end
+#   python run_all.py --text-only --ontology      proposed method (ontology-guided extraction)
 #
 # Steps:
 #   1. cut       — cut corpus and chapters from data/raw/Lay.pdf (skipped if already done)
@@ -37,9 +38,12 @@ def main():
     p = argparse.ArgumentParser(description="Full pipeline: PDF -> knowledge base -> metrics")
     p.add_argument("--text-only", action="store_true", help="text-only mode (equations as LaTeX, figures as captions)")
     p.add_argument("--chapters", nargs="+", choices=config.CHAPTERS, default=config.CHAPTERS)
-    p.add_argument("--name", default="baseline", help="configuration name")
+    p.add_argument("--ontology", action="store_true", help="proposed method: ontology-guided extraction")
+    p.add_argument("--name", default=None, help="configuration name (default: baseline or ontology)")
     p.add_argument("--ask", action="store_true", help="ask sample questions at the end")
     args = p.parse_args()
+    if args.name is None:
+        args.name = "ontology" if args.ontology else "baseline"
 
     step("1. Cut PDF")
     chapter_pdfs = [config.PDF_DIR / "chapters" / f"lay_{ch}.pdf" for ch in args.chapters]
@@ -58,7 +62,7 @@ def main():
                  f"{config.PARSED_DIR.relative_to(ROOT)} (see README, step 3).")
     print("✅ parsed output found for all chapters")
 
-    flags = ["--text-only"] if args.text_only else []
+    flags = (["--text-only"] if args.text_only else []) + (["--ontology"] if args.ontology else [])
     step("3. Build knowledge base")
     run("build_kb.py", "--run", "--name", args.name, "--chapters", *args.chapters, *flags)
 
