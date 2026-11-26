@@ -1,0 +1,286 @@
+﻿item;question;reference;answer;your score (1-5);comment
+1;How are the matrix equation Ax = b, the vector equation x1 a1 + ... + xn an = b and the linear system with augmented matrix [a1 ... an b] related?;They have the same solution set (Theorem 3 in Section 1.4). In particular, Ax = b has a solution if and only if b is a linear combination of the columns of A.;"The matrix equation $A\mathbf{x} = \mathbf{b}$, the vector equation $x_1\mathbf{a}_1 + \dots + x_n\mathbf{a}_n = \mathbf{b}$, and the system of linear equations represented by the augmented matrix $\left[\begin{array}{ccccc} \mathbf{a}_1 & \mathbf{a}_2 & \dots & \mathbf{a}_n & \mathbf{b} \end{array}\right]$ are fundamentally interconnected and share the **same solution set** [1]. 
+
+According to Theorem 3, these three formulations provide equivalent viewpoints for analyzing and solving problems in linear algebra [1]:
+
+* **Equivalence of Formulations:** Any system of linear equations or vector equation can be rewritten as an equivalent matrix equation in the form $A\mathbf{x} = \mathbf{b}$ (where the columns of matrix $A$ are $\mathbf{a}_1, \dots, \mathbf{a}_n$) [1]. Similarly, a matrix equation corresponds directly to a vector equation expressed as a linear combination of its column vectors [1].
+* **Unified Method of Solution:** Regardless of which natural viewpoint or mathematical model you choose for a problem, the matrix equation, the vector equation, and the corresponding linear system are all solved using the exact same method—by **row reducing the augmented matrix** [1]. 
+
+### References
+
+- [1] Lay_ch1";5;"є всі головні пункти; зв'язок з лінійною комбінацією стовпців сформульовано непрямо"
+2;What is a linear transformation?;A transformation T is linear if T(u + v) = T(u) + T(v) for all u, v in its domain and T(cu) = cT(u) for all u and all scalars c. Consequently T(0) = 0 and T preserves linear combinations.;"A **linear transformation** is a fundamental mapping, commonly denoted as $T$, between vector spaces (such as a mapping from $\\mathbb{R}^n$ to $\\mathbb{R}^m$) that strictly preserves the foundational algebraic operations of vector addition and scalar multiplication [1]. By maintaining these operations, a linear transformation ensures that the structural properties of the respective vector spaces are fully respected [1].
+
+Formally, a transformation $T$ is linear if it satisfies the following properties for all vectors $\\mathbf{u}$ and $\\mathbf{v}$ in its domain and all scalars $c$ and $d$:
+1. $T(\\mathbf{u} + \\mathbf{v}) = T(\\mathbf{u}) + T(\\mathbf{v})$ (preservation of vector addition) [1]
+2. $T(c\\mathbf{u}) = cT(\\mathbf{u})$ (preservation of scalar multiplication) [1]
+
+Combining these two rules yields the equivalent single condition:
+$$\\partial T(c_1 \\mathbf{u} + c_2 \\mathbf{v}) = c_1 T(\\mathbf{u}) + c_2 T(\\mathbf{v})$$
+This property can also be extended to a linear combination of multiple vectors, a principle referred to in engineering and physics as the **superposition principle** [1]. Furthermore, because of these defining rules, every linear transformation maps the zero vector of the domain to the zero vector of the codomain, such that $T(\\mathbf{0}) = \\mathbf{0}$ [1].
+
+In terms of representation and computation, any linear transformation from $\\mathbb{R}^n$ to $\\mathbb{R}^m$ can be viewed as a matrix transformation where a vector $\\mathbf{x}$ is mapped to $A\\mathbf{x}$ via matrix multiplication using a unique standard matrix $A$ [1]. Common examples of linear transformations include matrix transformations, shear transformations, contractions, and dilations [1].
+
+### References
+
+- [1] Lay_ch1";4;усі пункти є, але у формулі зайвий символ ∂
+3;How are similar matrices related in terms of their characteristic polynomials and eigenvalues?;A is similar to B if there is an invertible matrix P such that P^-1 A P = B. Similar matrices have the same characteristic polynomial and hence the same eigenvalues with the same multiplicities.;"When two square matrices are similar, they share fundamental algebraic properties that connect their characteristic polynomials and eigenvalues. Specifically, if $A$ and $B$ are $n \times n$ matrices, $A$ is said to be similar to $B$ if there exists an invertible matrix $P$ such that $P^{-1}AP = B$ (or equivalently, $A = PBP^{-1}$) [1]. 
+
+The relationship between such matrices can be summarized as follows:
+
+* **Identical Characteristic Polynomials:** If matrices $A$ and $B$ are similar, they possess the exact same characteristic polynomial [1]. This is proven by expressing $B - \lambda I$ as $P^{-1}(A - \lambda I)P$ and applying the multiplicative property of determinants, which shows that $\det(B - \lambda I) = \det(A - \lambda I)$ [1].
+* **Equal Eigenvalues and Multiplicities:** Because their characteristic polynomials are identical, similar matrices also share the exact same eigenvalues with the exact same algebraic multiplicities [1]. 
+
+It is important to note, however, that having the same eigenvalues does not automatically mean that two matrices are similar (for example, certain triangular matrices share eigenvalues with diagonal matrices but are not similar) [1]. Furthermore, similarity is distinct from row equivalence; performing elementary row operations on a matrix generally changes its eigenvalues and does not preserve similarity [1].
+
+### References
+
+- [1] Lay_ch5";5;усі пункти еталона є
+4;How is the solution set of a consistent equation Ax = b related to the solution set of the homogeneous equation Ax = 0?;If p is any particular solution of Ax = b, then the solution set of Ax = b is the set of all vectors w = p + vh, where vh is any solution of Ax = 0. Geometrically, it is the solution set of Ax = 0 translated by p.;"Based on the provided context, the relationship between the solution set of a consistent nonhomogeneous equation $A\mathbf{x} = \mathbf{b}$ and the homogeneous equation $A\mathbf{x} = \mathbf{0}$ is described by Theorem 6 [1]:
+
+* **Translation of Solution Sets:** If the equation $A\mathbf{x} = \mathbf{b}$ is consistent for a given vector $\mathbf{b}$, and $\mathbf{p}$ is any particular solution to it, then the complete solution set of $A\mathbf{x} = \mathbf{b}$ is obtained by taking the set of all vectors of the form $\mathbf{w} = \mathbf{p} + \mathbf{v}_h$, where $\mathbf{v}_h$ represents any solution of the homogeneous equation $A\mathbf{x} = \mathbf{0}$ [1].
+* **Geometric Interpretation:** Geometrically, this means that the solution set of a consistent equation $A\mathbf{x} = \mathbf{b}$ is formed by translating the solution set of the homogeneous equation $A\mathbf{x} = \mathbf{0}$ using the particular solution $\mathbf{p}$ [1]. 
+
+### References
+
+- [1] Lay_ch1";5;усі пункти еталона є
+5;How is the determinant of an n x n matrix defined?;For n >= 2, the determinant of an n x n matrix A is the sum of n terms of the form a1j det A1j with alternating plus and minus signs, where A1j is the submatrix obtained by deleting row 1 and column j of A (cofactor expansion across the first row). The determinant can be computed by a cofactor expansion across any row or down any column.;"The determinant of an $n \times n$ matrix is defined recursively, expanding upon the methods used for smaller matrices [1]. 
+
+For a $1 \times 1$ matrix $A = [a_{11}]$, the determinant is simply the entry itself: $\det A = a_{11}$ [1]. For a $2 \times 2$ matrix, the determinant is computed using the standard formula $\det A = a_{11}a_{22} - a_{12}a_{21}$ [1]. 
+
+To generalize this to larger matrices where $n \geq 2$, the determinant of an $n \times n$ matrix $A = [a_{ij}]$ is defined as the sum of $n$ terms involving the entries of the first row and the determinants of $(n - 1) \times (n - 1)$ submatrices (denoted as $A_{1j}$) [1]. These submatrices are formed by crossing out the first row and the $j$-th column of $A$ [1]. 
+
+Expressed in symbols, the recursive definition uses alternating plus and minus signs:
+
+$$\det A = a_{11} \det A_{11} - a_{12} \det A_{12} + \dots + (-1)^{1+n} a_{1n} \det A_{1n} = \sum_{j=1}^{n} (-1)^{1+j} a_{1j} \det A_{1j}$$
+
+This concept can also be generalized through cofactor expansions, where the determinant of an $n \times n$ matrix can be computed across any row or down any column using cofactors [1]. 
+
+Alternatively, the determinant can be evaluated using an echelon form $U$ obtained from $A$ through row replacements and row interchanges (without scaling) [3]. In this case, $\det A$ equals $(-1)^r$ times the product of the diagonal entries (pivots) in $U$, where $r$ is the number of row interchanges performed [3]. If the matrix is not invertible, its determinant is zero [3].
+
+### References
+
+- [1] Lay_ch3
+- [2] Lay_ch2
+- [3] Lay_ch5
+- [4] Lay_ch1";5;усі пункти еталона є
+6;What is an elementary matrix?;"An elementary matrix is a matrix obtained by performing a single elementary row operation (replacement, interchange or scaling) on an identity matrix. Every elementary matrix is invertible; its inverse is the elementary matrix of the same type that transforms it back into I.";"An elementary matrix is defined as a matrix that is obtained by performing a single elementary row operation on an identity matrix [2]. 
+
+Because elementary row operations are completely reversible, every elementary matrix is invertible [2]. The inverse of a given elementary matrix is simply the elementary matrix of the same type that transforms the matrix back into the identity matrix [2]. Furthermore, when an elementary row operation is performed on an $m \times n$ matrix $A$, the resulting matrix can be written as $EA$, where the $m \times m$ matrix $E$ is created by performing that exact same row operation on the identity matrix $I_m$ [2].
+
+### References
+
+- [2] Lay_ch2";5;усі пункти еталона є
+7;How is the determinant of a product AB related to the determinants of A and B, and how is det A^T related to det A?;For n x n matrices, det AB = (det A)(det B) (multiplicative property), and det A^T = det A.;"Based on the provided context, the relationships between the determinants of matrices, their products, and their transposes are defined by fundamental theorems in linear algebra:
+
+### Determinant of a Product ($AB$)
+
+According to the multiplicative property of determinants, if $A$ and $B$ are $n \times n$ matrices, the determinant of their product is equal to the product of their individual determinants [1]:
+$$\det(AB) = (\det A)(\det B)$$
+
+If matrix $A$ is not invertible, then the product matrix $AB$ is also not invertible, making both sides of the equation equal to zero ($\det(AB) = 0$ and $\det A = 0$) [1]. If $A$ is invertible, it can be expressed as a product of elementary matrices, and repeated application of the elementary row operation determinant rules confirms the multiplicative property holds [1].
+
+### Determinant of a Transpose ($A^T$)
+
+For any $n \times n$ matrix $A$, the determinant of its transpose is equal to the determinant of the original matrix [1]:
+$$\det A^T = \det A$$
+
+This property is established by recognizing that the cofactor expansion of $\det A$ along its first row is identical to the cofactor expansion of $\det A^T$ down its first column [1]. Consequently, any property that applies to the rows of a matrix with respect to determinants (such as row operations) has an analogous application to its columns [1].
+
+### References
+
+- [1] Lay_ch3";5;усі пункти еталона є
+8;How are the rank of an m x n matrix A and the dimension of its null space related?;By the Rank Theorem, rank A + dim Nul A = n, the number of columns of A. The rank equals the number of pivot positions and dim Nul A equals the number of free variables in Ax = 0.;"The relationship between the rank of an $m \times n$ matrix $A$ and the dimension of its null space ($\operatorname{Nul} A$) is formally described by the **Rank Theorem** [1]. 
+
+Specifically, if a matrix $A$ has $n$ columns, then the rank of $A$ plus the dimension of the null space of $A$ equals $n$ [1]. Mathematically, this is expressed by the equation:
+
+$$\operatorname{rank} A + \dim \operatorname{Nul} A = n$$
+
+### Key Concepts Behind the Relationship
+
+* **Rank of a Matrix ($\operatorname{rank} A$):** The rank of matrix $A$ is defined as the dimension of its column space ($\operatorname{Col} A$) [1]. Equivalently, it is equal to the number of pivot columns (or pivot positions) in an echelon form of $A$ [1].
+* **Null Space Dimension ($\dim \operatorname{Nul} A$):** The dimension of $\operatorname{Nul} A$ corresponds to the number of free variables in the homogeneous equation $A\mathbf{x} = \mathbf{0}$, which is also the number of nonpivot columns in matrix $A$ [1].
+
+Because every column of $A$ is either a pivot column or a nonpivot column, the sum of the number of pivot columns and nonpivot columns must equal the total number of columns ($n$) [1]. This fundamental accounting of matrix columns directly establishes the Rank Theorem equation [1].
+
+### References
+
+- [1] Lay_ch4";5;усі пункти еталона є
+9;How are determinants used to find the eigenvalues of a matrix, and how are the corresponding eigenvectors then found?;"lambda is an eigenvalue of A if and only if (A - lambda I)x = 0 has a nontrivial solution, i.e. A - lambda I is not invertible, i.e. det(A - lambda I) = 0. The eigenvalues are therefore the roots of the characteristic equation det(A - lambda I) = 0. The eigenvectors for lambda are the nonzero solutions of (A - lambda I)x = 0, found by row reduction; together with 0 they form the eigenspace Nul(A - lambda I).";"To find the eigenvalues and corresponding eigenvectors of a square matrix $A$, determinants and matrix equations are utilized through a systematic process.
+
+### Finding Eigenvalues Using Determinants
+
+The process of finding eigenvalues relies on a special scalar equation known as the characteristic equation [1]. 
+* **The Characteristic Equation:** A scalar $\lambda$ is an eigenvalue of an $n \times n$ matrix $A$ if and only if there exists a nonzero vector $\mathbf{x}$ such that $A\mathbf{x} = \lambda\mathbf{x}$, which can be rewritten homogeneously as:
+  $$(A - \lambda I)\mathbf{x} = \mathbf{0}$$
+  For this homogeneous matrix equation to have a nontrivial (nonzero) solution, the matrix $A - \lambda I$ must not be invertible [1]. 
+* **Determinant Condition:** According to the Invertible Matrix Theorem and determinant properties, a square matrix fails to be invertible precisely when its determinant is zero [1]. Therefore, the eigenvalues are found by solving the characteristic equation:
+  $$\det(A - \lambda I) = 0$$
+  For an $n \times n$ matrix, $\det(A - \lambda I)$ expands into an $n$-degree polynomial called the characteristic polynomial, whose roots are the exact eigenvalues of the matrix [1].
+
+### Finding Corresponding Eigenvectors
+
+Once the eigenvalues ($\lambda$) are determined from the characteristic equation, their corresponding eigenvectors are found by solving for the nontrivial solutions of the associated matrix equation [1]:
+* Substitute a specific eigenvalue $\lambda$ back into the expression $(A - \lambda I)\mathbf{x} = \mathbf{0}$ [1].
+* Solve the resulting homogeneous system of linear equations—typically by applying row reduction or analyzing the linear relationships between rows or variables—to find a basis for the corresponding eigenspace [1]. The non-zero vectors satisfying this system are the eigenvectors associated with that eigenvalue [1].
+
+### References
+
+- [1] Lay_ch5
+- [2] Lay_ch2
+- [3] Lay_ch4";5;"є всі головні пункти; власний підпростір згадано, але не як Nul(A − λI)"
+10;How does the notion of a subspace of R^n generalize to vector spaces, and which subspaces associated with a matrix appear in both settings?;A subspace of R^n is a set that contains the zero vector and is closed under vector addition and scalar multiplication (Section 2.8). In Section 4.1 a subspace of a general vector space V is defined by the same three properties. In both settings Span{v1, ..., vp} is a subspace, the null space Nul A of an m x n matrix is a subspace of R^n, and the column space Col A is a subspace of R^m.;"The study of vector spaces generalizes the theory of $\mathbb { R } ^ { n }$ by introducing abstract vector spaces that share the same foundational algebraic properties [1]. While $\mathbb { R } ^ { n }$ serves as the premier and most intuitive example of a vector space—where geometric intuition from $\mathbb { R } ^ { 2 }$ and $\mathbb { R } ^ { 3 }$ can be used to visualize many general concepts—Chapter 4 and subsequent mathematical frameworks extend these principles to include other systems, such as spaces of functions and polynomials [1]. 
+
+In both $\mathbb { R } ^ { n }$ and general vector spaces, a subspace is defined as a subset $H$ that satisfies three fundamental properties:
+1. The zero vector of the space is contained in $H$ [2, 1].
+2. $H$ is closed under vector addition (for each $\mathbf{u}$ and $\mathbf{v}$ in $H$, the sum $\mathbf{u} + \mathbf{v}$ is in $H$) [2, 1].
+3. $H$ is closed under scalar multiplication (for each $\mathbf{u}$ in $H$ and scalar $c$, the vector $c\mathbf{u}$ is in $H$) [2, 1].
+
+When transitioning from $\mathbb { R } ^ { n }$ to abstract vector spaces, specific and fundamental subspaces associated with matrices and linear transformations continue to appear in both settings. The primary subspaces include:
+
+* **The Null Space (or Kernel):** For an $m \times n$ matrix $A$, the null space ($\text{Nul } A$) is defined as the set of all solutions to the homogeneous equation $A\mathbf{x} = \mathbf{0}$, forming a subspace of $\mathbb { R } ^ { n }$ [2]. In the broader context of linear transformations, the kernel of a linear transformation $T$ consists of all vectors in the domain that map to the zero vector, serving as a subspace of the domain vector space [1]. When a linear transformation arises from matrix multiplication ($\mathbf{x} \mapsto A\mathbf{x}$), its kernel corresponds directly to the null space of the matrix [1].
+* **The Column Space (or Range):** The column space ($\text{Col } A$) is the set of all linear combinations of the columns of a matrix $A$, forming a subspace of $\mathbb { R } ^ { m }$ [2]. In the context of linear transformations, the range represents the set of all output images in the codomain vector space generated by vectors in the domain [1]. When the transformation is defined by a matrix, the range of the transformation is precisely the column space of the matrix [1].
+
+### References
+
+- [1] Lay_ch4
+- [2] Lay_ch2";4;не сказано, що Span є підпростором
+11;When is a square matrix diagonalizable?;A square matrix A is diagonalizable if it is similar to a diagonal matrix, i.e. A = PDP^-1 for some invertible matrix P and diagonal matrix D. By the Diagonalization Theorem, an n x n matrix is diagonalizable if and only if it has n linearly independent eigenvectors.;"A square matrix is diagonalizable under specific conditions relating to its eigenvectors and eigenvalues. According to **Theorem 5 (The Diagonalization Theorem)**, an $n \times n$ matrix $A$ is diagonalizable if and only if $A$ has $n$ linearly independent eigenvectors [1]. 
+
+In other words, a matrix is diagonalizable if and only if there are enough eigenvectors to form a basis of $\mathbb{R}^n$, which is referred to as an eigenvector basis [1]. 
+
+### Key Conditions and Criteria
+
+* **Distinct Eigenvalues:** If an $n \times n$ matrix $A$ has $n$ distinct eigenvalues, the corresponding eigenvectors are automatically linearly independent (by Theorem 2 in Section 5.1), which guarantees that $A$ is diagonalizable [1]. However, having distinct eigenvalues is a sufficient condition, not a necessary one; a matrix can still be diagonalizable even if it has repeated or fewer than $n$ distinct eigenvalues [1].
+* **Not Distinct / Repeated Eigenvalues (Theorem 7):** When an $n \times n$ matrix has eigenvalues that are not distinct, it is diagonalizable if and only if:
+  1. The characteristic polynomial factors completely into linear factors [1].
+  2. For each distinct eigenvalue, the dimension of its eigenspace equals the multiplicity of that eigenvalue [1]. 
+
+When these conditions are met, the sum of the dimensions of all the eigenspaces equals $n$ [1].
+
+### References
+
+- [1] Lay_ch5";3;немає означення через подібність до діагональної матриці (A = PDP⁻¹)
+12;Which concepts must be understood before studying the dimension of a subspace or vector space?;Dimension is the number of vectors in any basis, so it requires the concept of a basis (and with it subspace, linear independence and span), together with the fact that all bases of a space have the same number of vectors.;"Based on the provided context, studying the dimension of a vector space or subspace relies on a foundation of several key linear algebra concepts:
+
+* **Vector Space and Subspace:** A vector space forms the overarching framework of objects and operations (vector addition and scalar multiplication), while a subspace is a subset of a vector space that satisfies these same algebraic properties under the inherited operations [1]. 
+* **Span and Spanning Set:** The concept of a span defines the set of all possible linear combinations of a given set of vectors. A spanning set consists of vectors whose linear combinations generate the entire space or subspace in question [1].
+* **Linear Independence:** This property describes a set of vectors where no single vector can be written as a linear combination of the others, ensuring there is no redundancy within the set [1].
+* **Basis:** A basis is defined as a linearly independent spanning set for a vector space or subspace. It represents a spanning set that contains no unnecessary vectors. The dimension of a vector space or subspace is formally defined as the exact number of vectors contained in any of its bases [1].
+
+### References
+
+- [1] Lay_ch4";5;"є всі головні пункти; те, що всі базиси мають однакову кількість векторів, лише неявно"
+13;How can the determinant be used to decide whether the columns of a square matrix are linearly independent?;"For a square matrix A, the columns are linearly independent if and only if A is invertible (Invertible Matrix Theorem), and A is invertible if and only if det A is not zero. Hence the columns are linearly independent exactly when det A is nonzero; det A = 0 when the columns (or rows) are linearly dependent.";"Based on the provided context, the determinant can be used to determine whether the columns of a square matrix are linearly independent through its relationship with matrix invertibility [1, 4]. 
+
+Specifically, a square matrix $A$ is invertible if and only if its determinant is non-zero ($\det A \neq 0$) [1]. According to the Invertible Matrix Theorem, a square matrix is invertible if and only if its columns form a linearly independent set [4]. Consequently, if the columns of a square matrix are linearly dependent, the determinant of the matrix is equal to zero ($\det A = 0$) [1]. 
+
+In summary, you can evaluate the determinant of the square matrix:
+* If $\det A \neq 0$, the matrix is invertible, and its columns are linearly independent [1, 4].
+* If $\det A = 0$, the matrix is singular (not invertible), and its columns are linearly dependent [1, 4].
+
+### References
+
+- [1] Lay_ch3
+- [4] Lay_ch5";5;усі пункти еталона є
+14;How does Cramer's rule connect determinants with solving linear systems and with the inverse of a matrix?;"For an invertible n x n matrix A and any b, the unique solution of Ax = b has entries xi = det Ai(b) / det A, where Ai(b) is A with column i replaced by b (Cramer's rule). Applying this to the columns of the identity matrix gives the inverse formula A^-1 = (1/det A) adj A, where adj A, the adjugate, is the transpose of the matrix of cofactors. These formulas are mainly of theoretical use; row reduction is more efficient for large matrices.";"Cramer’s rule provides an explicit formula for solving linear systems and leads directly to a general formula for a matrix's inverse by utilizing the determinants of modified matrices [Cramer's Rule, Inverse Formula]. 
+
+### Connection to Solving Linear Systems
+For an invertible $n \times n$ matrix $A$ and any vector $\mathbf{b}$ in $\mathbb{R}^n$, Cramer's rule states that the unique solution $\mathbf{x}$ to the matrix equation $A\mathbf{x} = \mathbf{b}$ has individual entries given by:
+
+$$x_i = \frac{\det A_i(\mathbf{b})}{\det A}, \quad i = 1, 2, \dots, n$$
+
+Here, $A_i(\mathbf{b})$ represents the matrix formed by replacing the $i$-th column of $A$ with the vector $\mathbf{b}$. Because $\det A \neq 0$ for invertible matrices, this formula computes each variable directly using determinants [1].
+
+### Connection to the Inverse of a Matrix
+Cramer’s rule also leads to a general formula for the inverse of an $n \times n$ matrix $A$ [1]. The $j$-th column of $A^{-1}$ is a vector $\mathbf{x}$ that satisfies $A\mathbf{x} = \mathbf{e}_j$, where $\mathbf{e}_j$ is the $j$-th column of the identity matrix. Applying Cramer's rule shows that the $(i, j)$-entry of $A^{-1}$ is equal to the cofactor $C_{ji}$ divided by $\det A$ [1]:
+
+$$\{(i, j)\text{-entry of } A^{-1}\} = \frac{C_{ji}}{\det A}$$
+
+By arranging these cofactor entries into the transpose of the cofactor matrix—known as the adjugate matrix ($\text{adj } A$)—the inverse formula can be expressed concisely as [1]:
+
+$$A^{-1} = \frac{1}{\det A} \text{adj } A$$
+
+### References
+
+- [1] Lay_ch3";4;не сказано, що формули мають переважно теоретичне значення
+15;Which concepts must be understood before studying invertible matrices?;An invertible matrix A satisfies CA = I and AC = I for some n x n matrix C, so it requires square matrices, the identity matrix and matrix multiplication.;"Based on the provided context, the text outlines that Section 2.3 and the study of invertible matrices serve as a review of most of the concepts previously introduced in Chapter 1 in relation to systems of linear equations and square matrices [1]. Specifically, understanding linear transformations, such as the composition of mappings and standard matrices, is key, as matrix multiplication corresponds to the composition of linear transformations [1]. Additionally, fundamental concepts regarding systems of linear equations, vector equations, and their representations through matrices and augmented matrices are directly tied to these ideas [2].
+
+### References
+
+- [1] Lay_ch2
+- [2] Lay_ch1";2;"не названо квадратну й одиничну матриці; відповідь переважно про інші поняття"
+16;What is a vector space?;A vector space is a nonempty set V of objects called vectors, on which two operations, addition and multiplication by scalars, are defined and satisfy ten axioms: closure under addition and scalar multiplication, commutativity and associativity of addition, existence of a zero vector and of additive inverses, the two distributive laws, (cd)u = c(du), and 1u = u.;"A **vector space** is defined as a nonempty set $V$ of objects, known as vectors, on which two fundamental operations are defined: vector addition and multiplication by scalars (real numbers) [1]. These operations must satisfy ten specific axioms or rules for all vectors $\mathbf{u}$, $\mathbf{v}$, and $\mathbf{w}$ in $V$ and for all scalars $c$ and $d$ [1]:
+
+1. **Closure under addition**: The sum of $\mathbf{u}$ and $\mathbf{v}$, denoted by $\mathbf{u} + \mathbf{v}$, is in $V$ [1].
+2. **Commutativity of addition**: $\mathbf{u} + \mathbf{v} = \mathbf{v} + \mathbf{u}$ [1].
+3. **Associativity of addition**: $(\mathbf{u} + \mathbf{v}) + \mathbf{w} = \mathbf{u} + (\mathbf{v} + \mathbf{w})$ [1].
+4. **Zero vector**: There exists a zero vector $\mathbf{0}$ in $V$ such that $\mathbf{u} + \mathbf{0} = \mathbf{u}$ [1].
+5. **Additives inverses**: For each $\mathbf{u}$ in $V$, there is a vector $-\mathbf{u}$ in $V$ such that $\mathbf{u} + (-\mathbf{u}) = \mathbf{0}$ [1].
+6. **Closure under scalar multiplication**: The scalar multiple of $\mathbf{u}$ by $c$, denoted by $c\mathbf{u}$, is in $V$ [1].
+7. **Distributivity over vector sums**: $c(\mathbf{u} + \mathbf{v}) = c\mathbf{u} + c\mathbf{v}$ [1].
+8. **Distributivity over scalar sums**: $(c + d)\mathbf{u} = c\mathbf{u} + d\mathbf{u}$ [1].
+9. **Associativity of scalar multiplication**: $c(d\mathbf{u}) = (cd)\mathbf{u}$ [1].
+10. **Scalar identity**: $1\mathbf{u} = \mathbf{u}$ [1].
+
+### Prominent Examples of Vector Spaces
+
+* **Real Coordinate Spaces ($\mathbb{R}^n$):** The spaces $\mathbb{R}^n$ (where $n \ge 1$), consisting of all columns of $n$ real numbers, serve as premier examples of vector spaces [1]. 
+* **Geometric Vectors:** The set of all arrows (directed line segments) in three-dimensional space, where length and direction define equality, form a vector space [1].
+* **Function Spaces:** The set of all real-valued functions defined on a set $D$ can form a vector space when function addition and scalar multiplication are defined pointwise [1]. Similarly, the space $S$ of all doubly infinite discrete-time sequences (signals) functions as a vector space [1].
+* **Polynomial Spaces:** For any integer $n \ge 0$, the set $\mathbb{P}_n$ of all polynomials of degree at most $n$ (along with the zero polynomial) forms a vector space [1].
+
+### References
+
+- [1] Lay_ch4";5;усі пункти еталона є
+17;How does Cramer's rule connect determinants with solving linear systems and with the inverse of a matrix?;"For an invertible n x n matrix A and any b, the unique solution of Ax = b has entries xi = det Ai(b) / det A, where Ai(b) is A with column i replaced by b (Cramer's rule). Applying this to the columns of the identity matrix gives the inverse formula A^-1 = (1/det A) adj A, where adj A, the adjugate, is the transpose of the matrix of cofactors. These formulas are mainly of theoretical use; row reduction is more efficient for large matrices.";"Cramer’s rule is a mathematical formula that utilizes determinants to solve systems of linear equations and to construct a general formula for the inverse of an $n \times n$ matrix [1]. 
+
+### Solving Linear Systems Using Cramer's Rule
+
+For any invertible $n \times n$ matrix $A$ and any vector $\mathbf{b}$ in $\mathbb{R}^n$, Cramer's rule provides a direct way to find the unique solution $\mathbf{x}$ of the linear system $A\mathbf{x} = \mathbf{b}$ [1]. 
+
+* **Definition of $A_i(\mathbf{b})$:** Let $A_i(\mathbf{b})$ be the matrix formed by replacing the $i$-th column of matrix $A$ with the vector $\mathbf{b}$ [1].
+* **The Formula:** The entries of the unique solution vector $\mathbf{x} = (x_1, x_2, \dots, x_n)$ are given by:
+  $$x_i = \frac{\det A_i(\mathbf{b})}{\det A}, \qquad i = 1, 2, \dots, n$$
+  provided that $\det A \neq 0$ [1].
+
+### Connecting Determinants to Matrix Inversion
+
+Cramer's rule also leads directly to a general theoretical formula for the inverse of an $n \times n$ matrix $A$ [1]. 
+
+* **Finding Inverse Columns:** The $j$-th column of the inverse matrix $A^{-1}$ is a vector $\mathbf{x}$ that satisfies the linear system $A\mathbf{x} = \mathbf{e}_j$, where $\mathbf{e}_j$ represents the $j$-th column of the identity matrix [1]. 
+* **The Inverse Formula (Theorem 8):** Applying Cramer's rule to these systems reveals that the $(i, j)$-entry of $A^{-1}$ is the cofactor $C_{ji}$ divided by the determinant of $A$ [1]. Expressing this in matrix form yields the adjugate formula:
+  $$A^{-1} = \frac{1}{\det A} \operatorname{adj} A$$
+  where $\operatorname{adj} A$ (the adjugate of $A$) is the transpose of the matrix of cofactors of $A$ [1].
+
+### References
+
+- [1] Lay_ch3";4;не сказано, що формули мають переважно теоретичне значення
+18;Which concepts must be understood before studying the concept of a basis?;A basis is defined as a linearly independent set in a subspace H that spans H, so the prerequisites are subspace, linear independence and span (and, through span, linear combination).;"Based on the provided context, the fundamental concepts and properties that are tied to or precede the study of a basis in a vector space or subspace include:
+
+* **Linear Independence**: A basis is formally defined as a set of vectors that is both linearly independent and spans the space or subspace [1]. Understanding the definition of linear independence (and linear dependence) is essential, as a basis represents a linearly independent set that contains no redundancy [1].
+* **Span and Spanning Sets**: A basis must be large enough to generate every element in the space through linear combinations, meaning it spans the space or subspace [1]. Additionally, the **Spanning Set Theorem** provides the foundation for understanding how unneeded or redundant vectors can be discarded from a spanning set to construct a basis [1].
+
+### References
+
+- [1] Lay_ch4";3;серед передумов не названо підпростір
+19;Which concepts must be understood before studying the LU factorization?;In A = LU, L is a unit lower triangular matrix and U is an echelon form of A obtained by row reduction (without row interchanges), so it requires echelon forms, lower triangular matrices and row reduction.;"Based on the provided context, the LU factorization builds upon concepts from matrix operations and linear systems. Specifically, before studying LU factorization, you should understand:
+
+* **Solving a sequence of linear equations with the same coefficient matrix:** LU factorization is motivated by the common business and industrial problem of solving multiple equations like $A\mathbf{x} = \mathbf{b}_1, A\mathbf{x} = \mathbf{b}_2, \ldots, A\mathbf{x} = \mathbf{b}_p$ [1].
+* **Row reduction and echelon forms:** Understanding how matrices can be reduced using row operations (such as row replacement operations) to obtain an echelon form $U$ is essential for constructing the factorization [1].
+* **Triangular matrices:** A grasp of lower triangular matrices (with 1s on the diagonal) and upper triangular (echelon form) matrices is necessary, as each equation in an LU factorization system ($L\mathbf{y} = \mathbf{b}$ and $U\mathbf{x} = \mathbf{y}$) is solved easily due to their triangular structure [1].
+* **Invertible matrices:** The properties of invertible matrices and the Invertible Matrix Theorem are used to understand why matrix $L$ is invertible and how $(E_p \dots E_1) = L^{-1}$ [1].
+
+### References
+
+- [1] Lay_ch2";5;усі пункти еталона є
+20;Which concepts must be understood before studying the concept of a basis?;A basis is defined as a linearly independent set in a subspace H that spans H, so the prerequisites are subspace, linear independence and span (and, through span, linear combination).;"Based on the provided context, the fundamental concepts that must be understood before studying the concept of a **basis** include:
+
+* **Vector Space and Subspace:** A basis is formally defined with respect to a vector space $V$ or a subspace $H$, serving as a spanning and linearly independent subset of the space [1].
+* **Linear Independence:** A core requirement for a basis is that its set of vectors must be linearly independent, meaning no vector in the set can be expressed as a linear combination of the others, and the corresponding vector equation has only the trivial solution [1].
+* **Span:** A basis must successfully span the entire vector space or subspace, meaning that every vector in the space can be generated through linear combinations of the basis vectors [1].
+* **Linear Combination:** Understanding how vectors can be multiplied by scalars and added together to form linear combinations is essential, as bases generate spaces through this process [1].
+
+### References
+
+- [1] Lay_ch4";5;усі пункти еталона є
