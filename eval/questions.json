@@ -1,0 +1,679 @@
+{
+  "description": "Evaluation questions for the linear algebra knowledge bases. Pages are printed page numbers of Lay, Lay, McDonald, Linear Algebra and Its Applications, 5th ed. Reference answers are written by the author in her own words.",
+  "questions": [
+    {
+      "id": "D01",
+      "type": "definition",
+      "question": "What is a linear combination of vectors v1, ..., vp?",
+      "reference": "A linear combination of v1, ..., vp is a vector y = c1 v1 + ... + cp vp, where the scalars c1, ..., cp are called the weights.",
+      "pages": [
+        28
+      ],
+      "chapters": [
+        1
+      ]
+    },
+    {
+      "id": "D02",
+      "type": "definition",
+      "question": "What is the span of vectors v1, ..., vp in R^n?",
+      "reference": "Span{v1, ..., vp} is the set of all linear combinations of v1, ..., vp, i.e. all vectors that can be written as c1 v1 + ... + cp vp with scalars c1, ..., cp. It is a subset of R^n.",
+      "pages": [
+        30
+      ],
+      "chapters": [
+        1
+      ]
+    },
+    {
+      "id": "D03",
+      "type": "definition",
+      "question": "When is an indexed set of vectors {v1, ..., vp} linearly independent?",
+      "reference": "The set is linearly independent if the vector equation x1 v1 + ... + xp vp = 0 has only the trivial solution. It is linearly dependent if there are weights, not all zero, that satisfy the equation (a linear dependence relation).",
+      "pages": [
+        57
+      ],
+      "chapters": [
+        1
+      ]
+    },
+    {
+      "id": "D04",
+      "type": "definition",
+      "question": "What are a pivot position and a pivot column of a matrix?",
+      "reference": "A pivot position in a matrix A is a location that corresponds to a leading 1 in the reduced echelon form of A. A pivot column is a column of A that contains a pivot position.",
+      "pages": [
+        14
+      ],
+      "chapters": [
+        1
+      ]
+    },
+    {
+      "id": "D05",
+      "type": "definition",
+      "question": "What is a linear transformation?",
+      "reference": "A transformation T is linear if T(u + v) = T(u) + T(v) for all u, v in its domain and T(cu) = cT(u) for all u and all scalars c. Consequently T(0) = 0 and T preserves linear combinations.",
+      "pages": [
+        66
+      ],
+      "chapters": [
+        1
+      ]
+    },
+    {
+      "id": "D06",
+      "type": "definition",
+      "question": "What does it mean for a mapping T: R^n -> R^m to be one-to-one, and to be onto R^m?",
+      "reference": "T is one-to-one if each b in R^m is the image of at most one x in R^n. T is onto R^m if each b in R^m is the image of at least one x in R^n, i.e. the range of T is all of R^m.",
+      "pages": [
+        76
+      ],
+      "chapters": [
+        1
+      ]
+    },
+    {
+      "id": "D07",
+      "type": "definition",
+      "question": "What is an invertible matrix?",
+      "reference": "An n x n matrix A is invertible if there is an n x n matrix C such that CA = I and AC = I, where I is the n x n identity matrix. C is uniquely determined and is called the inverse of A, written A^-1. A matrix that is not invertible is called singular.",
+      "pages": [
+        105
+      ],
+      "chapters": [
+        2
+      ]
+    },
+    {
+      "id": "D08",
+      "type": "definition",
+      "question": "What is an elementary matrix?",
+      "reference": "An elementary matrix is a matrix obtained by performing a single elementary row operation (replacement, interchange or scaling) on an identity matrix. Every elementary matrix is invertible; its inverse is the elementary matrix of the same type that transforms it back into I.",
+      "pages": [
+        108,
+        109
+      ],
+      "chapters": [
+        2
+      ]
+    },
+    {
+      "id": "D09",
+      "type": "definition",
+      "question": "What is the null space of a matrix?",
+      "reference": "The null space Nul A of an m x n matrix A is the set of all solutions of the homogeneous equation Ax = 0. It is a subspace of R^n.",
+      "pages": [
+        150,
+        201
+      ],
+      "chapters": [
+        2,
+        4
+      ]
+    },
+    {
+      "id": "D10",
+      "type": "definition",
+      "question": "What is a basis for a subspace?",
+      "reference": "A basis for a subspace H is a linearly independent set in H that spans H.",
+      "pages": [
+        150,
+        211
+      ],
+      "chapters": [
+        2,
+        4
+      ]
+    },
+    {
+      "id": "D11",
+      "type": "definition",
+      "question": "How is the determinant of an n x n matrix defined?",
+      "reference": "For n >= 2, the determinant of an n x n matrix A is the sum of n terms of the form a1j det A1j with alternating plus and minus signs, where A1j is the submatrix obtained by deleting row 1 and column j of A (cofactor expansion across the first row). The determinant can be computed by a cofactor expansion across any row or down any column.",
+      "pages": [
+        167,
+        168
+      ],
+      "chapters": [
+        3
+      ]
+    },
+    {
+      "id": "D12",
+      "type": "definition",
+      "question": "What is a vector space?",
+      "reference": "A vector space is a nonempty set V of objects called vectors, on which two operations, addition and multiplication by scalars, are defined and satisfy ten axioms: closure under addition and scalar multiplication, commutativity and associativity of addition, existence of a zero vector and of additive inverses, the two distributive laws, (cd)u = c(du), and 1u = u.",
+      "pages": [
+        192
+      ],
+      "chapters": [
+        4
+      ]
+    },
+    {
+      "id": "D13",
+      "type": "definition",
+      "question": "What is the rank of a matrix?",
+      "reference": "The rank of A is the dimension of the column space of A. It equals the number of pivot columns (pivot positions) of A and also the dimension of the row space of A.",
+      "pages": [
+        157,
+        235
+      ],
+      "chapters": [
+        2,
+        4
+      ]
+    },
+    {
+      "id": "D14",
+      "type": "definition",
+      "question": "What are an eigenvector and an eigenvalue of a square matrix?",
+      "reference": "An eigenvector of an n x n matrix A is a nonzero vector x such that Ax = lambda x for some scalar lambda. A scalar lambda is an eigenvalue of A if Ax = lambda x has a nontrivial solution x; such an x is an eigenvector corresponding to lambda.",
+      "pages": [
+        269
+      ],
+      "chapters": [
+        5
+      ]
+    },
+    {
+      "id": "D15",
+      "type": "definition",
+      "question": "When is a square matrix diagonalizable?",
+      "reference": "A square matrix A is diagonalizable if it is similar to a diagonal matrix, i.e. A = PDP^-1 for some invertible matrix P and diagonal matrix D. By the Diagonalization Theorem, an n x n matrix is diagonalizable if and only if it has n linearly independent eigenvectors.",
+      "pages": [
+        284
+      ],
+      "chapters": [
+        5
+      ]
+    },
+    {
+      "id": "R01",
+      "type": "relation",
+      "question": "How are the matrix equation Ax = b, the vector equation x1 a1 + ... + xn an = b and the linear system with augmented matrix [a1 ... an b] related?",
+      "reference": "They have the same solution set (Theorem 3 in Section 1.4). In particular, Ax = b has a solution if and only if b is a linear combination of the columns of A.",
+      "pages": [
+        36
+      ],
+      "chapters": [
+        1
+      ]
+    },
+    {
+      "id": "R02",
+      "type": "relation",
+      "question": "How is the solution set of a consistent equation Ax = b related to the solution set of the homogeneous equation Ax = 0?",
+      "reference": "If p is any particular solution of Ax = b, then the solution set of Ax = b is the set of all vectors w = p + vh, where vh is any solution of Ax = 0. Geometrically, it is the solution set of Ax = 0 translated by p.",
+      "pages": [
+        47
+      ],
+      "chapters": [
+        1
+      ]
+    },
+    {
+      "id": "R03",
+      "type": "relation",
+      "question": "How is the linear independence of the columns of a matrix A related to the equation Ax = 0?",
+      "reference": "The columns of A are linearly independent if and only if Ax = 0 has only the trivial solution. Each linear dependence relation among the columns corresponds to a nontrivial solution of Ax = 0.",
+      "pages": [
+        58
+      ],
+      "chapters": [
+        1
+      ]
+    },
+    {
+      "id": "R04",
+      "type": "relation",
+      "question": "How is a linear transformation T: R^n -> R^m related to its standard matrix?",
+      "reference": "There is a unique m x n matrix A such that T(x) = Ax for all x in R^n. Its j-th column is T(ej), the image of the j-th column of the n x n identity matrix: A = [T(e1) ... T(en)]. A is called the standard matrix of T.",
+      "pages": [
+        72
+      ],
+      "chapters": [
+        1
+      ]
+    },
+    {
+      "id": "R05",
+      "type": "relation",
+      "question": "How are the properties one-to-one and onto of a linear transformation related to its standard matrix?",
+      "reference": "For a linear transformation T: R^n -> R^m with standard matrix A: T maps R^n onto R^m if and only if the columns of A span R^m; T is one-to-one if and only if the columns of A are linearly independent, which is equivalent to T(x) = 0 having only the trivial solution.",
+      "pages": [
+        77,
+        78
+      ],
+      "chapters": [
+        1
+      ]
+    },
+    {
+      "id": "R06",
+      "type": "relation",
+      "question": "How are elementary row operations related to elementary matrices?",
+      "reference": "If an elementary row operation is performed on an m x n matrix A, the result can be written as EA, where the m x m matrix E is obtained by performing the same row operation on I_m. Each elementary matrix is invertible, and its inverse is the elementary matrix of the reverse operation.",
+      "pages": [
+        108,
+        109
+      ],
+      "chapters": [
+        2
+      ]
+    },
+    {
+      "id": "R07",
+      "type": "relation",
+      "question": "How can row reduction be used to find the inverse of a matrix?",
+      "reference": "An n x n matrix A is invertible if and only if it is row equivalent to I_n, and any sequence of elementary row operations that reduces A to I_n also transforms I_n into A^-1 (Theorem 7 in Section 2.2). Algorithm: row reduce the augmented matrix [A I]; if A is row equivalent to I, then [A I] is row equivalent to [I A^-1]; otherwise A has no inverse.",
+      "pages": [
+        109,
+        110
+      ],
+      "chapters": [
+        2
+      ]
+    },
+    {
+      "id": "R08",
+      "type": "relation",
+      "question": "How do elementary row operations affect the determinant of a square matrix?",
+      "reference": "Adding a multiple of one row to another row does not change the determinant; interchanging two rows changes its sign; multiplying one row by k multiplies the determinant by k.",
+      "pages": [
+        171
+      ],
+      "chapters": [
+        3
+      ]
+    },
+    {
+      "id": "R09",
+      "type": "relation",
+      "question": "How is the determinant of a product AB related to the determinants of A and B, and how is det A^T related to det A?",
+      "reference": "For n x n matrices, det AB = (det A)(det B) (multiplicative property), and det A^T = det A.",
+      "pages": [
+        174,
+        175
+      ],
+      "chapters": [
+        3
+      ]
+    },
+    {
+      "id": "R10",
+      "type": "relation",
+      "question": "What is the geometric meaning of the determinant of a 2 x 2 or 3 x 3 matrix?",
+      "reference": "For a 2 x 2 matrix A, |det A| is the area of the parallelogram determined by the columns of A; for a 3 x 3 matrix, |det A| is the volume of the parallelepiped determined by its columns. A linear transformation x -> Ax multiplies areas (volumes) of regions by |det A|.",
+      "pages": [
+        182,
+        184
+      ],
+      "chapters": [
+        3
+      ]
+    },
+    {
+      "id": "R11",
+      "type": "relation",
+      "question": "How are the kernel and the range of a linear transformation related to the null space and the column space of a matrix?",
+      "reference": "The kernel of a linear transformation T: V -> W is the set of all u in V with T(u) = 0, and the range is the set of all vectors T(x) in W. If T(x) = Ax for a matrix A, the kernel and the range of T are exactly Nul A and Col A. The kernel is a subspace of V and the range is a subspace of W.",
+      "pages": [
+        206
+      ],
+      "chapters": [
+        4
+      ]
+    },
+    {
+      "id": "R12",
+      "type": "relation",
+      "question": "How are the rank of an m x n matrix A and the dimension of its null space related?",
+      "reference": "By the Rank Theorem, rank A + dim Nul A = n, the number of columns of A. The rank equals the number of pivot positions and dim Nul A equals the number of free variables in Ax = 0.",
+      "pages": [
+        158,
+        235
+      ],
+      "chapters": [
+        2,
+        4
+      ]
+    },
+    {
+      "id": "R13",
+      "type": "relation",
+      "question": "How are the pivot columns of a matrix related to its column space?",
+      "reference": "The pivot columns of A form a basis for Col A. The pivot columns of A itself must be used, not those of its echelon form, because row operations can change the column space.",
+      "pages": [
+        152,
+        214
+      ],
+      "chapters": [
+        2,
+        4
+      ]
+    },
+    {
+      "id": "R14",
+      "type": "relation",
+      "question": "How are eigenvectors corresponding to distinct eigenvalues related to linear independence?",
+      "reference": "If v1, ..., vr are eigenvectors corresponding to distinct eigenvalues lambda1, ..., lambdar of an n x n matrix, then {v1, ..., vr} is linearly independent. As a consequence, an n x n matrix with n distinct eigenvalues is diagonalizable.",
+      "pages": [
+        272,
+        286
+      ],
+      "chapters": [
+        5
+      ]
+    },
+    {
+      "id": "R15",
+      "type": "relation",
+      "question": "How are similar matrices related in terms of their characteristic polynomials and eigenvalues?",
+      "reference": "A is similar to B if there is an invertible matrix P such that P^-1 A P = B. Similar matrices have the same characteristic polynomial and hence the same eigenvalues with the same multiplicities.",
+      "pages": [
+        279
+      ],
+      "chapters": [
+        5
+      ]
+    },
+    {
+      "id": "P01",
+      "type": "prerequisite",
+      "question": "Which concepts must be understood before studying the concept of a basis?",
+      "reference": "A basis is defined as a linearly independent set in a subspace H that spans H, so the prerequisites are subspace, linear independence and span (and, through span, linear combination).",
+      "pages": [
+        150,
+        211
+      ],
+      "chapters": [
+        1,
+        2,
+        4
+      ]
+    },
+    {
+      "id": "P02",
+      "type": "prerequisite",
+      "question": "Which concepts must be understood before studying the dimension of a subspace or vector space?",
+      "reference": "Dimension is the number of vectors in any basis, so it requires the concept of a basis (and with it subspace, linear independence and span), together with the fact that all bases of a space have the same number of vectors.",
+      "pages": [
+        157,
+        228
+      ],
+      "chapters": [
+        2,
+        4
+      ]
+    },
+    {
+      "id": "P03",
+      "type": "prerequisite",
+      "question": "Which concepts must be understood before studying eigenvectors and eigenvalues?",
+      "reference": "The definition Ax = lambda x with x nonzero for an n x n matrix A requires square matrices, the matrix-vector product Ax, scalar multiples of vectors, and the notion of a nonzero (nontrivial) solution.",
+      "pages": [
+        269
+      ],
+      "chapters": [
+        1,
+        2,
+        5
+      ]
+    },
+    {
+      "id": "P04",
+      "type": "prerequisite",
+      "question": "Which concepts must be understood before studying diagonalizable matrices?",
+      "reference": "A diagonalizable matrix is similar to a diagonal matrix (A = PDP^-1), so it requires diagonal matrices, similar matrices and invertible matrices; the Diagonalization Theorem additionally uses eigenvectors and linear independence.",
+      "pages": [
+        279,
+        284
+      ],
+      "chapters": [
+        2,
+        5
+      ]
+    },
+    {
+      "id": "P05",
+      "type": "prerequisite",
+      "question": "Which concepts must be understood before studying the rank of a matrix?",
+      "reference": "Rank is the dimension of the column space, so it requires the column space and dimension (and therefore basis); computing it uses pivot columns.",
+      "pages": [
+        157,
+        235
+      ],
+      "chapters": [
+        2,
+        4
+      ]
+    },
+    {
+      "id": "P06",
+      "type": "prerequisite",
+      "question": "Which concepts must be understood before studying the eigenspace of a matrix?",
+      "reference": "The eigenspace of A corresponding to lambda is the null space of A - lambda I, so it requires eigenvalues (and eigenvectors) and the null space of a matrix (and subspaces).",
+      "pages": [
+        270
+      ],
+      "chapters": [
+        2,
+        5
+      ]
+    },
+    {
+      "id": "P07",
+      "type": "prerequisite",
+      "question": "Which concepts must be understood before studying the characteristic equation of a matrix?",
+      "reference": "The characteristic equation is det(A - lambda I) = 0, so it requires determinants, eigenvalues and the identity matrix; it relies on the fact that A - lambda I is not invertible exactly when det(A - lambda I) = 0.",
+      "pages": [
+        278
+      ],
+      "chapters": [
+        3,
+        5
+      ]
+    },
+    {
+      "id": "P08",
+      "type": "prerequisite",
+      "question": "Which concepts must be understood before studying the change-of-coordinates matrix between two bases?",
+      "reference": "The columns of the change-of-coordinates matrix P(C<-B) are the C-coordinate vectors of the vectors in basis B, and [x]C = P(C<-B)[x]B, so it requires bases and coordinate vectors relative to a basis.",
+      "pages": [
+        242
+      ],
+      "chapters": [
+        4
+      ]
+    },
+    {
+      "id": "P09",
+      "type": "prerequisite",
+      "question": "Which concepts must be understood before studying the LU factorization?",
+      "reference": "In A = LU, L is a unit lower triangular matrix and U is an echelon form of A obtained by row reduction (without row interchanges), so it requires echelon forms, lower triangular matrices and row reduction.",
+      "pages": [
+        126
+      ],
+      "chapters": [
+        1,
+        2
+      ]
+    },
+    {
+      "id": "P10",
+      "type": "prerequisite",
+      "question": "Which concepts must be understood before studying invertible matrices?",
+      "reference": "An invertible matrix A satisfies CA = I and AC = I for some n x n matrix C, so it requires square matrices, the identity matrix and matrix multiplication.",
+      "pages": [
+        105
+      ],
+      "chapters": [
+        2
+      ]
+    },
+    {
+      "id": "C01",
+      "type": "cross-chapter",
+      "question": "Which conditions are equivalent to the invertibility of an n x n matrix A? List the conditions that the textbook adds to the Invertible Matrix Theorem in later chapters as well.",
+      "reference": "Section 2.3: A is row equivalent to I_n; A has n pivot positions; Ax = 0 has only the trivial solution; the columns of A are linearly independent; x -> Ax is one-to-one; Ax = b has at least one solution for each b; the columns of A span R^n; x -> Ax maps R^n onto R^n; there are matrices C and D with CA = I and AD = I; A^T is invertible. Sections 2.9 and 4.6: the columns of A form a basis of R^n; Col A = R^n; dim Col A = n; rank A = n; Nul A = {0}; dim Nul A = 0. Section 3.2: det A is not zero. Section 5.2: the number 0 is not an eigenvalue of A.",
+      "pages": [
+        114,
+        158,
+        173,
+        237,
+        277
+      ],
+      "chapters": [
+        2,
+        3,
+        4,
+        5
+      ]
+    },
+    {
+      "id": "C02",
+      "type": "cross-chapter",
+      "question": "How can the determinant be used to decide whether the columns of a square matrix are linearly independent?",
+      "reference": "For a square matrix A, the columns are linearly independent if and only if A is invertible (Invertible Matrix Theorem), and A is invertible if and only if det A is not zero. Hence the columns are linearly independent exactly when det A is nonzero; det A = 0 when the columns (or rows) are linearly dependent.",
+      "pages": [
+        114,
+        173
+      ],
+      "chapters": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "id": "C03",
+      "type": "cross-chapter",
+      "question": "How are determinants used to find the eigenvalues of a matrix, and how are the corresponding eigenvectors then found?",
+      "reference": "lambda is an eigenvalue of A if and only if (A - lambda I)x = 0 has a nontrivial solution, i.e. A - lambda I is not invertible, i.e. det(A - lambda I) = 0. The eigenvalues are therefore the roots of the characteristic equation det(A - lambda I) = 0. The eigenvectors for lambda are the nonzero solutions of (A - lambda I)x = 0, found by row reduction; together with 0 they form the eigenspace Nul(A - lambda I).",
+      "pages": [
+        270,
+        277,
+        278
+      ],
+      "chapters": [
+        2,
+        3,
+        5
+      ]
+    },
+    {
+      "id": "C04",
+      "type": "cross-chapter",
+      "question": "How does the notion of a subspace of R^n generalize to vector spaces, and which subspaces associated with a matrix appear in both settings?",
+      "reference": "A subspace of R^n is a set that contains the zero vector and is closed under vector addition and scalar multiplication (Section 2.8). In Section 4.1 a subspace of a general vector space V is defined by the same three properties. In both settings Span{v1, ..., vp} is a subspace, the null space Nul A of an m x n matrix is a subspace of R^n, and the column space Col A is a subspace of R^m.",
+      "pages": [
+        148,
+        149,
+        150,
+        195,
+        196,
+        201,
+        203
+      ],
+      "chapters": [
+        2,
+        4
+      ]
+    },
+    {
+      "id": "C05",
+      "type": "cross-chapter",
+      "question": "How can the dimension of the null space of a matrix be determined from row reduction, and how is it related to the free variables of Ax = 0?",
+      "reference": "Row reduce A and write the general solution of Ax = 0 as a linear combination of vectors whose weights are the free variables (one vector for each free variable); and these vectors form a basis for Nul A. Hence dim Nul A equals the number of free variables, while dim Col A equals the number of pivot columns. Ax = 0 has a nontrivial solution exactly when there is at least one free variable.",
+      "pages": [
+        44,
+        157,
+        203,
+        230
+      ],
+      "chapters": [
+        1,
+        2,
+        4
+      ]
+    },
+    {
+      "id": "C06",
+      "type": "cross-chapter",
+      "question": "How does a basis of an n-dimensional vector space V allow V to be studied like R^n?",
+      "reference": "By the Unique Representation Theorem, every x in V can be written uniquely as x = c1 b1 + ... + cn bn; the weights form the coordinate vector [x]B. The coordinate mapping x -> [x]B is a one-to-one linear transformation from V onto R^n, i.e. an isomorphism, so vector space operations and questions such as linear independence or spanning in V can be translated into the same questions about coordinate vectors in R^n.",
+      "pages": [
+        218,
+        221,
+        222
+      ],
+      "chapters": [
+        1,
+        4
+      ]
+    },
+    {
+      "id": "C07",
+      "type": "cross-chapter",
+      "question": "How is the diagonalization A = PDP^-1 interpreted in terms of the matrix of a linear transformation relative to a basis?",
+      "reference": "If A = PDP^-1 with D diagonal, and B is the basis of R^n formed by the columns of P (eigenvectors of A), then D is the B-matrix of the transformation x -> Ax (Diagonal Matrix Representation theorem). P plays the role of the change-of-coordinates matrix P_B from Section 4.4, so in B-coordinates the transformation simply scales each coordinate by an eigenvalue.",
+      "pages": [
+        284,
+        293
+      ],
+      "chapters": [
+        4,
+        5
+      ]
+    },
+    {
+      "id": "C08",
+      "type": "cross-chapter",
+      "question": "What does the rank of an n x n matrix A tell us about the solutions of Ax = b?",
+      "reference": "If rank A = n, then A is invertible (Invertible Matrix Theorem), so for each b the equation Ax = b has the unique solution x = A^-1 b. If rank A < n, then dim Nul A = n - rank A > 0, Ax = 0 has nontrivial solutions, A is not invertible, and Ax = b fails to have a solution for some b and has infinitely many solutions whenever it is consistent.",
+      "pages": [
+        47,
+        106,
+        158,
+        235
+      ],
+      "chapters": [
+        1,
+        2,
+        4
+      ]
+    },
+    {
+      "id": "C09",
+      "type": "cross-chapter",
+      "question": "How is row reduction to echelon form used to compute a determinant?",
+      "reference": "Reduce A to an echelon form U using only row replacements and row interchanges. Replacements do not change the determinant and each interchange changes its sign, so det A = (-1)^r det U, where r is the number of interchanges. U is triangular, so det U is the product of its diagonal entries. Thus det A = (-1)^r times the product of the pivots in U when A is invertible, and det A = 0 when A is not invertible.",
+      "pages": [
+        169,
+        171,
+        173
+      ],
+      "chapters": [
+        1,
+        3
+      ]
+    },
+    {
+      "id": "C10",
+      "type": "cross-chapter",
+      "question": "How does Cramer's rule connect determinants with solving linear systems and with the inverse of a matrix?",
+      "reference": "For an invertible n x n matrix A and any b, the unique solution of Ax = b has entries xi = det Ai(b) / det A, where Ai(b) is A with column i replaced by b (Cramer's rule). Applying this to the columns of the identity matrix gives the inverse formula A^-1 = (1/det A) adj A, where adj A, the adjugate, is the transpose of the matrix of cofactors. These formulas are mainly of theoretical use; row reduction is more efficient for large matrices.",
+      "pages": [
+        179,
+        181
+      ],
+      "chapters": [
+        1,
+        2,
+        3
+      ]
+    }
+  ]
+}
