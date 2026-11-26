@@ -85,3 +85,27 @@ def test_score_review_accepts_semicolon_csv(tmp_path):
     path.write_text("id;source;requires_target;indirect_in_gold;description;"
                     "verdict (1 = correct prerequisite / 0 = wrong);comment\n1;a;b;no;x;0;\n", encoding="utf-8-sig")
     assert score_review(path, evaluate(G))["share_correct_among_not_in_gold"] == 0.0
+
+
+def test_review_csv_is_not_overwritten(tmp_path, monkeypatch):
+    import eval_relations
+    lab = labels()
+    s, t = sorted(gold_edges()["requires"])[1]
+    G = nx.Graph()
+    G.add_edge(lab[t], lab[s], keywords="requires", description=f"{lab[t]} requires {lab[s]}")
+    kb = tmp_path / "kb"
+    kb.mkdir()
+    nx.write_graphml(G, kb / "graph_chunk_entity_relation.graphml")
+    monkeypatch.setattr(eval_relations, "RESULTS_DIR", tmp_path)
+    review = tmp_path / "review_requires_kb.csv"
+    review.write_text("id,source,requires_target,indirect_in_gold,description,"
+                      "verdict (1 = correct prerequisite / 0 = wrong),comment\n1,a,b,no,x,1,\n",
+                      encoding="utf-8-sig")
+    # an existing labelled sample is protected ...
+    import pytest
+    with pytest.raises(SystemExit):
+        eval_relations.main([str(kb), "--review", "5"])
+    assert ",1," in review.read_text(encoding="utf-8-sig")
+    # ... and scored automatically on a plain re-run
+    res = eval_relations.main([str(kb)])
+    assert res["requires"]["manual_review"]["judged"] == 1

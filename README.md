@@ -34,6 +34,7 @@ src/
   ask_kb.py         queries a knowledge base
   compare_kb.py     side-by-side table of graph metrics
   normalize_kb.py   post-processing: merge synonyms into canonical ontology names, fix types
+  eval_relations.py relations vs. the ontology's own relations (gold standard), manual review sample
   ontology.py       reads the domain ontology (classes, relation types, vocabulary)
   ontology_prompt.py  ontology-guided extraction: prompt section, entity types, domain example
   check_setup.py    checks the API key, models and data
@@ -44,6 +45,7 @@ tests/
   test_preprocess.py  offline tests (no API calls)
   test_ontology.py    offline tests of the ontology-guided method, incl. a gold-leakage check
   test_normalize.py   offline tests of the normalisation plan
+  test_eval_relations.py  offline tests of relation evaluation and the review CSV
   test_smoke.py       end-to-end run on chapter 3 (pytest --smoke, about $0.15)
 run_all.py          the whole local pipeline in one command
 data/               input data (not committed, see data/README.md)
@@ -99,6 +101,24 @@ python src/normalize_kb.py --run               # + normalisation -> rag_storage/
 python src/inspect_kb.py rag_storage/ontology_norm_text
 python src/compare_kb.py baseline_text ontology_text ontology_norm_text
 ```
+
+**Relations vs. the gold standard.** All scripts in `src/` take the knowledge base folder as a positional argument:
+
+```powershell
+python src/eval_relations.py rag_storage/baseline_text
+python src/eval_relations.py rag_storage/ontology_text
+python src/eval_relations.py rag_storage/ontology_norm_text
+```
+
+Manual review of predicted prerequisites that are absent from the gold standard (already done; the labelled sample is `results/review_requires_ontology_norm_text.csv`):
+
+```powershell
+python src/eval_relations.py rag_storage/ontology_norm_text --review 50     # new random sample (seed 42)
+# fill the verdict column with 1 / 0, then:
+python src/eval_relations.py rag_storage/ontology_norm_text --score-review results/review_requires_ontology_norm_text.csv
+```
+
+An existing review CSV is never overwritten without `--force`, and it is scored automatically whenever the evaluation is re-run. The sample was pre-labelled by an LLM; all 50 verdicts were then checked by the author.
 
 ## Pinned settings
 

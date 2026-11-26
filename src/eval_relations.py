@@ -198,14 +198,19 @@ def main(argv=None):
     p.add_argument("kb", nargs="?", type=Path, default=STORAGE_DIR / "ontology_norm_text")
     p.add_argument("--review", type=int, default=0, help="write a CSV sample of N 'not in gold' prerequisites")
     p.add_argument("--score-review", type=Path, help="labelled review CSV -> estimated precision")
+    p.add_argument("--force", action="store_true", help="with --review: overwrite an existing review CSV")
     args = p.parse_args(argv)
 
     G = nx.read_graphml(args.kb / "graph_chunk_entity_relation.graphml")
     res = evaluate(G)
     RESULTS_DIR.mkdir(parents=True, exist_ok=True)
 
-    if args.score_review:
-        s = score_review(args.score_review, res)
+    review_path = RESULTS_DIR / f"review_requires_{args.kb.name}.csv"
+    # a labelled review CSV that already exists is scored automatically, so re-running the
+    # evaluation never drops the manual-review result from results/relations_<kb>.json
+    score_path = args.score_review or (review_path if review_path.exists() and not args.review else None)
+    if score_path:
+        s = score_review(score_path, res)
         res["requires"]["manual_review"] = s
         print(f"Manual review: {s['judged']} judged, {s['share_correct_among_not_in_gold']:.0%} of 'not in gold' "
               f"prerequisites are correct -> estimated precision {s['precision_estimated']:.0%} "
@@ -243,7 +248,10 @@ def main(argv=None):
         print(f"  {e}")
 
     if args.review:
-        path = RESULTS_DIR / f"review_requires_{args.kb.name}.csv"
+        path = review_path
+        if path.exists() and not args.force:
+            raise SystemExit(f"{path} already exists (it may contain your verdicts). "
+                             "Use --force to overwrite it with a new sample.")
         total = write_review(G, args.review, path)
         print(f"\nReview sample: {min(args.review, total)} of {total} 'not in gold' prerequisites -> {path}")
         print("Fill the verdict column with 1 (correct prerequisite) or 0 (wrong), then run:")

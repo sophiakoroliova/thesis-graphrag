@@ -1,4 +1,12 @@
 {
+  "any_type": {
+    "predicted": 513,
+    "gold": 221,
+    "correct": 181,
+    "precision": 0.353,
+    "recall": 0.819,
+    "f1": 0.493
+  },
   "requires": {
     "edges_of_this_type": 262,
     "edges_outside_ontology": 19,
@@ -11,19 +19,19 @@
       "f1": 0.408
     },
     "directed": {
-      "predicted": 190,
+      "predicted": 194,
       "gold": 160,
-      "correct": 56,
-      "precision": 0.295,
-      "recall": 0.35,
-      "f1": 0.32
+      "correct": 54,
+      "precision": 0.278,
+      "recall": 0.338,
+      "f1": 0.305
     },
-    "direction_unknown": 50,
+    "direction_unknown": 45,
     "reversed": 4,
+    "gold_pairs_found_with_another_type": 50,
     "pair_recall_any_edge": 0.856,
     "correct_examples": [
       "Cramer's Rule -> invertible matrix",
-      "Invertible Matrix Theorem -> invertible matrix",
       "LU factorization -> echelon form",
       "LU factorization -> lower triangular matrix",
       "adjugate -> cofactor",
@@ -41,7 +49,8 @@
       "diagonalizable matrix -> diagonal matrix",
       "dimension -> basis",
       "eigenvector -> square matrix",
-      "eigenvector basis -> eigenvector"
+      "eigenvector basis -> eigenvector",
+      "elementary matrix -> elementary row operation"
     ],
     "not_in_gold_examples": [
       "Basis Theorem -> basis",
@@ -55,7 +64,8 @@
       "augmented matrix -> echelon form",
       "augmented matrix -> row reduction algorithm",
       "augmented matrix -> system of linear equations",
-      "basis -> eigenspace",
+      "basic variable -> row reduction algorithm",
+      "basis -> spanning set",
       "change-of-coordinates matrix from B to C -> basis",
       "characteristic equation -> characteristic polynomial",
       "characteristic equation -> identity matrix",
@@ -68,12 +78,11 @@
       "column space -> pivot column",
       "column space -> subspace",
       "column space -> vector space",
+      "consistent system -> augmented matrix",
       "consistent system -> pivot column",
       "consistent system -> row reduction algorithm",
       "coordinate mapping -> basis",
-      "coordinate mapping -> one-to-one mapping",
-      "coordinate mapping -> onto mapping",
-      "coordinate mapping -> vector space"
+      "coordinate mapping -> one-to-one mapping"
     ],
     "missed_examples": [
       "Basis Theorem -> dimension",
@@ -85,6 +94,7 @@
       "Diagonalization Theorem -> eigenvector basis",
       "Existence and Uniqueness Theorem -> consistent system",
       "Existence and Uniqueness Theorem -> free variable",
+      "Invertible Matrix Theorem -> invertible matrix",
       "Invertible Matrix Theorem -> linear independence",
       "Invertible Matrix Theorem -> one-to-one mapping",
       "Invertible Matrix Theorem -> onto mapping",
@@ -104,10 +114,9 @@
       "algorithm for finding the inverse of a matrix -> inverse of a matrix",
       "algorithm for finding the inverse of a matrix -> row reduction algorithm",
       "augmented matrix -> coefficient matrix",
-      "basis -> span",
-      "change-of-coordinates matrix -> coordinate vector"
+      "basis -> span"
     ],
-    "directed_precision_vs_closure": 0.579
+    "directed_precision_vs_closure": 0.562
   },
   "uses": {
     "edges_of_this_type": 482,
@@ -121,15 +130,16 @@
       "f1": 0.303
     },
     "directed": {
-      "predicted": 264,
+      "predicted": 268,
       "gold": 68,
-      "correct": 52,
-      "precision": 0.197,
-      "recall": 0.765,
-      "f1": 0.313
+      "correct": 51,
+      "precision": 0.19,
+      "recall": 0.75,
+      "f1": 0.304
     },
-    "direction_unknown": 38,
+    "direction_unknown": 34,
     "reversed": 0,
+    "gold_pairs_found_with_another_type": 1,
     "pair_recall_any_edge": 0.838,
     "correct_examples": [
       "Basis Theorem -> basis",
@@ -146,12 +156,12 @@
       "Existence and Uniqueness Theorem -> augmented matrix",
       "Existence and Uniqueness Theorem -> consistent system",
       "Existence and Uniqueness Theorem -> free variable",
-      "Invertible Matrix Theorem -> invertible matrix",
       "Invertible Matrix Theorem -> linear independence",
       "Invertible Matrix Theorem -> one-to-one mapping",
       "Invertible Matrix Theorem -> onto mapping",
       "Invertible Matrix Theorem -> pivot position",
-      "Invertible Matrix Theorem -> span"
+      "Invertible Matrix Theorem -> span",
+      "Invertible Matrix Theorem -> transpose of a matrix"
     ],
     "not_in_gold_examples": [
       "Basis Theorem -> column space",
@@ -190,14 +200,15 @@
       "Cramer's Rule -> invertible matrix",
       "Diagonalization Theorem -> eigenvector basis",
       "Existence and Uniqueness Theorem -> pivot column",
+      "Invertible Matrix Theorem -> invertible matrix",
       "LU factorization algorithm -> matrix equation",
       "algorithm for finding the inverse of a matrix -> identity matrix",
       "algorithm for finding the inverse of a matrix -> inverse of a matrix",
       "algorithm for finding the inverse of a matrix -> row equivalence",
-      "cofactor expansion -> determinant",
       "column-row expansion of AB -> partitioned matrix",
       "diagonalization of a matrix -> characteristic equation",
       "diagonalization of a matrix -> eigenspace",
+      "row reduction algorithm -> echelon form",
       "row reduction algorithm -> reduced echelon form",
       "row-vector rule for computing Ax -> matrix",
       "row-vector rule for computing Ax -> matrix-vector product",
@@ -216,19 +227,18 @@
       "f1": 0.519
     },
     "directed": {
-      "predicted": 0,
+      "predicted": 50,
       "gold": 34,
-      "correct": 0,
-      "precision": 0.0,
-      "recall": 0.0,
-      "f1": 0.0
+      "correct": 26,
+      "precision": 0.52,
+      "recall": 0.765,
+      "f1": 0.619
     },
-    "direction_unknown": 75,
+    "direction_unknown": 25,
     "reversed": 0,
+    "gold_pairs_found_with_another_type": 1,
     "pair_recall_any_edge": 0.853,
-    "correct_examples": [],
-    "not_in_gold_examples": [],
-    "missed_examples": [
+    "correct_examples": [
       "LU factorization -> matrix factorization",
       "augmented matrix -> matrix",
       "change-of-coordinates matrix -> matrix",
@@ -238,9 +248,6 @@
       "complex eigenvalue -> eigenvalue",
       "complex eigenvector -> eigenvector",
       "diagonal matrix -> square matrix",
-      "diagonalizable matrix -> square matrix",
-      "echelon form -> matrix",
-      "eigenspace -> subspace",
       "eigenvector basis -> basis",
       "elementary matrix -> square matrix",
       "finite-dimensional vector space -> vector space",
@@ -250,15 +257,44 @@
       "isomorphism -> linear transformation",
       "kernel of a linear transformation -> subspace",
       "linear transformation -> transformation",
+      "matrix transformation -> linear transformation",
+      "null space of a matrix -> subspace"
+    ],
+    "not_in_gold_examples": [
+      "basis -> spanning set",
+      "change-of-coordinates matrix from B to C -> invertible matrix",
+      "change-of-coordinates matrix from B to C -> square matrix",
+      "consistent system -> system of linear equations",
+      "coordinate mapping -> linear transformation",
+      "diagonal matrix -> matrix",
+      "diagonalizable matrix -> similar matrices",
+      "echelon form -> triangular matrix",
+      "eigenspace -> null space of a matrix",
+      "eigenvector -> vector",
+      "elementary matrix -> matrix",
+      "homogeneous linear system -> matrix equation",
+      "identity matrix -> matrix",
+      "identity matrix -> square matrix",
+      "invertible matrix -> matrix",
+      "matrix transformation -> transformation",
+      "one-to-one mapping -> linear transformation",
+      "onto mapping -> linear transformation",
+      "partitioned matrix -> matrix",
+      "range of a transformation -> subspace",
+      "rank -> dimension",
+      "solution set -> span",
+      "vector -> matrix",
+      "zero matrix -> matrix"
+    ],
+    "missed_examples": [
+      "diagonalizable matrix -> square matrix",
+      "echelon form -> matrix",
+      "eigenspace -> subspace",
       "lower triangular matrix -> triangular matrix",
       "matrix of a linear transformation relative to bases -> matrix",
-      "matrix transformation -> linear transformation",
-      "null space of a matrix -> subspace",
-      "reduced echelon form -> echelon form",
       "row space -> subspace",
-      "singular matrix -> square matrix",
-      "square matrix -> matrix",
-      "standard basis -> basis"
+      "subspace -> vector space",
+      "triangular matrix -> square matrix"
     ]
   }
 }
