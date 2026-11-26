@@ -120,5 +120,5 @@ The `--text-only` mode was chosen for cost reasons: full multimodal processing o
 | Configuration | Entities | Relations | Entity types | Isolated | Build time | Cost |
 |---|---|---|---|---|---|---|
 | baseline (`--text-only`) | 1,142 | 1,635 | 13 | 154 (13%) | ~5 min | ~$1.50 |
-| ontology-guided (`--text-only --ontology`) | 421 | 1,054 | 4 | 15 (3.6%) | — | — |
-| + normalisation | — | — | — | — | — | — |
+| ontology-guided (`--text-only --ontology`) | 421 | 1,054 | 4 | 15 (3.6%) | ~5 min | ~$1.62 |
+| + normalisation | 406 | 1,016 | 4 | 14 (3.4%) | < 1 min | < $0.01 |

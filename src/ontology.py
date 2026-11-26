@@ -58,6 +58,21 @@ def gold_relations(files: tuple = tuple(str(f) for f in ONTOLOGY_FILES)) -> set:
     return triples
 
 
+def gold_edges(files: tuple = tuple(str(f) for f in ONTOLOGY_FILES)) -> dict:
+    """Relations between ontology elements, by IRI: {"requires": {(src, tgt), ...}, "uses": ..., "broader": ...}.
+
+    The evaluation gold standard — never passed to the extractor.
+    """
+    g = Graph()
+    for f in files:
+        g.parse(f)
+    elements = {e.iri for e in load_ontology(files).elements}
+    props = {"requires": EDU.requires, "uses": EDU.uses, "broader": SKOS.broader}
+    return {name: {(str(s), str(o)) for s, o in g.subject_objects(prop)
+                   if str(s) in elements and str(o) in elements}
+            for name, prop in props.items()}
+
+
 @dataclass
 class Element:
     iri: str
