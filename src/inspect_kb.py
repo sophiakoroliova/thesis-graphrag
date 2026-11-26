@@ -34,9 +34,15 @@ def ontology_alignment(G: nx.Graph, label_index: dict, chapters=None) -> dict:
     covered = {el.iri for el in matched.values()}
     all_elements = {el.iri: el for el in label_index.values()}
     n = G.number_of_nodes()
+    non_examples = [v for v in G.nodes if G.nodes[v].get("entity_type", "").lower() != "example"]
+    matched_non_examples = [v for v in non_examples if v in matched]
     m = {
         "entities_matching_ontology": len(matched),
         "entities_matching_ontology_share": round(len(matched) / n, 3) if n else 0,
+        "non_example_entities": len(non_examples),
+        "entities_matching_ontology_share_excl_examples":
+            round(len(matched_non_examples) / len(non_examples), 3) if non_examples else 0,
+        "ontology_duplicates": len(matched) - len(covered),   # extra nodes mapping to an already matched element
         "ontology_elements_covered": len(covered),
         "ontology_elements_total": len(all_elements),
         "ontology_coverage": round(len(covered) / len(all_elements), 3) if all_elements else 0,
@@ -143,7 +149,9 @@ def main(argv=None):
         print(f"Book-structure references (Theorem 8, Example 3...): {m['structural_entities']}")
         if "ontology_coverage" in m:
             print(f"Entities matching an ontology element: {m['entities_matching_ontology']} "
-                  f"({m['entities_matching_ontology_share']:.0%})")
+                  f"({m['entities_matching_ontology_share']:.0%}; excluding examples: "
+                  f"{m['entities_matching_ontology_share_excl_examples']:.0%}); "
+                  f"duplicates of an ontology element: {m['ontology_duplicates']}")
             print(f"Ontology elements found in the graph: {m['ontology_elements_covered']} / "
                   f"{m['ontology_elements_total']} ({m['ontology_coverage']:.0%})")
         if "in_scope_coverage" in m:

@@ -33,6 +33,7 @@ src/
   inspect_kb.py     structural graph metrics -> results/
   ask_kb.py         queries a knowledge base
   compare_kb.py     side-by-side table of graph metrics
+  normalize_kb.py   post-processing: merge synonyms into canonical ontology names, fix types
   ontology.py       reads the domain ontology (classes, relation types, vocabulary)
   ontology_prompt.py  ontology-guided extraction: prompt section, entity types, domain example
   check_setup.py    checks the API key, models and data
@@ -42,6 +43,7 @@ colab/
 tests/
   test_preprocess.py  offline tests (no API calls)
   test_ontology.py    offline tests of the ontology-guided method, incl. a gold-leakage check
+  test_normalize.py   offline tests of the normalisation plan
   test_smoke.py       end-to-end run on chapter 3 (pytest --smoke, about $0.15)
 run_all.py          the whole local pipeline in one command
 data/               input data (not committed, see data/README.md)
@@ -87,12 +89,15 @@ Both configurations share the same parsed corpus, chunking, models, LightRAG ver
 | Relation types | free-text keywords | first keyword is one of `requires`, `uses`, `broader`, `example_of`, `related_to` |
 | Naming | free | canonical names from the ontology (with synonyms); no variable symbols or "Theorem 8"-style references |
 | Prompt examples | LightRAG defaults (fiction, stock market) | one linear algebra example from outside the corpus (orthogonality, ch. 6) |
+| Post-processing | none | `normalize_kb.py`: synonyms merged into the canonical name (e.g. Bases → Basis), ontology class enforced, leftover "Theorem N" references removed |
 
 The ontology's own relations between elements are **not** given to the extractor: they serve as the gold standard for evaluating extracted prerequisites (`tests/test_ontology.py` checks that none of them leak into the prompt). The exact extraction prompt is saved next to each ontology-guided knowledge base (`extraction_system_prompt.txt`).
 
 ```powershell
 python run_all.py --text-only --ontology       # proposed method, all chapters
-python src/compare_kb.py baseline_text ontology_text
+python src/normalize_kb.py --run               # + normalisation -> rag_storage/ontology_norm_text
+python src/inspect_kb.py rag_storage/ontology_norm_text
+python src/compare_kb.py baseline_text ontology_text ontology_norm_text
 ```
 
 ## Pinned settings
@@ -115,4 +120,5 @@ The `--text-only` mode was chosen for cost reasons: full multimodal processing o
 | Configuration | Entities | Relations | Entity types | Isolated | Build time | Cost |
 |---|---|---|---|---|---|---|
 | baseline (`--text-only`) | 1,142 | 1,635 | 13 | 154 (13%) | ~5 min | ~$1.50 |
-| ontology-guided | — | — | — | — | — | — |
+| ontology-guided (`--text-only --ontology`) | 421 | 1,054 | 4 | 15 (3.6%) | — | — |
+| + normalisation | — | — | — | — | — | — |

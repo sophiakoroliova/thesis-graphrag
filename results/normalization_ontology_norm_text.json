@@ -1,0 +1,60 @@
+{
+  "source": "ontology_text",
+  "output": "ontology_norm_text",
+  "merges": [
+    {
+      "target": "Range of a Transformation",
+      "sources": [
+        "Range Of A Transformation"
+      ],
+      "entity_type": "concept"
+    },
+    {
+      "target": "System of Linear Equations",
+      "sources": [
+        "Linear System"
+      ],
+      "entity_type": "concept"
+    },
+    {
+      "target": "Linear Independence",
+      "sources": [
+        "Linearly Independent",
+        "Linearly Independent Set"
+      ],
+      "entity_type": "concept"
+    },
+    {
+      "target": "Inverse of a Matrix",
+      "sources": [
+        "Matrix Inverse"
+      ],
+      "entity_type": "concept"
+    },
+    {
+      "target": "Null Space of a Matrix",
+      "sources": [
+        "Null Space Of A Matrix"
+      ],
+      "entity_type": "concept"
+    },
+    {
+      "target": "Kernel of a Linear Transformation",
+      "sources": [
+        "Kernel Of A Linear Transformation"
+      ],
+      "entity_type": "concept"
+    }
+  ],
+  "retypes": [],
+  "deletions": [
+    "Theorem 1",
+    "Theorem 11",
+    "Theorem 12",
+    "Theorem 13",
+    "Theorem 2",
+    "Theorem 6",
+    "Theorem 8",
+    "Theorem 9"
+  ]
+}
