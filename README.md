@@ -35,6 +35,7 @@ src/
   compare_kb.py     side-by-side table of graph metrics
   normalize_kb.py   post-processing: merge synonyms into canonical ontology names, fix types
   eval_relations.py relations vs. the ontology's own relations (gold standard), manual review sample
+  eval_answers.py   answer quality (claim-based metrics, LLM judge), latency, Wilcoxon test
   ontology.py       reads the domain ontology (classes, relation types, vocabulary)
   ontology_prompt.py  ontology-guided extraction: prompt section, entity types, domain example
   check_setup.py    checks the API key, models and data
@@ -46,6 +47,10 @@ tests/
   test_ontology.py    offline tests of the ontology-guided method, incl. a gold-leakage check
   test_normalize.py   offline tests of the normalisation plan
   test_eval_relations.py  offline tests of relation evaluation and the review CSV
+  test_eval_answers.py    offline tests of answer evaluation: question set, metrics, Wilcoxon test
+eval/
+  questions.json      50 questions with reference answers and textbook pages
+  questions_review.csv  check of every reference answer against the textbook
   test_smoke.py       end-to-end run on chapter 3 (pytest --smoke, about $0.15)
 run_all.py          the whole local pipeline in one command
 data/               input data (not committed, see data/README.md)
@@ -119,6 +124,40 @@ python src/eval_relations.py rag_storage/ontology_norm_text --score-review resul
 ```
 
 An existing review CSV is never overwritten without `--force`, and it is scored automatically whenever the evaluation is re-run. The sample was pre-labelled by an LLM; all 50 verdicts were then checked by the author.
+
+## Answer quality and latency
+
+50 questions (`eval/questions.json`): 15 definitions, 15 relations, 10 prerequisites, 10 cross-chapter questions, each with a reference answer and the textbook pages it is based on. Both knowledge bases (`baseline_text`, `ontology_norm_text`) answer every question with the LLM cache switched off.
+
+| Metric | Definition |
+|---|---|
+| Factual correctness (P / R / F1) | answer and reference are split into atomic claims; precision = answer claims supported by the reference, recall = reference claims supported by the answer (RAGAS definition). References are short, so precision also drops when an answer adds correct details |
+| Contradiction rate | answer claims contradicted by the reference (errors, as opposed to extra details) |
+| Faithfulness | answer claims supported by the retrieved context |
+| Judge score | 1–5 against the reference; the judge does not know which knowledge base answered |
+| Latency | each question asked 3 times; median per question, then median and p90; runs with API retries excluded |
+
+The judge is `gemini-3.8-flash`, a stronger model than the one that answers. Differences are tested with the two-sided Wilcoxon signed-rank test on paired per-question scores (exact p for n ≤ 25), effect size r = Z/√n. 20 answers are scored blind by the author to validate the judge.
+
+```powershell
+python src/eval_answers.py answer --limit 5     # pilot: 5 questions, shows the real cost per query
+python src/eval_answers.py judge --limit 5
+python src/eval_answers.py answer               # all questions; finished ones are skipped
+python src/eval_answers.py judge
+python src/eval_answers.py report               # -> results/answers_report.json
+python src/eval_answers.py review --n 20        # blind CSV for the manual check of the judge
+python src/eval_answers.py review --score results/judge_review.csv
+```
+
+**Ablation: graph only.** In hybrid retrieval the answer also receives 11–12 text chunks of the textbook, which are identical for both knowledge bases. To measure the contribution of the graph itself, the questions are answered once more with the text chunks removed from the context (entities and relations keep the same token budgets):
+
+```powershell
+python src/eval_answers.py answer --graph-only --runs 1
+python src/eval_answers.py judge --graph-only --no-faithfulness
+python src/eval_answers.py report --graph-only      # -> results/answers_report_graphonly.json
+```
+
+Raw answers with the retrieved context go to `eval/runs/` (not committed: the context contains textbook text).
 
 ## Pinned settings
 

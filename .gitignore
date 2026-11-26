@@ -14,6 +14,9 @@ data/pdf/
 data/parsed/
 *.pdf
 
+# Raw answers with retrieved context (contain textbook text)
+eval/runs/
+
 # LightRAG knowledge bases (large; rebuilt by the scripts)
 rag_storage/
 

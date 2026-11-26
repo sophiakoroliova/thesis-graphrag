@@ -10,6 +10,9 @@ PDF_DIR = ROOT / "data" / "pdf"                             # cut corpus and per
 PARSED_DIR = ROOT / "data" / "parsed" / "hybrid_full"       # MinerU output from Colab
 STORAGE_DIR = ROOT / "rag_storage"                          # LightRAG knowledge bases
 RESULTS_DIR = ROOT / "results"                              # metrics and reports
+EVAL_DIR = ROOT / "eval"                                    # question set (committed)
+EVAL_RUNS_DIR = EVAL_DIR / "runs"                           # raw answers with retrieved context (not committed)
+QUESTIONS_FILE = EVAL_DIR / "questions.json"
 
 # ---------- Domain ontology (copied from github.com/sophiakoroliova/la_ontology) ----------
 ONTOLOGY_DIR = ROOT / "ontology"
@@ -66,3 +69,17 @@ LIGHTRAG_KWARGS = {
 # Retrieval parameters (identical for both configurations)
 QUERY_MODE = "hybrid"
 ENABLE_RERANK = False
+
+# ---------- Answer evaluation (src/eval_answers.py) ----------
+# Knowledge bases compared in the answer experiment
+EVAL_KBS = ["baseline_text", "ontology_norm_text"]
+LATENCY_RUNS = 3       # each question is asked this many times (cache off); latency = median
+
+# Judge: a stronger model than the one that answers (avoids self-preference)
+JUDGE_MODEL = "gemini-3.8-flash"
+JUDGE_THINKING = {"thinking_level": "LOW"}   # thinking tokens are billed as output
+JUDGE_MAX_ASYNC = 8
+JUDGE_RPM = 500
+# Prices for cost estimates (USD per 1M tokens, Gemini 3.8 Flash, paid tier, until 2026-12-31)
+JUDGE_PRICE_INPUT = 0.75
+JUDGE_PRICE_OUTPUT = 3.75

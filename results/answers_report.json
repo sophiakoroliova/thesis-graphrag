@@ -1,0 +1,542 @@
+{
+  "knowledge_bases": [
+    "baseline_text",
+    "ontology_norm_text"
+  ],
+  "questions": 50,
+  "overall": {
+    "judge_score": {
+      "baseline_text": 4.8,
+      "ontology_norm_text": 4.88,
+      "wilcoxon": {
+        "n": 3,
+        "w_plus": 6.0,
+        "w_minus": 0,
+        "z": 1.633,
+        "p": 0.25,
+        "r": 0.943,
+        "method": "exact"
+      }
+    },
+    "fc_recall": {
+      "baseline_text": 0.818,
+      "ontology_norm_text": 0.829,
+      "wilcoxon": {
+        "n": 17,
+        "w_plus": 86.5,
+        "w_minus": 66.5,
+        "z": 0.474,
+        "p": 0.6513,
+        "r": 0.115,
+        "method": "exact"
+      }
+    },
+    "fc_contradicted": {
+      "baseline_text": 0.003,
+      "ontology_norm_text": 0.0,
+      "wilcoxon": {
+        "n": 1,
+        "w_plus": 0,
+        "w_minus": 1.0,
+        "z": -1.0,
+        "p": 1.0,
+        "r": -1.0,
+        "method": "exact"
+      }
+    },
+    "faithfulness": {
+      "baseline_text": 0.982,
+      "ontology_norm_text": 0.994,
+      "wilcoxon": {
+        "n": 5,
+        "w_plus": 12.0,
+        "w_minus": 3.0,
+        "z": 1.214,
+        "p": 0.3125,
+        "r": 0.543,
+        "method": "exact"
+      }
+    },
+    "fc_precision": {
+      "baseline_text": 0.491,
+      "ontology_norm_text": 0.495,
+      "wilcoxon": {
+        "n": 45,
+        "w_plus": 564.0,
+        "w_minus": 471.0,
+        "z": 0.525,
+        "p": 0.5997,
+        "r": 0.078,
+        "method": "normal approximation"
+      }
+    },
+    "fc_f1": {
+      "baseline_text": 0.571,
+      "ontology_norm_text": 0.573,
+      "wilcoxon": {
+        "n": 46,
+        "w_plus": 580.5,
+        "w_minus": 500.5,
+        "z": 0.437,
+        "p": 0.6621,
+        "r": 0.064,
+        "method": "normal approximation"
+      }
+    }
+  },
+  "by_type": {
+    "definition": {
+      "n": 15,
+      "judge_score": {
+        "baseline_text": 4.933,
+        "ontology_norm_text": 5,
+        "wilcoxon": {
+          "n": 1,
+          "w_plus": 1.0,
+          "w_minus": 0,
+          "z": 1.0,
+          "p": 1.0,
+          "r": 1.0,
+          "method": "exact"
+        }
+      },
+      "fc_recall": {
+        "baseline_text": 0.87,
+        "ontology_norm_text": 0.857,
+        "wilcoxon": {
+          "n": 2,
+          "w_plus": 1.0,
+          "w_minus": 2.0,
+          "z": -0.447,
+          "p": 1.0,
+          "r": -0.316,
+          "method": "exact"
+        }
+      },
+      "fc_contradicted": {
+        "baseline_text": 0.01,
+        "ontology_norm_text": 0.0,
+        "wilcoxon": {
+          "n": 1,
+          "w_plus": 0,
+          "w_minus": 1.0,
+          "z": -1.0,
+          "p": 1.0,
+          "r": -1.0,
+          "method": "exact"
+        }
+      },
+      "faithfulness": {
+        "baseline_text": 0.99,
+        "ontology_norm_text": 0.982,
+        "wilcoxon": {
+          "n": 2,
+          "w_plus": 0,
+          "w_minus": 3.0,
+          "z": -1.342,
+          "p": 0.5,
+          "r": -0.949,
+          "method": "exact"
+        }
+      },
+      "fc_precision": {
+        "baseline_text": 0.438,
+        "ontology_norm_text": 0.512,
+        "wilcoxon": {
+          "n": 15,
+          "w_plus": 81.5,
+          "w_minus": 38.5,
+          "z": 1.222,
+          "p": 0.2349,
+          "r": 0.315,
+          "method": "exact"
+        }
+      },
+      "fc_f1": {
+        "baseline_text": 0.567,
+        "ontology_norm_text": 0.617,
+        "wilcoxon": {
+          "n": 15,
+          "w_plus": 81.5,
+          "w_minus": 38.5,
+          "z": 1.221,
+          "p": 0.2346,
+          "r": 0.315,
+          "method": "exact"
+        }
+      }
+    },
+    "relation": {
+      "n": 15,
+      "judge_score": {
+        "baseline_text": 5,
+        "ontology_norm_text": 5,
+        "wilcoxon": {
+          "n": 0,
+          "w_plus": 0.0,
+          "w_minus": 0.0,
+          "z": 0.0,
+          "p": 1.0,
+          "r": 0.0,
+          "method": "no differences"
+        }
+      },
+      "fc_recall": {
+        "baseline_text": 0.978,
+        "ontology_norm_text": 0.911,
+        "wilcoxon": {
+          "n": 2,
+          "w_plus": 0,
+          "w_minus": 3.0,
+          "z": -1.414,
+          "p": 0.5,
+          "r": -1.0,
+          "method": "exact"
+        }
+      },
+      "fc_contradicted": {
+        "baseline_text": 0.0,
+        "ontology_norm_text": 0.0,
+        "wilcoxon": {
+          "n": 0,
+          "w_plus": 0.0,
+          "w_minus": 0.0,
+          "z": 0.0,
+          "p": 1.0,
+          "r": 0.0,
+          "method": "no differences"
+        }
+      },
+      "faithfulness": {
+        "baseline_text": 0.993,
+        "ontology_norm_text": 1.0,
+        "wilcoxon": {
+          "n": 1,
+          "w_plus": 1.0,
+          "w_minus": 0,
+          "z": 1.0,
+          "p": 1.0,
+          "r": 1.0,
+          "method": "exact"
+        }
+      },
+      "fc_precision": {
+        "baseline_text": 0.639,
+        "ontology_norm_text": 0.58,
+        "wilcoxon": {
+          "n": 13,
+          "w_plus": 40.0,
+          "w_minus": 51.0,
+          "z": -0.384,
+          "p": 0.7354,
+          "r": -0.107,
+          "method": "exact"
+        }
+      },
+      "fc_f1": {
+        "baseline_text": 0.752,
+        "ontology_norm_text": 0.684,
+        "wilcoxon": {
+          "n": 13,
+          "w_plus": 36.0,
+          "w_minus": 55.0,
+          "z": -0.664,
+          "p": 0.5417,
+          "r": -0.184,
+          "method": "exact"
+        }
+      }
+    },
+    "prerequisite": {
+      "n": 10,
+      "judge_score": {
+        "baseline_text": 4.5,
+        "ontology_norm_text": 4.8,
+        "wilcoxon": {
+          "n": 2,
+          "w_plus": 3.0,
+          "w_minus": 0,
+          "z": 1.342,
+          "p": 0.5,
+          "r": 0.949,
+          "method": "exact"
+        }
+      },
+      "fc_recall": {
+        "baseline_text": 0.638,
+        "ontology_norm_text": 0.81,
+        "wilcoxon": {
+          "n": 7,
+          "w_plus": 24.5,
+          "w_minus": 3.5,
+          "z": 1.778,
+          "p": 0.0938,
+          "r": 0.672,
+          "method": "exact"
+        }
+      },
+      "fc_contradicted": {
+        "baseline_text": 0.0,
+        "ontology_norm_text": 0.0,
+        "wilcoxon": {
+          "n": 0,
+          "w_plus": 0.0,
+          "w_minus": 0.0,
+          "z": 0.0,
+          "p": 1.0,
+          "r": 0.0,
+          "method": "no differences"
+        }
+      },
+      "faithfulness": {
+        "baseline_text": 0.945,
+        "ontology_norm_text": 1.0,
+        "wilcoxon": {
+          "n": 1,
+          "w_plus": 1.0,
+          "w_minus": 0,
+          "z": 1.0,
+          "p": 1.0,
+          "r": 1.0,
+          "method": "exact"
+        }
+      },
+      "fc_precision": {
+        "baseline_text": 0.181,
+        "ontology_norm_text": 0.198,
+        "wilcoxon": {
+          "n": 8,
+          "w_plus": 21.0,
+          "w_minus": 15.0,
+          "z": 0.42,
+          "p": 0.7422,
+          "r": 0.149,
+          "method": "exact"
+        }
+      },
+      "fc_f1": {
+        "baseline_text": 0.246,
+        "ontology_norm_text": 0.302,
+        "wilcoxon": {
+          "n": 9,
+          "w_plus": 28.0,
+          "w_minus": 17.0,
+          "z": 0.652,
+          "p": 0.5703,
+          "r": 0.217,
+          "method": "exact"
+        }
+      }
+    },
+    "cross-chapter": {
+      "n": 10,
+      "judge_score": {
+        "baseline_text": 4.6,
+        "ontology_norm_text": 4.6,
+        "wilcoxon": {
+          "n": 0,
+          "w_plus": 0.0,
+          "w_minus": 0.0,
+          "z": 0.0,
+          "p": 1.0,
+          "r": 0.0,
+          "method": "no differences"
+        }
+      },
+      "fc_recall": {
+        "baseline_text": 0.681,
+        "ontology_norm_text": 0.681,
+        "wilcoxon": {
+          "n": 6,
+          "w_plus": 9.0,
+          "w_minus": 12.0,
+          "z": -0.315,
+          "p": 0.8125,
+          "r": -0.129,
+          "method": "exact"
+        }
+      },
+      "fc_contradicted": {
+        "baseline_text": 0.0,
+        "ontology_norm_text": 0.0,
+        "wilcoxon": {
+          "n": 0,
+          "w_plus": 0.0,
+          "w_minus": 0.0,
+          "z": 0.0,
+          "p": 1.0,
+          "r": 0.0,
+          "method": "no differences"
+        }
+      },
+      "faithfulness": {
+        "baseline_text": 0.989,
+        "ontology_norm_text": 1.0,
+        "wilcoxon": {
+          "n": 1,
+          "w_plus": 1.0,
+          "w_minus": 0,
+          "z": 1.0,
+          "p": 1.0,
+          "r": 1.0,
+          "method": "exact"
+        }
+      },
+      "fc_precision": {
+        "baseline_text": 0.658,
+        "ontology_norm_text": 0.642,
+        "wilcoxon": {
+          "n": 9,
+          "w_plus": 17.0,
+          "w_minus": 28.0,
+          "z": -0.652,
+          "p": 0.5703,
+          "r": -0.217,
+          "method": "exact"
+        }
+      },
+      "fc_f1": {
+        "baseline_text": 0.629,
+        "ontology_norm_text": 0.613,
+        "wilcoxon": {
+          "n": 9,
+          "w_plus": 15.0,
+          "w_minus": 30.0,
+          "z": -0.889,
+          "p": 0.4258,
+          "r": -0.296,
+          "method": "exact"
+        }
+      }
+    }
+  },
+  "latency": {
+    "baseline_text": {
+      "questions": 50,
+      "runs_excluded_retries": 0,
+      "median_s": 2.55,
+      "p90_s": 2.98,
+      "mean_input_tokens_per_query": 29062,
+      "per_question_median_s": {
+        "D01": 2.15,
+        "D02": 2.98,
+        "R01": 2.72,
+        "R02": 2.44,
+        "P01": 2.45,
+        "D03": 2.76,
+        "D04": 2.16,
+        "D05": 2.63,
+        "D06": 3.04,
+        "D07": 3.78,
+        "D08": 2.42,
+        "D09": 2.49,
+        "D10": 2.63,
+        "D11": 2.78,
+        "D12": 3.11,
+        "D13": 2.49,
+        "D14": 2.24,
+        "D15": 2.8,
+        "R03": 2.68,
+        "R04": 2.73,
+        "R05": 3.01,
+        "R06": 2.38,
+        "R07": 2.86,
+        "R08": 2.54,
+        "R09": 2.52,
+        "R10": 2.5,
+        "R11": 2.37,
+        "R12": 2.77,
+        "R13": 2.44,
+        "R14": 2.39,
+        "R15": 2.71,
+        "P02": 2.38,
+        "P03": 2.59,
+        "P04": 2.6,
+        "P05": 2.62,
+        "P06": 2.56,
+        "P07": 2.42,
+        "P08": 2.35,
+        "P09": 2.74,
+        "P10": 2.32,
+        "C01": 2.72,
+        "C02": 2.46,
+        "C03": 2.81,
+        "C04": 3.09,
+        "C05": 2.35,
+        "C06": 2.41,
+        "C07": 2.47,
+        "C08": 2.3,
+        "C09": 2.53,
+        "C10": 2.96
+      }
+    },
+    "ontology_norm_text": {
+      "questions": 50,
+      "runs_excluded_retries": 0,
+      "median_s": 2.65,
+      "p90_s": 2.96,
+      "mean_input_tokens_per_query": 28911,
+      "per_question_median_s": {
+        "D01": 2.34,
+        "D02": 2.71,
+        "R01": 2.77,
+        "R02": 2.69,
+        "P01": 2.38,
+        "D03": 2.14,
+        "D04": 2.24,
+        "D05": 2.58,
+        "D06": 2.94,
+        "D07": 2.77,
+        "D08": 2.24,
+        "D09": 2.65,
+        "D10": 2.37,
+        "D11": 2.58,
+        "D12": 3.37,
+        "D13": 2.51,
+        "D14": 2.69,
+        "D15": 2.26,
+        "R03": 2.63,
+        "R04": 3.23,
+        "R05": 2.49,
+        "R06": 2.53,
+        "R07": 2.88,
+        "R08": 2.66,
+        "R09": 2.72,
+        "R10": 3.09,
+        "R11": 2.68,
+        "R12": 2.27,
+        "R13": 2.53,
+        "R14": 2.64,
+        "R15": 2.65,
+        "P02": 2.63,
+        "P03": 2.84,
+        "P04": 2.58,
+        "P05": 2.67,
+        "P06": 2.65,
+        "P07": 2.68,
+        "P08": 2.3,
+        "P09": 2.58,
+        "P10": 2.8,
+        "C01": 2.6,
+        "C02": 2.35,
+        "C03": 2.69,
+        "C04": 3.19,
+        "C05": 2.6,
+        "C06": 3.08,
+        "C07": 2.74,
+        "C08": 2.69,
+        "C09": 2.43,
+        "C10": 2.74
+      }
+    },
+    "wilcoxon": {
+      "n": 50,
+      "w_plus": 744.0,
+      "w_minus": 531.0,
+      "z": 1.028,
+      "p": 0.3038,
+      "r": 0.145,
+      "method": "normal approximation"
+    }
+  }
+}
