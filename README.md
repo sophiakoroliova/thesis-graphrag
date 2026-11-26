@@ -122,3 +122,25 @@ The `--text-only` mode was chosen for cost reasons: full multimodal processing o
 | baseline (`--text-only`) | 1,142 | 1,635 | 13 | 154 (13%) | ~5 min | ~$1.50 |
 | ontology-guided (`--text-only --ontology`) | 421 | 1,054 | 4 | 15 (3.6%) | ~5 min | ~$1.62 |
 | + normalisation | 406 | 1,016 | 4 | 14 (3.4%) | < 1 min | < $0.01 |
+
+### Graph quality
+
+| Metric | Baseline | Ontology-guided | + normalisation |
+|---|---|---|---|
+| Ontology elements covered (of 111) | 76.6% | 100% | 100% |
+| Notation entities (Matrix A, T, ...) | 163 | 0 | 0 |
+| Numbered references (Theorem 8, ...) | 131 | 8 | 0 |
+| Duplicate nodes of an ontology element | 26 | 7 | 0 |
+| Largest hub (degree) | 229 (Matrix A) | 66 (Matrix) | 64 (Matrix) |
+| Relations with an ontology type | 0% | 100% | 100% |
+
+### Relations vs. the ontology's own relations (gold standard, never shown to the extractor)
+
+| Metric | Baseline | Ontology-guided + normalisation |
+|---|---|---|
+| Gold prerequisite pairs linked by any edge (of 160) | 16% | 86% |
+| Gold relations found with any of requires/uses/broader | — | 82% |
+| Prerequisites (`requires`): strict precision / estimated precision* | — | 28% / 64% |
+| Prerequisites (`requires`): directed recall | — | 34% |
+
+\* 50 randomly sampled predicted prerequisites absent from the gold standard were labelled manually (`results/review_requires_ontology_norm_text.csv`); 50% were judged correct.
